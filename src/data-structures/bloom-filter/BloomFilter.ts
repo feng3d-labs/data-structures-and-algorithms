@@ -1,8 +1,17 @@
-export default class BloomFilter {
+/**
+ * 布隆过滤器
+ */
+export class BloomFilter
+{
+
+  private size = 100;
+  private storage: { getValue(index: any): any; setValue(index: any): void; };
+
   /**
-   * @param {number} size - the size of the storage.
+   * @param size the size of the storage.
    */
-  constructor(size = 100) {
+  constructor(size = 100)
+  {
     // Bloom filter size directly affects the likelihood of false positives.
     // The bigger the size the lower the likelihood of false positives.
     this.size = size;
@@ -10,9 +19,12 @@ export default class BloomFilter {
   }
 
   /**
-   * @param {string} item
+   * 插入
+   * 
+   * @param item 元素
    */
-  insert(item) {
+  insert(item: string)
+  {
     const hashValues = this.getHashValues(item);
 
     // Set each hashValue index to true.
@@ -20,14 +32,19 @@ export default class BloomFilter {
   }
 
   /**
-   * @param {string} item
-   * @return {boolean}
+   * 可能包含
+   * 
+   * @param item 元素
+   * @return 
    */
-  mayContain(item) {
+  mayContain(item: string)
+  {
     const hashValues = this.getHashValues(item);
 
-    for (let hashIndex = 0; hashIndex < hashValues.length; hashIndex += 1) {
-      if (!this.storage.getValue(hashValues[hashIndex])) {
+    for (let hashIndex = 0; hashIndex < hashValues.length; hashIndex += 1)
+    {
+      if (!this.storage.getValue(hashValues[hashIndex]))
+      {
         // We know that the item was definitely not inserted.
         return false;
       }
@@ -43,22 +60,26 @@ export default class BloomFilter {
    * encapsulate the data itself and only provide access
    * to the necessary methods.
    *
-   * @param {number} size
-   * @return {Object}
+   * @param size 尺寸
+   * @return 
    */
-  createStore(size) {
+  createStore(size: number)
+  {
     const storage = [];
 
     // Initialize all indexes to false
-    for (let storageCellIndex = 0; storageCellIndex < size; storageCellIndex += 1) {
+    for (let storageCellIndex = 0; storageCellIndex < size; storageCellIndex += 1)
+    {
       storage.push(false);
     }
 
     const storageInterface = {
-      getValue(index) {
+      getValue(index: number)
+      {
         return storage[index];
       },
-      setValue(index) {
+      setValue(index: number)
+      {
         storage[index] = true;
       },
     };
@@ -67,13 +88,17 @@ export default class BloomFilter {
   }
 
   /**
-   * @param {string} item
-   * @return {number}
+   * 计算哈希值1
+   * 
+   * @param item 元素
+   * @return 哈希值1
    */
-  hash1(item) {
+  hash1(item: string)
+  {
     let hash = 0;
 
-    for (let charIndex = 0; charIndex < item.length; charIndex += 1) {
+    for (let charIndex = 0; charIndex < item.length; charIndex += 1)
+    {
       const char = item.charCodeAt(charIndex);
       hash = (hash << 5) + hash + char;
       hash &= hash; // Convert to 32bit integer
@@ -84,13 +109,17 @@ export default class BloomFilter {
   }
 
   /**
-   * @param {string} item
-   * @return {number}
+   * 计算哈希值2
+   * 
+   * @param item 元素
+   * @return 哈希值2
    */
-  hash2(item) {
+  hash2(item: string)
+  {
     let hash = 5381;
 
-    for (let charIndex = 0; charIndex < item.length; charIndex += 1) {
+    for (let charIndex = 0; charIndex < item.length; charIndex += 1)
+    {
       const char = item.charCodeAt(charIndex);
       hash = (hash << 5) + hash + char; /* hash * 33 + c */
     }
@@ -99,13 +128,17 @@ export default class BloomFilter {
   }
 
   /**
-   * @param {string} item
-   * @return {number}
+   * 计算哈希值3
+   * 
+   * @param item 元素
+   * @return 哈希值3
    */
-  hash3(item) {
+  hash3(item: string)
+  {
     let hash = 0;
 
-    for (let charIndex = 0; charIndex < item.length; charIndex += 1) {
+    for (let charIndex = 0; charIndex < item.length; charIndex += 1)
+    {
       const char = item.charCodeAt(charIndex);
       hash = (hash << 5) - hash;
       hash += char;
@@ -117,11 +150,13 @@ export default class BloomFilter {
 
   /**
    * Runs all 3 hash functions on the input and returns an array of results.
+   * 获取3个哈希值组成的数组
    *
-   * @param {string} item
-   * @return {number[]}
+   * @param item 元素
+   * @return 3个哈希值组成的数组
    */
-  getHashValues(item) {
+  getHashValues(item: string)
+  {
     return [
       this.hash1(item),
       this.hash2(item),
