@@ -1,1 +1,1 @@
-export { Comparator } from "./utils/comparator/Comparator";
+export { Comparator } from './utils/comparator/Comparator';

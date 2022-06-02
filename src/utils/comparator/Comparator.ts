@@ -9,7 +9,7 @@ export class Comparator<T>
 
   /**
    * Constructor.
-   * 
+   *
    * @param compareFunction It may be custom compare function that, let's say may compare custom objects together.
    */
   constructor(compareFunction?: CompareFunction<T>)
@@ -35,7 +35,7 @@ export class Comparator<T>
 
   /**
    * Checks if two variables are equal.
-   * 
+   *
    * @param a
    * @param b
    * @return
@@ -47,7 +47,7 @@ export class Comparator<T>
 
   /**
    * Checks if variable "a" is less than "b".
-   * 
+   *
    * @param a
    * @param  b
    * @return
@@ -59,7 +59,7 @@ export class Comparator<T>
 
   /**
    * Checks if variable "a" is greater than "b".
-   * 
+   *
    * @param a
    * @param  b
    * @return
@@ -71,7 +71,7 @@ export class Comparator<T>
 
   /**
    * Checks if variable "a" is less than or equal to "b".
-   * 
+   *
    * @param a
    * @param  b
    * @return
@@ -83,7 +83,7 @@ export class Comparator<T>
 
   /**
    * Checks if variable "a" is greater than or equal to "b".
-   * 
+   *
    * @param a
    * @param b
    * @return
