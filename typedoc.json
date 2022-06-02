@@ -1,0 +1,8 @@
+{
+    "name": "@feng3d/algorithms",
+    "entryPoints": [
+        "src/index.ts"
+    ],
+    "sourcefile-url-prefix": "https://gitlab.com/fengqian/javascript-algorithms/tree/master/src/",
+    "out": "public"
+}
