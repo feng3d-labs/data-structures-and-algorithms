@@ -1,8 +1,8 @@
 /**
  * 阶乘（递归）
- * 
+ *
  * @param number 阶乘数
- * @return 值 
+ * @return 值
  */
 export function factorialRecursive(number: number)
 {

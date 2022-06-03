@@ -1,8 +1,8 @@
 import { Comparator } from '../../utils/comparator/Comparator';
 import { HashTable } from '../hash-table/HashTable';
 
-export class BinaryTreeNode<T> {
-
+export class BinaryTreeNode<T>
+{
   /**
    * 左结点
    */
@@ -32,7 +32,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * 构建二叉树结点
-   * 
+   *
    * @param value node value.
    */
   constructor(value: T = null)
@@ -93,7 +93,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * Get parent's sibling if it exists.
-   * 
+   *
    * @return 叔伯结点
    */
   get uncle()
@@ -130,7 +130,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * 设置结点值
-   * 
+   *
    * @param value 结点新值
    */
   setValue(value: T)
@@ -142,7 +142,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * 设置左结点
-   * 
+   *
    * @param node 结点
    */
   setLeft(node: BinaryTreeNode<T>)
@@ -167,7 +167,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * 设置右结点
-   * 
+   *
    * @param node 结点
    */
   setRight(node: BinaryTreeNode<T>)
@@ -192,7 +192,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * 移除子结点
-   * 
+   *
    * @param nodeToRemove 需要移除的子结点
    * @return 是否成功移除
    */
@@ -201,13 +201,15 @@ export class BinaryTreeNode<T> {
     if (this.left && this.nodeComparator.equal(this.left, nodeToRemove))
     {
       this.left = null;
-      return true;
+
+return true;
     }
 
     if (this.right && this.nodeComparator.equal(this.right, nodeToRemove))
     {
       this.right = null;
-      return true;
+
+return true;
     }
 
     return false;
@@ -215,7 +217,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * 替换节点
-   * 
+   *
    * @param nodeToReplace 被替换的节点
    * @param replacementNode 替换后的节点
    * @return 是否替换成功
@@ -230,13 +232,15 @@ export class BinaryTreeNode<T> {
     if (this.left && this.nodeComparator.equal(this.left, nodeToReplace))
     {
       this.left = replacementNode;
-      return true;
+
+return true;
     }
 
     if (this.right && this.nodeComparator.equal(this.right, nodeToReplace))
     {
       this.right = replacementNode;
-      return true;
+
+return true;
     }
 
     return false;
@@ -244,7 +248,7 @@ export class BinaryTreeNode<T> {
 
   /**
    * 拷贝节点
-   * 
+   *
    * @param sourceNode 源节点
    * @param targetNode 目标节点
    */

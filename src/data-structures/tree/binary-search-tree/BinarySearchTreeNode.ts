@@ -4,8 +4,8 @@ import { Comparator, CompareFunction } from '../../../utils/comparator/Comparato
 /**
  * 二叉查找树结点
  */
-export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
-
+export class BinarySearchTreeNode<T> extends BinaryTreeNode<T>
+{
   /**
    * 左结点
    */
@@ -33,7 +33,7 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
 
   /**
    * 构建二叉查找树结点
-   * 
+   *
    * @param value node value.
    * @param compareFunction comparator function for node values.
    */
@@ -48,7 +48,7 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
 
   /**
    * 插入值
-   * 
+   *
    * @param value 值
    */
   insert(value: T): BinarySearchTreeNode<T>
@@ -93,7 +93,7 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
 
   /**
    * 查找结点
-   * 
+   *
    * @param value 值
    * @return {BinarySearchTreeNode}
    */
@@ -122,7 +122,7 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
 
   /**
    * 是否包含指定值
-   * 
+   *
    * @param value 指定值
    */
   contains(value: T)
@@ -132,7 +132,7 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
 
   /**
    * 移除指定值
-   * 
+   *
    * @param  value 指定值
    * @return 是否移除成功
    */
@@ -154,12 +154,14 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
       {
         // Node has a parent. Just remove the pointer to this node from the parent.
         parent.removeChild(nodeToRemove);
-      } else
+      }
+ else
       {
         // Node has no parent. Just erase current node value.
         nodeToRemove.setValue(undefined);
       }
-    } else if (nodeToRemove.left && nodeToRemove.right)
+    }
+ else if (nodeToRemove.left && nodeToRemove.right)
     {
       // Node has two children.
       // Find the next biggest value (minimum value in the right branch)
@@ -169,14 +171,16 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
       {
         this.remove(nextBiggerNode.value);
         nodeToRemove.setValue(nextBiggerNode.value);
-      } else
+      }
+ else
       {
         // In case if next right value is the next bigger one and it doesn't have left child
         // then just replace node that is going to be deleted with the right node.
         nodeToRemove.setValue(nodeToRemove.right.value);
         nodeToRemove.setRight(nodeToRemove.right.right);
       }
-    } else
+    }
+ else
     {
       // Node has only one child.
       // Make this child to be a direct child of current node's parent.
@@ -186,7 +190,8 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
       if (parent)
       {
         parent.replaceChild(nodeToRemove, childNode);
-      } else
+      }
+ else
       {
         BinaryTreeNode.copyNode(childNode, nodeToRemove);
       }

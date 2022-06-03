@@ -39,7 +39,7 @@ export class BinarySearchTree<T>
 
   /**
    * 插入值
-   * 
+   *
    * @param value 值
    */
   insert(value: T)
@@ -49,7 +49,7 @@ export class BinarySearchTree<T>
 
   /**
    * 是否包含指定值
-   * 
+   *
    * @param value 值
    */
   contains(value: T)
@@ -59,7 +59,7 @@ export class BinarySearchTree<T>
 
   /**
    * 移除指定值
-   * 
+   *
    * @param value 值
    */
   remove(value: T)

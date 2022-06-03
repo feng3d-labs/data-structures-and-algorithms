@@ -17,9 +17,11 @@ export { LinkedListNode } from './data-structures/linked-list/LinkedListNode';
 export { PriorityQueue } from './data-structures/priority-queue/PriorityQueue';
 export { Queue } from './data-structures/queue/Queue';
 export { Stack } from './data-structures/stack/Stack';
+export { AvlTree } from './data-structures/tree/avl-tree/AvlTree';
 export { BinarySearchTree } from './data-structures/tree/binary-search-tree/BinarySearchTree';
 export { BinarySearchTreeNode } from './data-structures/tree/binary-search-tree/BinarySearchTreeNode';
 export { BinaryTreeNode } from './data-structures/tree/BinaryTreeNode';
 export { Trie } from './data-structures/trie/Trie';
 export { TrieNode } from './data-structures/trie/TrieNode';
 export { Comparator } from './utils/comparator/Comparator';
+

@@ -1,9 +1,9 @@
 /**
  * 阶乘
  * N!
- * 
+ *
  * @param number 阶乘数
- * @returns 值 
+ * @returns 值
  */
 export function factorial(number: number)
 {
