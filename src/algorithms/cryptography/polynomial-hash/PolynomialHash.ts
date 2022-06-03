@@ -1,12 +1,30 @@
 const DEFAULT_BASE = 37;
 const DEFAULT_MODULUS = 101;
 
-export default class PolynomialHash {
+export class PolynomialHash
+{
   /**
-   * @param {number} [base] - Base number that is used to create the polynomial.
-   * @param {number} [modulus] - Modulus number that keeps the hash from overflowing.
+   * Base number that is used to create the polynomial.
    */
-  constructor({ base = DEFAULT_BASE, modulus = DEFAULT_MODULUS } = {}) {
+  base: number;
+
+  /**
+   * Modulus number that keeps the hash from overflowing.
+   */
+  modulus: number;
+
+  constructor({
+    base = DEFAULT_BASE, modulus = DEFAULT_MODULUS }: {
+      /**
+       * Base number that is used to create the polynomial.
+       */
+      base?: number,
+      /**
+       * Modulus number that keeps the hash from overflowing.
+       */
+      modulus?: number
+    } = {})
+  {
     this.base = base;
     this.modulus = modulus;
   }
@@ -16,14 +34,15 @@ export default class PolynomialHash {
    *
    * Time complexity: O(word.length).
    *
-   * @param {string} word - String that needs to be hashed.
-   * @return {number}
+   * @param word String that needs to be hashed.
    */
-  hash(word) {
+  hash(word: string)
+  {
     const charCodes = Array.from(word).map((char) => this.charToNumber(char));
 
     let hash = 0;
-    for (let charIndex = 0; charIndex < charCodes.length; charIndex += 1) {
+    for (let charIndex = 0; charIndex < charCodes.length; charIndex += 1)
+    {
       hash *= this.base;
       hash += charCodes[charIndex];
       hash %= this.modulus;
@@ -41,19 +60,20 @@ export default class PolynomialHash {
    *
    * Time complexity: O(1).
    *
-   * @param {number} prevHash
-   * @param {string} prevWord
-   * @param {string} newWord
-   * @return {number}
+   * @param prevHash
+   * @param prevWord
+   * @param newWord
    */
-  roll(prevHash, prevWord, newWord) {
+  roll(prevHash: number, prevWord: string, newWord: string)
+  {
     let hash = prevHash;
 
     const prevValue = this.charToNumber(prevWord[0]);
     const newValue = this.charToNumber(newWord[newWord.length - 1]);
 
     let prevValueMultiplier = 1;
-    for (let i = 1; i < prevWord.length; i += 1) {
+    for (let i = 1; i < prevWord.length; i += 1)
+    {
       prevValueMultiplier *= this.base;
       prevValueMultiplier %= this.modulus;
     }
@@ -71,15 +91,16 @@ export default class PolynomialHash {
   /**
    * Converts char to number.
    *
-   * @param {string} char
-   * @return {number}
+   * @param char
    */
-  charToNumber(char) {
+  charToNumber(char: string)
+  {
     let charCode = char.codePointAt(0);
 
     // Check if character has surrogate pair.
     const surrogate = char.codePointAt(1);
-    if (surrogate !== undefined) {
+    if (surrogate !== undefined)
+    {
       const surrogateShift = 2 ** 16;
       charCode += surrogate * surrogateShift;
     }

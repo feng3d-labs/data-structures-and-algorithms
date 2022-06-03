@@ -1,7 +1,10 @@
-import SimplePolynomialHash from '../SimplePolynomialHash';
+import { deepEqual } from 'assert';
+import { SimplePolynomialHash } from '../SimplePolynomialHash';
 
-describe('PolynomialHash', () => {
-  it('should calculate new hash based on previous one', () => {
+describe('PolynomialHash', () =>
+{
+  it('should calculate new hash based on previous one', () =>
+  {
     const bases = [3, 5];
     const frameSizes = [5, 10];
 
@@ -13,22 +16,25 @@ describe('PolynomialHash', () => {
       + 'publishing software like Aldus 耀 PageMaker including versions of Lorem.';
 
     // Check hashing for different prime base.
-    bases.forEach((base) => {
+    bases.forEach((base) =>
+    {
       const polynomialHash = new SimplePolynomialHash(base);
 
       // Check hashing for different word lengths.
-      frameSizes.forEach((frameSize) => {
+      frameSizes.forEach((frameSize) =>
+      {
         let previousWord = text.substr(0, frameSize);
         let previousHash = polynomialHash.hash(previousWord);
 
         // Shift frame through the whole text.
-        for (let frameShift = 1; frameShift < (text.length - frameSize); frameShift += 1) {
+        for (let frameShift = 1; frameShift < (text.length - frameSize); frameShift += 1)
+        {
           const currentWord = text.substr(frameShift, frameSize);
           const currentHash = polynomialHash.hash(currentWord);
           const currentRollingHash = polynomialHash.roll(previousHash, previousWord, currentWord);
 
           // Check that rolling hash is the same as directly calculated hash.
-          expect(currentRollingHash).toBe(currentHash);
+          deepEqual(currentRollingHash, currentHash);
 
           previousWord = currentWord;
           previousHash = currentHash;
@@ -37,16 +43,17 @@ describe('PolynomialHash', () => {
     });
   });
 
-  it('should generate numeric hashed', () => {
+  it('should generate numeric hashed', () =>
+  {
     const polynomialHash = new SimplePolynomialHash();
 
-    expect(polynomialHash.hash('Test')).toBe(604944);
-    expect(polynomialHash.hash('a')).toBe(97);
-    expect(polynomialHash.hash('b')).toBe(98);
-    expect(polynomialHash.hash('c')).toBe(99);
-    expect(polynomialHash.hash('d')).toBe(100);
-    expect(polynomialHash.hash('e')).toBe(101);
-    expect(polynomialHash.hash('ab')).toBe(1763);
-    expect(polynomialHash.hash('abc')).toBe(30374);
+    deepEqual(polynomialHash.hash('Test'), 604944);
+    deepEqual(polynomialHash.hash('a'), 97);
+    deepEqual(polynomialHash.hash('b'), 98);
+    deepEqual(polynomialHash.hash('c'), 99);
+    deepEqual(polynomialHash.hash('d'), 100);
+    deepEqual(polynomialHash.hash('e'), 101);
+    deepEqual(polynomialHash.hash('ab'), 1763);
+    deepEqual(polynomialHash.hash('abc'), 30374);
   });
 });

@@ -1,10 +1,17 @@
 const DEFAULT_BASE = 17;
 
-export default class SimplePolynomialHash {
+export class SimplePolynomialHash
+{
   /**
-   * @param {number} [base] - Base number that is used to create the polynomial.
+   * Base number that is used to create the polynomial.
    */
-  constructor(base = DEFAULT_BASE) {
+  base: number;
+
+  /**
+   * @param base Base number that is used to create the polynomial.
+   */
+  constructor(base = DEFAULT_BASE)
+  {
     this.base = base;
   }
 
@@ -18,12 +25,13 @@ export default class SimplePolynomialHash {
    * bigger than Number.MAX_SAFE_INTEGER. This function is mentioned here
    * for simplicity and LEARNING reasons.
    *
-   * @param {string} word - String that needs to be hashed.
-   * @return {number}
+   * @param word String that needs to be hashed.
    */
-  hash(word) {
+  hash(word: string)
+  {
     let hash = 0;
-    for (let charIndex = 0; charIndex < word.length; charIndex += 1) {
+    for (let charIndex = 0; charIndex < word.length; charIndex += 1)
+    {
       hash += word.charCodeAt(charIndex) * (this.base ** charIndex);
     }
 
@@ -43,12 +51,12 @@ export default class SimplePolynomialHash {
    * it may deal with numbers that are bigger than Number.MAX_SAFE_INTEGER. This
    * function is mentioned here for simplicity and LEARNING reasons.
    *
-   * @param {number} prevHash
-   * @param {string} prevWord
-   * @param {string} newWord
-   * @return {number}
+   * @param prevHash
+   * @param prevWord
+   * @param newWord
    */
-  roll(prevHash, prevWord, newWord) {
+  roll(prevHash: number, prevWord: string, newWord: string)
+  {
     let hash = prevHash;
 
     const prevValue = prevWord.charCodeAt(0);
