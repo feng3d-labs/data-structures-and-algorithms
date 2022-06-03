@@ -77,7 +77,7 @@ export function articulationPoints<T>(graph: Graph<T>)
           {
             const neighborLowTime = visitedSet[neighbor.getKey()].lowDiscoveryTime;
 
-return neighborLowTime < lowestDiscoveryTime ? neighborLowTime : lowestDiscoveryTime;
+            return neighborLowTime < lowestDiscoveryTime ? neighborLowTime : lowestDiscoveryTime;
           },
           visitedSet[currentVertex.getKey()].lowDiscoveryTime,
         );
@@ -94,7 +94,7 @@ return neighborLowTime < lowestDiscoveryTime ? neighborLowTime : lowestDiscovery
           articulationPointsSet[previousVertex.getKey()] = previousVertex;
         }
       }
- else
+      else
       {
         // Get current vertex low discovery time.
         const currentLowDiscoveryTime = visitedSet[currentVertex.getKey()].lowDiscoveryTime;
@@ -110,7 +110,7 @@ return neighborLowTime < lowestDiscoveryTime ? neighborLowTime : lowestDiscovery
       }
     },
     allowTraversal: ({ nextVertex }: { nextVertex: GraphVertex<T> }) =>
-    !visitedSet[nextVertex.getKey()],
+      !visitedSet[nextVertex.getKey()],
   };
 
   // Do Depth First Search traversal over submitted graph.
