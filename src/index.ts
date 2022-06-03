@@ -1,3 +1,5 @@
+export { BinaryTreeNode } from './data-structures/tree/BinaryTreeNode';
+
 export { factorial } from './algorithms/math/factorial/factorial';
 export { factorialRecursive } from './algorithms/math/factorial/factorialRecursive';
 export { BloomFilter } from './data-structures/bloom-filter/BloomFilter';
@@ -20,4 +22,3 @@ export { Stack } from './data-structures/stack/Stack';
 export { Trie } from './data-structures/trie/Trie';
 export { TrieNode } from './data-structures/trie/TrieNode';
 export { Comparator } from './utils/comparator/Comparator';
-

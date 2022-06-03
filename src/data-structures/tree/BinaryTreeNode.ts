@@ -1,11 +1,42 @@
-import Comparator from '../../utils/comparator/Comparator';
-import HashTable from '../hash-table/HashTable';
+import { Comparator } from '../../utils/comparator/Comparator';
+import { HashTable } from '../hash-table/HashTable';
 
-export default class BinaryTreeNode {
+export class BinaryTreeNode<T> {
+
   /**
-   * @param {*} [value] - node value.
+   * 左结点
    */
-  constructor(value = null) {
+  left: BinaryTreeNode<T>;
+
+  /**
+   * 右结点
+   */
+  right: BinaryTreeNode<T>;
+
+  /**
+   * 父结点
+   */
+  parent: BinaryTreeNode<T>;
+
+  /**
+   * 结点值
+   */
+  value: T;
+
+  /**
+   * 结点比较器
+   */
+  nodeComparator: Comparator<BinaryTreeNode<T>>;
+
+  meta: HashTable<T>;
+
+  /**
+   * 构建二叉树结点
+   * 
+   * @param value node value.
+   */
+  constructor(value: T = null)
+  {
     this.left = null;
     this.right = null;
     this.parent = null;
@@ -19,10 +50,12 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @return {number}
+   * 左结点高度
    */
-  get leftHeight() {
-    if (!this.left) {
+  get leftHeight()
+  {
+    if (!this.left)
+    {
       return 0;
     }
 
@@ -30,10 +63,12 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @return {number}
+   * 右结点高度
    */
-  get rightHeight() {
-    if (!this.right) {
+  get rightHeight()
+  {
+    if (!this.right)
+    {
       return 0;
     }
 
@@ -41,42 +76,50 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @return {number}
+   * 高度
    */
-  get height() {
+  get height()
+  {
     return Math.max(this.leftHeight, this.rightHeight);
   }
 
   /**
-   * @return {number}
+   * 平衡系数
    */
-  get balanceFactor() {
+  get balanceFactor()
+  {
     return this.leftHeight - this.rightHeight;
   }
 
   /**
    * Get parent's sibling if it exists.
-   * @return {BinaryTreeNode}
+   * 
+   * @return 叔伯结点
    */
-  get uncle() {
+  get uncle()
+  {
     // Check if current node has parent.
-    if (!this.parent) {
+    if (!this.parent)
+    {
       return undefined;
     }
 
     // Check if current node has grand-parent.
-    if (!this.parent.parent) {
+    if (!this.parent.parent)
+    {
       return undefined;
     }
 
     // Check if grand-parent has two children.
-    if (!this.parent.parent.left || !this.parent.parent.right) {
+    if (!this.parent.parent.left || !this.parent.parent.right)
+    {
       return undefined;
     }
 
     // So for now we know that current node has grand-parent and this
     // grand-parent has two children. Let's find out who is the uncle.
-    if (this.nodeComparator.equal(this.parent, this.parent.parent.left)) {
+    if (this.nodeComparator.equal(this.parent, this.parent.parent.left))
+    {
       // Right one is an uncle.
       return this.parent.parent.right;
     }
@@ -86,22 +129,27 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @param {*} value
-   * @return {BinaryTreeNode}
+   * 设置结点值
+   * 
+   * @param value 结点新值
    */
-  setValue(value) {
+  setValue(value: T)
+  {
     this.value = value;
 
     return this;
   }
 
   /**
-   * @param {BinaryTreeNode} node
-   * @return {BinaryTreeNode}
+   * 设置左结点
+   * 
+   * @param node 结点
    */
-  setLeft(node) {
+  setLeft(node: BinaryTreeNode<T>)
+  {
     // Reset parent for left node since it is going to be detached.
-    if (this.left) {
+    if (this.left)
+    {
       this.left.parent = null;
     }
 
@@ -109,7 +157,8 @@ export default class BinaryTreeNode {
     this.left = node;
 
     // Make current node to be a parent for new left one.
-    if (this.left) {
+    if (this.left)
+    {
       this.left.parent = this;
     }
 
@@ -117,12 +166,15 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @param {BinaryTreeNode} node
-   * @return {BinaryTreeNode}
+   * 设置右结点
+   * 
+   * @param node 结点
    */
-  setRight(node) {
+  setRight(node: BinaryTreeNode<T>)
+  {
     // Reset parent for right node since it is going to be detached.
-    if (this.right) {
+    if (this.right)
+    {
       this.right.parent = null;
     }
 
@@ -130,7 +182,8 @@ export default class BinaryTreeNode {
     this.right = node;
 
     // Make current node to be a parent for new right one.
-    if (node) {
+    if (node)
+    {
       this.right.parent = this;
     }
 
@@ -138,16 +191,21 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @param {BinaryTreeNode} nodeToRemove
-   * @return {boolean}
+   * 移除子结点
+   * 
+   * @param nodeToRemove 需要移除的子结点
+   * @return 是否成功移除
    */
-  removeChild(nodeToRemove) {
-    if (this.left && this.nodeComparator.equal(this.left, nodeToRemove)) {
+  removeChild(nodeToRemove: BinaryTreeNode<T>)
+  {
+    if (this.left && this.nodeComparator.equal(this.left, nodeToRemove))
+    {
       this.left = null;
       return true;
     }
 
-    if (this.right && this.nodeComparator.equal(this.right, nodeToRemove)) {
+    if (this.right && this.nodeComparator.equal(this.right, nodeToRemove))
+    {
       this.right = null;
       return true;
     }
@@ -156,21 +214,27 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @param {BinaryTreeNode} nodeToReplace
-   * @param {BinaryTreeNode} replacementNode
-   * @return {boolean}
+   * 替换节点
+   * 
+   * @param nodeToReplace 被替换的节点
+   * @param replacementNode 替换后的节点
+   * @return 是否替换成功
    */
-  replaceChild(nodeToReplace, replacementNode) {
-    if (!nodeToReplace || !replacementNode) {
+  replaceChild(nodeToReplace, replacementNode)
+  {
+    if (!nodeToReplace || !replacementNode)
+    {
       return false;
     }
 
-    if (this.left && this.nodeComparator.equal(this.left, nodeToReplace)) {
+    if (this.left && this.nodeComparator.equal(this.left, nodeToReplace))
+    {
       this.left = replacementNode;
       return true;
     }
 
-    if (this.right && this.nodeComparator.equal(this.right, nodeToReplace)) {
+    if (this.right && this.nodeComparator.equal(this.right, nodeToReplace))
+    {
       this.right = replacementNode;
       return true;
     }
@@ -179,23 +243,28 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @param {BinaryTreeNode} sourceNode
-   * @param {BinaryTreeNode} targetNode
+   * 拷贝节点
+   * 
+   * @param sourceNode 源节点
+   * @param targetNode 目标节点
    */
-  static copyNode(sourceNode, targetNode) {
+  static copyNode<T>(sourceNode: BinaryTreeNode<T>, targetNode: BinaryTreeNode<T>)
+  {
     targetNode.setValue(sourceNode.value);
     targetNode.setLeft(sourceNode.left);
     targetNode.setRight(sourceNode.right);
   }
 
   /**
-   * @return {*[]}
+   * 左序深度遍历
    */
-  traverseInOrder() {
+  traverseInOrder()
+  {
     let traverse = [];
 
     // Add left node.
-    if (this.left) {
+    if (this.left)
+    {
       traverse = traverse.concat(this.left.traverseInOrder());
     }
 
@@ -203,7 +272,8 @@ export default class BinaryTreeNode {
     traverse.push(this.value);
 
     // Add right node.
-    if (this.right) {
+    if (this.right)
+    {
       traverse = traverse.concat(this.right.traverseInOrder());
     }
 
@@ -211,9 +281,10 @@ export default class BinaryTreeNode {
   }
 
   /**
-   * @return {string}
+   * 转换为字符串
    */
-  toString() {
+  toString()
+  {
     return this.traverseInOrder().toString();
   }
 }
