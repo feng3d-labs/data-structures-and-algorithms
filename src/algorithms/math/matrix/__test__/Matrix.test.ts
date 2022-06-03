@@ -5,18 +5,18 @@ describe('Matrix', () =>
 {
   it('should throw when trying to add matrices of invalid shapes', () =>
   {
-    // throws(
-    //   () => mtrx.dot([0], [1]),
-    //   'Invalid matrix format');
-    // throws(
-    //   () => mtrx.dot([[0]], [1]),
-    //   'Invalid matrix format');
-    // throws(
-    //   () => mtrx.dot([[[0]]], [[1]]),
-    //   'Matrix is not of 2D shape');
-    // throws(
-    //   () => mtrx.dot([[0]], [[1], [2]]),
-    //   'Matrices have incompatible shape for multiplication');
+    throws(
+      () => mtrx.dot([0], [1]),
+      { message: 'Invalid matrix format' });
+    throws(
+      () => mtrx.dot([[0]], [1]),
+      { message: 'Invalid matrix format' });
+    throws(
+      () => mtrx.dot([[[0]]], [[1]]),
+      { message: 'Matrix is not of 2D shape' });
+    throws(
+      () => mtrx.dot([[0]], [[1], [2]]),
+      { message: 'Matrices have incompatible shape for multiplication' });
   });
 
   it('should calculate matrices dimensions', () =>
@@ -261,10 +261,10 @@ describe('Matrix', () =>
 
   it('should throw when trying to transpose non 2D matrix', () =>
   {
-    // throws(() =>
-    // {
-    //   mtrx.t([[[1]]]);
-    // }, 'Matrix is not of 2D shape');
+    throws(() =>
+    {
+      mtrx.t([[[1]]]);
+    }, { message: 'Matrix is not of 2D shape' });
   });
 
   it('should add two matrices', () =>
@@ -326,13 +326,13 @@ describe('Matrix', () =>
 
   it('should throw when trying to add matrices of different shape', () =>
   {
-    // throws(() => mtrx.add([[0]], [[[0]]]),
-    //   'Matrices have different dimensions',
-    // );
+    throws(() => mtrx.add([[0]], [[[0]]]),
+      { message: 'Matrices have different dimensions' },
+    );
 
-    // throws(() => mtrx.add([[0]], [[0, 0]]),
-    //   'Matrices have different shapes',
-    // );
+    throws(() => mtrx.add([[0]], [[0, 0]]),
+      { message: 'Matrices have different shapes' },
+    );
   });
 
   it('should do element wise multiplication two matrices', () =>
@@ -388,13 +388,13 @@ describe('Matrix', () =>
 
   it('should throw when trying to multiply matrices element-wise of different shape', () =>
   {
-    // throws(() => mtrx.mul([[0]], [[[0]]]),
-    //   'Matrices have different dimensions',
-    // );
+    throws(() => mtrx.mul([[0]], [[[0]]]),
+      { message: 'Matrices have different dimensions' },
+    );
 
-    // throws(() => mtrx.mul([[0]], [[0, 0]]),
-    //   'Matrices have different shapes',
-    // );
+    throws(() => mtrx.mul([[0]], [[0, 0]]),
+      { message: 'Matrices have different shapes' },
+    );
   });
 
   it('should do element wise subtraction two matrices', () =>
@@ -450,12 +450,12 @@ describe('Matrix', () =>
 
   it('should throw when trying to subtract matrices element-wise of different shape', () =>
   {
-    // throws(() => mtrx.sub([[0]], [[[0]]]),
-    //   'Matrices have different dimensions',
-    // );
+    throws(() => mtrx.sub([[0]], [[[0]]]),
+      { message: 'Matrices have different dimensions' },
+    );
 
-    // throws(() => mtrx.sub([[0]], [[0, 0]]),
-    //   'Matrices have different shapes',
-    // );
+    throws(() => mtrx.sub([[0]], [[0, 0]]),
+      { message: 'Matrices have different shapes' },
+    );
   });
 });

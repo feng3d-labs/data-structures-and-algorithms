@@ -1,5 +1,5 @@
-export * as matrix from './algorithms/math/matrix/Matrix';
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
+export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
 export * from './algorithms/cryptography/polynomial-hash/SimplePolynomialHash';
 export * from './algorithms/cryptography/rail-fence-cipher/railFenceCipher';
@@ -7,6 +7,7 @@ export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
+export * as matrix from './algorithms/math/matrix/Matrix';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
