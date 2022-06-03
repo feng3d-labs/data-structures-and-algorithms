@@ -198,7 +198,7 @@ export class Heap<T>
     this.heapContainer.push(item);
     this.heapifyUp();
 
-return this;
+    return this;
   }
 
   /**
@@ -225,7 +225,7 @@ return this;
       {
         this.heapContainer.pop();
       }
- else
+      else
       {
         // Move last element in heap to the vacant (removed) position.
         this.heapContainer[indexToRemove] = this.heapContainer.pop();
@@ -245,7 +245,7 @@ return this;
         {
           this.heapifyDown(indexToRemove);
         }
- else
+        else
         {
           this.heapifyUp(indexToRemove);
         }
@@ -337,7 +337,7 @@ return this;
       {
         nextIndex = this.getRightChildIndex(currentIndex);
       }
- else
+      else
       {
         nextIndex = this.getLeftChildIndex(currentIndex);
       }
