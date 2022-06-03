@@ -1,4 +1,4 @@
-import { deepEqual } from 'assert';
+import { deepEqual, throws } from 'assert';
 import { DisjointSet } from '../DisjointSet';
 
 describe('DisjointSet', () =>
@@ -19,22 +19,8 @@ describe('DisjointSet', () =>
       disjointSet.inSameSet('A', 'B');
     }
 
-    try
-    {
-      mergeNotExistingSets();
-    } catch (e)
-    {
-      deepEqual(!e, false);
-    }
-
-    try
-    {
-      checkNotExistingSets();
-    } catch (e)
-    {
-      deepEqual(!e, false);
-    }
-
+    throws(mergeNotExistingSets);
+    throws(checkNotExistingSets);
   });
 
   it('should do basic manipulations on disjoint set', () =>
