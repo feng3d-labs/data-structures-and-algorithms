@@ -28,7 +28,7 @@ export class BinaryTreeNode<T>
    */
   nodeComparator: Comparator<BinaryTreeNode<T>>;
 
-  meta: HashTable<T>;
+  meta: HashTable<string>;
 
   /**
    * 构建二叉树结点
@@ -202,14 +202,14 @@ export class BinaryTreeNode<T>
     {
       this.left = null;
 
-return true;
+      return true;
     }
 
     if (this.right && this.nodeComparator.equal(this.right, nodeToRemove))
     {
       this.right = null;
 
-return true;
+      return true;
     }
 
     return false;
@@ -233,14 +233,14 @@ return true;
     {
       this.left = replacementNode;
 
-return true;
+      return true;
     }
 
     if (this.right && this.nodeComparator.equal(this.right, nodeToReplace))
     {
       this.right = replacementNode;
 
-return true;
+      return true;
     }
 
     return false;
