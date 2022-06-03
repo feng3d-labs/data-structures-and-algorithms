@@ -1,5 +1,5 @@
-import { DoublyLinkedList } from '../DoublyLinkedList';
 import { deepEqual } from 'assert';
+import { DoublyLinkedList } from '../DoublyLinkedList';
 
 describe('DoublyLinkedList', () =>
 {
