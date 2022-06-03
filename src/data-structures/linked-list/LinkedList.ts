@@ -9,12 +9,12 @@ export class LinkedList<T>
   /**
    * 表头
    */
-  private head: LinkedListNode<T>;
+  head: LinkedListNode<T>;
 
   /**
    * 表尾
    */
-  private tail: LinkedListNode<T>;
+  tail: LinkedListNode<T>;
 
   /**
    * 比较器
