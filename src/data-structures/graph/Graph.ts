@@ -1,86 +1,129 @@
-export default class Graph {
+import { GraphEdge } from './GraphEdge';
+import { GraphVertex } from './GraphVertex';
+
+/**
+ * 图
+ */
+export class Graph<T>
+{
   /**
-   * @param {boolean} isDirected
+   * 顶点列表
    */
-  constructor(isDirected = false) {
+  vertices: { [key: string]: GraphVertex<T> };
+
+  /**
+   * 边列表
+   */
+  edges: { [key: string]: GraphEdge<T> };
+
+  /**
+   * 是否有向
+   */
+  isDirected = false;
+
+  /**
+   * 构建图
+   *
+   * @param isDirected 是否有向
+   */
+  constructor(isDirected = false)
+  {
     this.vertices = {};
     this.edges = {};
     this.isDirected = isDirected;
   }
 
   /**
-   * @param {GraphVertex} newVertex
-   * @returns {Graph}
+   * 新增顶点
+   *
+   * @param newVertex 新顶点
    */
-  addVertex(newVertex) {
+  addVertex(newVertex: GraphVertex<T>)
+  {
     this.vertices[newVertex.getKey()] = newVertex;
 
     return this;
   }
 
   /**
-   * @param {string} vertexKey
-   * @returns GraphVertex
+   * 获取顶点
+   *
+   * @param vertexKey 顶点键值
    */
-  getVertexByKey(vertexKey) {
+  getVertexByKey(vertexKey: string)
+  {
     return this.vertices[vertexKey];
   }
 
   /**
-   * @param {GraphVertex} vertex
-   * @returns {GraphVertex[]}
+   * 获取相邻点
+   *
+   * @param vertex 顶点
    */
-  getNeighbors(vertex) {
+  getNeighbors(vertex: GraphVertex<T>)
+  {
     return vertex.getNeighbors();
   }
 
   /**
-   * @return {GraphVertex[]}
+   * 获取所有顶点
    */
-  getAllVertices() {
+  getAllVertices()
+  {
     return Object.values(this.vertices);
   }
 
   /**
-   * @return {GraphEdge[]}
+   * 获取所有边
    */
-  getAllEdges() {
+  getAllEdges()
+  {
     return Object.values(this.edges);
   }
 
   /**
-   * @param {GraphEdge} edge
-   * @returns {Graph}
+   * 新增边
+   *
+   * @param edge 边
    */
-  addEdge(edge) {
+  addEdge(edge: GraphEdge<T>)
+  {
     // Try to find and end start vertices.
     let startVertex = this.getVertexByKey(edge.startVertex.getKey());
     let endVertex = this.getVertexByKey(edge.endVertex.getKey());
 
     // Insert start vertex if it wasn't inserted.
-    if (!startVertex) {
+    if (!startVertex)
+    {
       this.addVertex(edge.startVertex);
       startVertex = this.getVertexByKey(edge.startVertex.getKey());
     }
 
     // Insert end vertex if it wasn't inserted.
-    if (!endVertex) {
+    if (!endVertex)
+    {
       this.addVertex(edge.endVertex);
       endVertex = this.getVertexByKey(edge.endVertex.getKey());
     }
 
     // Check if edge has been already added.
-    if (this.edges[edge.getKey()]) {
+    if (this.edges[edge.getKey()])
+    {
       throw new Error('Edge has already been added before');
-    } else {
+    }
+ else
+    {
       this.edges[edge.getKey()] = edge;
     }
 
     // Add edge to the vertices.
-    if (this.isDirected) {
+    if (this.isDirected)
+    {
       // If graph IS directed then add the edge only to start vertex.
       startVertex.addEdge(edge);
-    } else {
+    }
+ else
+    {
       // If graph ISN'T directed then add the edge to both vertices.
       startVertex.addEdge(edge);
       endVertex.addEdge(edge);
@@ -90,13 +133,19 @@ export default class Graph {
   }
 
   /**
-   * @param {GraphEdge} edge
+   * 删除边
+   *
+   * @param edge 边
    */
-  deleteEdge(edge) {
+  deleteEdge(edge: GraphEdge<T>)
+  {
     // Delete edge from the list of edges.
-    if (this.edges[edge.getKey()]) {
+    if (this.edges[edge.getKey()])
+    {
       delete this.edges[edge.getKey()];
-    } else {
+    }
+ else
+    {
       throw new Error('Edge not found in graph');
     }
 
@@ -109,14 +158,18 @@ export default class Graph {
   }
 
   /**
-   * @param {GraphVertex} startVertex
-   * @param {GraphVertex} endVertex
-   * @return {(GraphEdge|null)}
+   * 查找边
+   *
+   * @param ertex 起始顶点
+   * @param endVertex 结束顶点
+   * @return 查找到的边
    */
-  findEdge(startVertex, endVertex) {
+  findEdge(startVertex: GraphVertex<T>, endVertex: GraphVertex<T>)
+  {
     const vertex = this.getVertexByKey(startVertex.getKey());
 
-    if (!vertex) {
+    if (!vertex)
+    {
       return null;
     }
 
@@ -124,21 +177,21 @@ export default class Graph {
   }
 
   /**
-   * @return {number}
+   * 获取权重
    */
-  getWeight() {
-    return this.getAllEdges().reduce((weight, graphEdge) => {
-      return weight + graphEdge.weight;
-    }, 0);
+  getWeight()
+  {
+    return this.getAllEdges().reduce((weight, graphEdge) =>
+    weight + graphEdge.weight, 0);
   }
 
   /**
    * Reverse all the edges in directed graph.
-   * @return {Graph}
    */
-  reverse() {
-    /** @param {GraphEdge} edge */
-    this.getAllEdges().forEach((edge) => {
+  reverse()
+  {
+    this.getAllEdges().forEach((edge: GraphEdge<T>) =>
+    {
       // Delete straight edge from graph and from vertices.
       this.deleteEdge(edge);
 
@@ -153,11 +206,13 @@ export default class Graph {
   }
 
   /**
-   * @return {object}
+   * 获取所有顶点索引
    */
-  getVerticesIndices() {
+  getVerticesIndices()
+  {
     const verticesIndices = {};
-    this.getAllVertices().forEach((vertex, index) => {
+    this.getAllVertices().forEach((vertex, index) =>
+    {
       verticesIndices[vertex.getKey()] = index;
     });
 
@@ -165,21 +220,23 @@ export default class Graph {
   }
 
   /**
-   * @return {*[][]}
+   * 获取邻接矩阵
    */
-  getAdjacencyMatrix() {
+  getAdjacencyMatrix()
+  {
     const vertices = this.getAllVertices();
     const verticesIndices = this.getVerticesIndices();
 
     // Init matrix with infinities meaning that there is no ways of
     // getting from one vertex to another yet.
-    const adjacencyMatrix = Array(vertices.length).fill(null).map(() => {
-      return Array(vertices.length).fill(Infinity);
-    });
+    const adjacencyMatrix: number[][] = Array(vertices.length).fill(null).map(() =>
+    Array(vertices.length).fill(Infinity));
 
     // Fill the columns.
-    vertices.forEach((vertex, vertexIndex) => {
-      vertex.getNeighbors().forEach((neighbor) => {
+    vertices.forEach((vertex, vertexIndex) =>
+    {
+      vertex.getNeighbors().forEach((neighbor) =>
+      {
         const neighborIndex = verticesIndices[neighbor.getKey()];
         adjacencyMatrix[vertexIndex][neighborIndex] = this.findEdge(vertex, neighbor).weight;
       });
@@ -189,9 +246,10 @@ export default class Graph {
   }
 
   /**
-   * @return {string}
+   * 转换为字符串
    */
-  toString() {
+  toString()
+  {
     return Object.keys(this.vertices).toString();
   }
 }
