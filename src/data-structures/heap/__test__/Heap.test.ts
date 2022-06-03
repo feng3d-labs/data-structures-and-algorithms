@@ -1,4 +1,4 @@
-import { deepEqual, throws } from 'assert';
+import { throws } from 'assert';
 import { Heap } from '../Heap';
 
 describe('Heap', () =>
