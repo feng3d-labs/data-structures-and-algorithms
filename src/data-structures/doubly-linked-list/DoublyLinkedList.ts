@@ -34,7 +34,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 在头部新增结点
-   * 
+   *
    * @param value 新增结点值
    * @return 新增的结点
    */
@@ -63,7 +63,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 在尾部新增结点
-   * 
+   *
    * @param value 新增结点值
    * @return 新增的结点
    */
@@ -94,7 +94,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 删除链表中第一个与指定值相等的结点
-   * 
+   *
    * @param value 结点值
    * @return 删除的结点
    */
@@ -133,14 +133,16 @@ export class DoublyLinkedList<T>
           {
             this.tail = null;
           }
-        } else if (deletedNode === this.tail)
+        }
+ else if (deletedNode === this.tail)
         {
           // If TAIL is going to be deleted...
 
           // Set tail to second last node, which will become new tail.
           this.tail = deletedNode.previous;
           this.tail.next = null;
-        } else
+        }
+ else
         {
           // If MIDDLE node is going to be deleted...
           const previousNode = deletedNode.previous;
@@ -159,7 +161,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 查找与结点值相等的结点
-   * 
+   *
    * @return 找到的第一个结点
    */
   find({ value = undefined, callback = undefined }: {
@@ -202,7 +204,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 删除表尾
-   * 
+   *
    * @return 被删除的结点
    */
   deleteTail()
@@ -234,7 +236,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 删除表头
-   * 
+   *
    * @return 被删除的表头
    */
   deleteHead()
@@ -250,7 +252,8 @@ export class DoublyLinkedList<T>
     {
       this.head = this.head.next;
       this.head.previous = null;
-    } else
+    }
+ else
     {
       this.head = null;
       this.tail = null;
@@ -261,7 +264,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 转换为数组
-   * 
+   *
    * @return 链表结点组成的函数
    */
   toArray()
@@ -280,7 +283,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 从数组中初始化链表
-   * 
+   *
    * @param values - Array of values that need to be converted to linked list.
    * @return 初始化后的链表
    */
@@ -293,7 +296,7 @@ export class DoublyLinkedList<T>
 
   /**
    * 转换为字符串
-   * 
+   *
    * @param callback
    * @return 字符串
    */
@@ -304,7 +307,7 @@ export class DoublyLinkedList<T>
 
   /**
    * Reverse a linked list.
-   * 
+   *
    * @returns 反转后的链表
    */
   reverse()

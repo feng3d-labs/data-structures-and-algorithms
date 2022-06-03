@@ -20,7 +20,7 @@ export class DisjointSet<T>
 
   /**
    * 构建 并查集
-   * 
+   *
    * @param keyCallback 计算键值函数
    */
   constructor(keyCallback?: (value: T) => string)
@@ -31,7 +31,7 @@ export class DisjointSet<T>
 
   /**
    * 创建集合
-   * 
+   *
    * @param itemValue 结点值
    * @return 创建的集合
    */

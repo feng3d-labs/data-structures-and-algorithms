@@ -23,7 +23,7 @@ export class LinkedList<T>
 
   /**
    * 构建链表
-   * 
+   *
    * @param comparatorFunction 比较函数
    */
   constructor(comparatorFunction?: CompareFunction<T>)
@@ -35,7 +35,7 @@ export class LinkedList<T>
 
   /**
    * 添加新结点到表头
-   * 
+   *
    * @param value 新结点值
    * @return 新增的结点
    */
@@ -56,7 +56,7 @@ export class LinkedList<T>
 
   /**
    * 添加新结点到表尾
-   * 
+   *
    * @param value 新结点值
    * @return 新增的结点
    */
@@ -82,7 +82,7 @@ export class LinkedList<T>
 
   /**
    * 插入新结点
-   * 
+   *
    * @param value 新结点值
    * @param rawIndex 插入索引
    * @return 自身
@@ -93,7 +93,8 @@ export class LinkedList<T>
     if (index === 0)
     {
       this.prepend(value);
-    } else
+    }
+ else
     {
       let count = 1;
       let currentNode = this.head;
@@ -108,25 +109,26 @@ export class LinkedList<T>
       {
         newNode.next = currentNode.next;
         currentNode.next = newNode;
-      } else
-      {
-        if (this.tail)
+      }
+ else
+      if (this.tail)
         {
           this.tail.next = newNode;
           this.tail = newNode;
-        } else
+        }
+ else
         {
           this.head = newNode;
           this.tail = newNode;
         }
-      }
     }
-    return this;
+
+return this;
   }
 
   /**
    * 删除链表中第一个与指定值相等的结点
-   * 
+   *
    * @param value 结点值
    * @return 被删除的结点
    */
@@ -137,7 +139,7 @@ export class LinkedList<T>
       return null;
     }
 
-    let deletedNode = null;
+    let deletedNode: LinkedListNode<T> = null;
 
     // If the head must be deleted then make next node that is different
     // from the head to be a new head.
@@ -158,7 +160,8 @@ export class LinkedList<T>
         {
           deletedNode = currentNode.next;
           currentNode.next = currentNode.next.next;
-        } else
+        }
+ else
         {
           currentNode = currentNode.next;
         }
@@ -176,11 +179,11 @@ export class LinkedList<T>
 
   /**
    * 查找结点
-   * 
+   *
    * @param {Object} findParams
    * @param {*} findParams.value
    * @param {function} [findParams.callback]
-   * 
+   *
    * @return 查找到的结点
    */
   find({ value = undefined, callback = undefined }: {
@@ -223,7 +226,7 @@ export class LinkedList<T>
 
   /**
    * 删除表尾
-   * 
+   *
    * @return 被删除的结点
    */
   deleteTail()
@@ -248,7 +251,8 @@ export class LinkedList<T>
       if (!currentNode.next.next)
       {
         currentNode.next = null;
-      } else
+      }
+ else
       {
         currentNode = currentNode.next;
       }
@@ -261,7 +265,7 @@ export class LinkedList<T>
 
   /**
    * 删除表头
-   * 
+   *
    * @return 被删除结点
    */
   deleteHead()
@@ -276,7 +280,8 @@ export class LinkedList<T>
     if (this.head.next)
     {
       this.head = this.head.next;
-    } else
+    }
+ else
     {
       this.head = null;
       this.tail = null;
@@ -287,7 +292,7 @@ export class LinkedList<T>
 
   /**
    * 从数组中初始化链表
-   * 
+   *
    * @param values - Array of values that need to be converted to linked list.
    * @return 自身
    */
@@ -317,8 +322,8 @@ export class LinkedList<T>
 
   /**
    * 转换为字符串
-   * 
-   * @param callback 
+   *
+   * @param callback
    */
   toString(callback?: (value: T) => string)
   {
@@ -327,7 +332,7 @@ export class LinkedList<T>
 
   /**
    * Reverse a linked list.
-   * 
+   *
    * @returns 自身
    */
   reverse()

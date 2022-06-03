@@ -11,7 +11,7 @@ export class MinHeap<T> extends Heap<T>
    * Checks if pair of heap elements is in correct order.
    * For MinHeap the first element must be always smaller or equal.
    * For MaxHeap the first element must be always bigger or equal.
-   * 
+   *
    * 检查堆元素对的顺序是否正确。
    * 对于MinHeap，第一个元素必须总是小于等于。
    * 对于MaxHeap，第一个元素必须总是大于或等于。

@@ -2,7 +2,7 @@ import { Comparator, CompareFunction } from '../../utils/comparator/Comparator';
 
 /**
  * 堆
- * 
+ *
  * Parent class for Min and Max Heaps.
  */
 export class Heap<T>
@@ -36,7 +36,7 @@ export class Heap<T>
 
   /**
    * 获取左边子结点索引
-   * 
+   *
    * @param parentIndex 父结点索引
    * @return 左边子结点索引
    */
@@ -47,7 +47,7 @@ export class Heap<T>
 
   /**
    * 获取右边子结点索引
-   * 
+   *
    * @param parentIndex 父结点索引
    * @return 右边子结点索引
    */
@@ -58,7 +58,7 @@ export class Heap<T>
 
   /**
    * 获取父结点索引
-   * 
+   *
    * @param childIndex 子结点索引
    * @return 父结点索引
    */
@@ -69,7 +69,7 @@ export class Heap<T>
 
   /**
    * 是否有父结点
-   * 
+   *
    * @param childIndex 子结点索引
    * @return 是否有父结点
    */
@@ -80,7 +80,7 @@ export class Heap<T>
 
   /**
    * 是否有左子结点
-   * 
+   *
    * @param parentIndex 父结点索引
    * @return 是否有左子结点
    */
@@ -91,7 +91,7 @@ export class Heap<T>
 
   /**
    * 是否有右子结点
-   * 
+   *
    * @param parentIndex 父结点索引
    * @return 是否有右子结点
    */
@@ -102,7 +102,7 @@ export class Heap<T>
 
   /**
    * 获取左结点
-   * 
+   *
    * @param parentIndex 父结点索引
    * @return 左结点
    */
@@ -113,7 +113,7 @@ export class Heap<T>
 
   /**
    * 获取右结点
-   * 
+   *
    * @param parentIndex 父结点索引
    * @return 右结点
    */
@@ -124,7 +124,7 @@ export class Heap<T>
 
   /**
    * 获取父结点
-   * 
+   *
    * @param childIndex 子结点索引
    * @return 父结点
    */
@@ -135,7 +135,7 @@ export class Heap<T>
 
   /**
    * 交换两个结点数据
-   * 
+   *
    * @param indexOne 索引1
    * @param indexTwo 索引2
    */
@@ -148,7 +148,7 @@ export class Heap<T>
 
   /**
    * 查看堆顶数据
-   * 
+   *
    * @return 堆顶数据
    */
   peek()
@@ -163,7 +163,7 @@ export class Heap<T>
 
   /**
    * 取出堆顶元素
-   * 
+   *
    * @return 堆顶元素
    */
   poll()
@@ -189,7 +189,7 @@ export class Heap<T>
 
   /**
    * 新增元素
-   * 
+   *
    * @param item 新元素
    * @return 自身
    */
@@ -197,12 +197,13 @@ export class Heap<T>
   {
     this.heapContainer.push(item);
     this.heapifyUp();
-    return this;
+
+return this;
   }
 
   /**
    * 移除所有指定元素
-   * 
+   *
    * @param item 被移除的元素
    * @param comparator 比较器
    * @return 自身
@@ -223,7 +224,8 @@ export class Heap<T>
       if (indexToRemove === (this.heapContainer.length - 1))
       {
         this.heapContainer.pop();
-      } else
+      }
+ else
       {
         // Move last element in heap to the vacant (removed) position.
         this.heapContainer[indexToRemove] = this.heapContainer.pop();
@@ -242,7 +244,8 @@ export class Heap<T>
         )
         {
           this.heapifyDown(indexToRemove);
-        } else
+        }
+ else
         {
           this.heapifyUp(indexToRemove);
         }
@@ -254,7 +257,7 @@ export class Heap<T>
 
   /**
    * 查找元素所在的所有索引
-   * 
+   *
    * @param item 查找的元素
    * @param comparator 比较器
    * @return 查找的元素所在索引了吧
@@ -292,7 +295,7 @@ export class Heap<T>
 
   /**
    * 堆冒泡
-   * 
+   *
    * @param customStartIndex 堆冒泡起始索引
    */
   heapifyUp(customStartIndex?: number)
@@ -314,7 +317,7 @@ export class Heap<T>
 
   /**
    * 堆下沉
-   * 
+   *
    * @param customStartIndex 堆下沉起始索引
    */
   heapifyDown(customStartIndex = 0)
@@ -333,7 +336,8 @@ export class Heap<T>
       )
       {
         nextIndex = this.getRightChildIndex(currentIndex);
-      } else
+      }
+ else
       {
         nextIndex = this.getLeftChildIndex(currentIndex);
       }

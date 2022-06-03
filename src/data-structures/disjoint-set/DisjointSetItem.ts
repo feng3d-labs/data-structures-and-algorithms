@@ -24,7 +24,7 @@ export class DisjointSetItem<T>
 
   /**
    * 构建 并查集 项
-   * 
+   *
    * @param value 值
    * @param keyCallback 计算键值函数
    */
@@ -95,7 +95,7 @@ export class DisjointSetItem<T>
 
   /**
    * 获取子结点列表
-   * 
+   *
    * @return 子结点列表
    */
   getChildren()
@@ -105,7 +105,7 @@ export class DisjointSetItem<T>
 
   /**
    * 设置父结点
-   * 
+   *
    * @param parentItem 父结点
    * @param forceSettingParentChild 强制这是父子关系
    * @return 自身
@@ -123,7 +123,7 @@ export class DisjointSetItem<T>
 
   /**
    * 添加子结点
-   * 
+   *
    * @param childItem 子结点
    * @return 自身
    */

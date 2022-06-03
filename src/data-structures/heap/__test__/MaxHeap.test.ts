@@ -1,4 +1,4 @@
-import { deepEqual, throws } from 'assert';
+import { deepEqual } from 'assert';
 import { Comparator } from '../../../utils/comparator/Comparator';
 import { MaxHeap } from '../MaxHeap';
 

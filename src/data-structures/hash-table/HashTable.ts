@@ -1,16 +1,29 @@
-import LinkedList from '../linked-list/LinkedList';
+import { LinkedList } from '../linked-list/LinkedList';
 
-// Hash table size directly affects on the number of collisions.
-// The bigger the hash table size the less collisions you'll get.
-// For demonstrating purposes hash table size is small to show how collisions
-// are being handled.
+/**
+ * Hash table size directly affects on the number of collisions.
+ * The bigger the hash table size the less collisions you'll get.
+ * For demonstrating purposes hash table size is small to show how collisions
+ * are being handled.
+ */
 const defaultHashTableSize = 32;
 
-export default class HashTable {
+/**
+ * 哈希表（散列表）
+ */
+export class HashTable
+{
+  private keys: { [key: string]: number };
+
+  buckets: LinkedList<{ key: string, value: any }>[];
+
   /**
-   * @param {number} hashTableSize
+   * 构建哈希表
+   *
+   * @param hashTableSize 哈希表尺寸
    */
-  constructor(hashTableSize = defaultHashTableSize) {
+  constructor(hashTableSize = defaultHashTableSize)
+  {
     // Create hash table of certain size and fill each bucket with empty linked list.
     this.buckets = Array(hashTableSize).fill(null).map(() => new LinkedList());
 
@@ -20,11 +33,13 @@ export default class HashTable {
 
   /**
    * Converts key string to hash number.
+   * 将字符串键转换为哈希数。
    *
-   * @param {string} key
-   * @return {number}
+   * @param key 字符串键
+   * @return 哈希数
    */
-  hash(key) {
+  hash(key: string)
+  {
     // For simplicity reasons we will just use character codes sum of all characters of the key
     // to calculate the hash.
     //
@@ -45,35 +60,45 @@ export default class HashTable {
   }
 
   /**
-   * @param {string} key
-   * @param {*} value
+   * 设置值
+   *
+   * @param key 键
+   * @param value 值
    */
-  set(key, value) {
+  set(key: string, value: any)
+  {
     const keyHash = this.hash(key);
     this.keys[key] = keyHash;
     const bucketLinkedList = this.buckets[keyHash];
     const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key });
 
-    if (!node) {
+    if (!node)
+    {
       // Insert new node.
       bucketLinkedList.append({ key, value });
-    } else {
+    }
+ else
+    {
       // Update value of existing node.
       node.value.value = value;
     }
   }
 
   /**
-   * @param {string} key
-   * @return {*}
+   * 删除指定键以及对于值
+   *
+   * @param key 需要删除的键
+   * @return 被删除的结点
    */
-  delete(key) {
+  delete(key: string)
+  {
     const keyHash = this.hash(key);
     delete this.keys[key];
     const bucketLinkedList = this.buckets[keyHash];
     const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key });
 
-    if (node) {
+    if (node)
+    {
       return bucketLinkedList.delete(node.value);
     }
 
@@ -81,10 +106,13 @@ export default class HashTable {
   }
 
   /**
-   * @param {string} key
-   * @return {*}
+   * 获取与键对应的值
+   *
+   * @param key 键
+   * @return
    */
-  get(key) {
+  get(key: string)
+  {
     const bucketLinkedList = this.buckets[this.hash(key)];
     const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key });
 
@@ -92,30 +120,39 @@ export default class HashTable {
   }
 
   /**
-   * @param {string} key
-   * @return {boolean}
+   * 是否拥有键
+   *
+   * @param key 键
+   * @return 是否拥有键
    */
-  has(key) {
+  has(key: string)
+  {
     return Object.hasOwnProperty.call(this.keys, key);
   }
 
   /**
-   * @return {string[]}
+   * 获取键列表
+   *
+   * @return 键列表
    */
-  getKeys() {
+  getKeys()
+  {
     return Object.keys(this.keys);
   }
 
   /**
    * Gets the list of all the stored values in the hash table.
    *
-   * @return {*[]}
+   * @return 值列表
    */
-  getValues() {
-    return this.buckets.reduce((values, bucket) => {
+  getValues()
+  {
+    return this.buckets.reduce((values, bucket) =>
+    {
       const bucketValues = bucket.toArray()
         .map((linkedListNode) => linkedListNode.value.value);
-      return values.concat(bucketValues);
+
+return values.concat(bucketValues);
     }, []);
   }
 }

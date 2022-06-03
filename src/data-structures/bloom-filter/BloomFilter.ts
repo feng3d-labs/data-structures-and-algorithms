@@ -3,7 +3,6 @@
  */
 export class BloomFilter
 {
-
   private size = 100;
   private storage: { getValue(index: any): any; setValue(index: any): void; };
 
@@ -20,7 +19,7 @@ export class BloomFilter
 
   /**
    * 插入
-   * 
+   *
    * @param item 元素
    */
   insert(item: string)
@@ -33,9 +32,9 @@ export class BloomFilter
 
   /**
    * 可能包含
-   * 
+   *
    * @param item 元素
-   * @return 
+   * @return
    */
   mayContain(item: string)
   {
@@ -61,7 +60,7 @@ export class BloomFilter
    * to the necessary methods.
    *
    * @param size 尺寸
-   * @return 
+   * @return
    */
   createStore(size: number)
   {
@@ -89,7 +88,7 @@ export class BloomFilter
 
   /**
    * 计算哈希值1
-   * 
+   *
    * @param item 元素
    * @return 哈希值1
    */
@@ -110,7 +109,7 @@ export class BloomFilter
 
   /**
    * 计算哈希值2
-   * 
+   *
    * @param item 元素
    * @return 哈希值2
    */
@@ -129,7 +128,7 @@ export class BloomFilter
 
   /**
    * 计算哈希值3
-   * 
+   *
    * @param item 元素
    * @return 哈希值3
    */
