@@ -16,7 +16,7 @@ const COLOR_PROP_NAME = 'color';
 export class RedBlackTree<T> extends BinarySearchTree<T>
 {
   /**
-   * @param value 
+   * @param value
    */
   insert(value: T)
   {
@@ -27,7 +27,8 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
     {
       // Make root to always be black.
       this.makeNodeBlack(insertedNode);
-    } else
+    }
+    else
     {
       // Make all newly inserted nodes to be red.
       this.makeNodeRed(insertedNode);
@@ -78,7 +79,8 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
       {
         // Recolor grand-parent to red if it is not root.
         this.makeNodeRed(grandParent);
-      } else
+      }
+      else
       {
         // If grand-parent is black root don't do anything.
         // Since root already has two black sibling that we've just recolored.
@@ -87,7 +89,8 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
 
       // Now do further checking for recolored grand-parent.
       this.balance(grandParent);
-    } else if (!node.uncle || this.isNodeBlack(node.uncle))
+    }
+    else if (!node.uncle || this.isNodeBlack(node.uncle))
     {
       // If node uncle is black or absent then we need to do ROTATIONS.
 
@@ -103,19 +106,22 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
           {
             // Left-left case.
             newGrandParent = this.leftLeftRotation(grandParent);
-          } else
+          }
+          else
           {
             // Left-right case.
             newGrandParent = this.leftRightRotation(grandParent);
           }
-        } else
+        }
+        else
         {
           // Right case.
           if (this.nodeComparator.equal(node.parent.right, node))
           {
             // Right-right case.
             newGrandParent = this.rightRightRotation(grandParent);
-          } else
+          }
+          else
           {
             // Right-left case.
             newGrandParent = this.rightLeftRotation(grandParent);
@@ -172,11 +178,13 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
       if (grandParentNodeIsLeft)
       {
         grandGrandParent.setLeft(parentNode);
-      } else
+      }
+      else
       {
         grandGrandParent.setRight(parentNode);
       }
-    } else
+    }
+    else
     {
       // Make parent node a root
       parentNode.parent = null;
@@ -191,7 +199,7 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
 
   /**
    * Left Right Case (p is left child of g and x is right child of p)
-   * 
+   *
    * @param grandParentNode
    */
   leftRightRotation(grandParentNode: BinarySearchTreeNode<T>)
@@ -220,7 +228,7 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
 
   /**
    * Right Right Case (p is right child of g and x is right child of p)
-   * 
+   *
    * @param grandParentNode
    */
   rightRightRotation(grandParentNode: BinarySearchTreeNode<T>)
@@ -254,11 +262,13 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
       if (grandParentNodeIsLeft)
       {
         grandGrandParent.setLeft(parentNode);
-      } else
+      }
+      else
       {
         grandGrandParent.setRight(parentNode);
       }
-    } else
+    }
+    else
     {
       // Make parent node a root.
       parentNode.parent = null;
@@ -273,7 +283,7 @@ export class RedBlackTree<T> extends BinarySearchTree<T>
 
   /**
    * Right Left Case (p is right child of g and x is left child of p)
-   * 
+   *
    * @param grandParentNode
    */
   rightLeftRotation(grandParentNode: BinarySearchTreeNode<T>)

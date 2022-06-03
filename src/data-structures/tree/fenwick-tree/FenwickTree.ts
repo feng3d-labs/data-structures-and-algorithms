@@ -1,9 +1,10 @@
 /**
  * 树状数组（Fenwick树、Binary Indexed Tree）
- * 
+ *
  * @see https://zh.wikipedia.org/wiki/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84
  */
-export class FenwickTree<T> {
+export class FenwickTree
+{
   arraySize: number;
   treeArray: number[];
 

@@ -1,12 +1,30 @@
-import isPowerOfTwo from '../../../algorithms/math/is-power-of-two/isPowerOfTwo';
+import { isPowerOfTwo } from '../../../algorithms/math/is-power-of-two/isPowerOfTwo';
 
-export default class SegmentTree {
+/**
+ * 线段树
+ */
+export class SegmentTree
+{
+  inputArray: number[];
   /**
-   * @param {number[]} inputArray
-   * @param {function} operation - binary function (i.e. sum, min)
-   * @param {number} operationFallback - operation fallback value (i.e. 0 for sum, Infinity for min)
+   * binary function (i.e. sum, min)
    */
-  constructor(inputArray, operation, operationFallback) {
+  operation: (a: number, b: number) => number;
+
+  /**
+   * operation fallback value (i.e. 0 for sum, Infinity for min)
+   */
+  operationFallback: number;
+
+  segmentTree: number[];
+
+  /**
+   * @param inputArray
+   * @param operation binary function (i.e. sum, min)
+   * @param operationFallback operation fallback value (i.e. 0 for sum, Infinity for min)
+   */
+  constructor(inputArray: number[], operation, operationFallback: number)
+  {
     this.inputArray = inputArray;
     this.operation = operation;
     this.operationFallback = operationFallback;
@@ -18,17 +36,21 @@ export default class SegmentTree {
   }
 
   /**
-   * @param {number[]} inputArray
-   * @return {number[]}
+   *
+   * @param inputArray
    */
-  initSegmentTree(inputArray) {
-    let segmentTreeArrayLength;
+  initSegmentTree(inputArray: number[]): number[]
+  {
+    let segmentTreeArrayLength: number;
     const inputArrayLength = inputArray.length;
 
-    if (isPowerOfTwo(inputArrayLength)) {
+    if (isPowerOfTwo(inputArrayLength))
+    {
       // If original array length is a power of two.
       segmentTreeArrayLength = (2 * inputArrayLength) - 1;
-    } else {
+    }
+ else
+    {
       // If original array length is not a power of two then we need to find
       // next number that is a power of two and use it to calculate
       // tree array size. This is happens because we need to fill empty children
@@ -45,7 +67,8 @@ export default class SegmentTree {
   /**
    * Build segment tree.
    */
-  buildSegmentTree() {
+  buildSegmentTree()
+  {
     const leftIndex = 0;
     const rightIndex = this.inputArray.length - 1;
     const position = 0;
@@ -55,18 +78,21 @@ export default class SegmentTree {
   /**
    * Build segment tree recursively.
    *
-   * @param {number} leftInputIndex
-   * @param {number} rightInputIndex
-   * @param {number} position
+   * @param leftInputIndex
+   * @param rightInputIndex
+   * @param position
    */
-  buildTreeRecursively(leftInputIndex, rightInputIndex, position) {
+  buildTreeRecursively(leftInputIndex: number, rightInputIndex: number, position: number)
+  {
     // If low input index and high input index are equal that would mean
     // the we have finished splitting and we are already came to the leaf
     // of the segment tree. We need to copy this leaf value from input
     // array to segment tree.
-    if (leftInputIndex === rightInputIndex) {
+    if (leftInputIndex === rightInputIndex)
+    {
       this.segmentTree[position] = this.inputArray[leftInputIndex];
-      return;
+
+return;
     }
 
     // Split input array on two halves and process them recursively.
@@ -87,11 +113,11 @@ export default class SegmentTree {
   /**
    * Do range query on segment tree in context of this.operation function.
    *
-   * @param {number} queryLeftIndex
-   * @param {number} queryRightIndex
-   * @return {number}
+   * @param queryLeftIndex
+   * @param queryRightIndex
    */
-  rangeQuery(queryLeftIndex, queryRightIndex) {
+  rangeQuery(queryLeftIndex: number, queryRightIndex: number)
+  {
     const leftIndex = 0;
     const rightIndex = this.inputArray.length - 1;
     const position = 0;
@@ -108,20 +134,22 @@ export default class SegmentTree {
   /**
    * Do range query on segment tree recursively in context of this.operation function.
    *
-   * @param {number} queryLeftIndex - left index of the query
-   * @param {number} queryRightIndex - right index of the query
-   * @param {number} leftIndex - left index of input array segment
-   * @param {number} rightIndex - right index of input array segment
-   * @param {number} position - root position in binary tree
-   * @return {number}
+   * @param queryLeftIndex left index of the query
+   * @param queryRightIndex right index of the query
+   * @param leftIndex left index of input array segment
+   * @param rightIndex right index of input array segment
+   * @param position root position in binary tree
    */
-  rangeQueryRecursive(queryLeftIndex, queryRightIndex, leftIndex, rightIndex, position) {
-    if (queryLeftIndex <= leftIndex && queryRightIndex >= rightIndex) {
+  rangeQueryRecursive(queryLeftIndex: number, queryRightIndex: number, leftIndex: number, rightIndex: number, position: number): number
+  {
+    if (queryLeftIndex <= leftIndex && queryRightIndex >= rightIndex)
+    {
       // Total overlap.
       return this.segmentTree[position];
     }
 
-    if (queryLeftIndex > rightIndex || queryRightIndex < leftIndex) {
+    if (queryLeftIndex > rightIndex || queryRightIndex < leftIndex)
+    {
       // No overlap.
       return this.operationFallback;
     }
@@ -150,19 +178,21 @@ export default class SegmentTree {
 
   /**
    * Left child index.
-   * @param {number} parentIndex
-   * @return {number}
+   *
+   * @param parentIndex
    */
-  getLeftChildIndex(parentIndex) {
+  getLeftChildIndex(parentIndex: number)
+  {
     return (2 * parentIndex) + 1;
   }
 
   /**
    * Right child index.
-   * @param {number} parentIndex
-   * @return {number}
+   *
+   * @param parentIndex
    */
-  getRightChildIndex(parentIndex) {
+  getRightChildIndex(parentIndex: number)
+  {
     return (2 * parentIndex) + 2;
   }
 }

@@ -1,6 +1,6 @@
 /**
  * 是否为2的幂 2^n
- * 
+ *
  * @param number 被检查的值
  */
 export function isPowerOfTwoBitwise(number: number)

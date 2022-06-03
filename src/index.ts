@@ -25,6 +25,8 @@ export { BinarySearchTreeNode } from './data-structures/tree/binary-search-tree/
 export { BinaryTreeNode } from './data-structures/tree/BinaryTreeNode';
 export { FenwickTree } from './data-structures/tree/fenwick-tree/FenwickTree';
 export { RedBlackTree } from './data-structures/tree/red-black-tree/RedBlackTree';
+export { SegmentTree } from './data-structures/tree/segment-tree/SegmentTree';
 export { Trie } from './data-structures/trie/Trie';
 export { TrieNode } from './data-structures/trie/TrieNode';
 export { Comparator } from './utils/comparator/Comparator';
+
