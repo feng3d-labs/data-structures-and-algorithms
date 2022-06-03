@@ -1,31 +1,53 @@
-import LinkedListNode from './LinkedListNode';
-import Comparator from '../../utils/comparator/Comparator';
+import { LinkedListNode } from './LinkedListNode';
+import { Comparator, CompareFunction } from '../../utils/comparator/Comparator';
 
-export default class LinkedList {
+/**
+ * 链表
+ */
+export class LinkedList<T>
+{
   /**
-   * @param {Function} [comparatorFunction]
+   * 表头
    */
-  constructor(comparatorFunction) {
-    /** @var LinkedListNode */
+  private head: LinkedListNode<T>;
+
+  /**
+   * 表尾
+   */
+  private tail: LinkedListNode<T>;
+
+  /**
+   * 比较器
+   */
+  private compare: Comparator<T>;
+
+  /**
+   * 构建链表
+   * 
+   * @param comparatorFunction 比较函数
+   */
+  constructor(comparatorFunction?: CompareFunction<T>)
+  {
     this.head = null;
-
-    /** @var LinkedListNode */
     this.tail = null;
-
     this.compare = new Comparator(comparatorFunction);
   }
 
   /**
-   * @param {*} value
-   * @return {LinkedList}
+   * 添加新结点到表头
+   * 
+   * @param value 新结点值
+   * @return 新增的结点
    */
-  prepend(value) {
+  prepend(value: T)
+  {
     // Make new node to be a head.
     const newNode = new LinkedListNode(value, this.head);
     this.head = newNode;
 
     // If there is no tail yet let's make new node a tail.
-    if (!this.tail) {
+    if (!this.tail)
+    {
       this.tail = newNode;
     }
 
@@ -33,14 +55,18 @@ export default class LinkedList {
   }
 
   /**
-   * @param {*} value
-   * @return {LinkedList}
+   * 添加新结点到表尾
+   * 
+   * @param value 新结点值
+   * @return 新增的结点
    */
-  append(value) {
+  append(value: T)
+  {
     const newNode = new LinkedListNode(value);
 
     // If there is no head yet let's make new node a head.
-    if (!this.head) {
+    if (!this.head)
+    {
       this.head = newNode;
       this.tail = newNode;
 
@@ -55,31 +81,41 @@ export default class LinkedList {
   }
 
   /**
-   * @param {*} value
-   * @param {number} index
-   * @return {LinkedList}
+   * 插入新结点
+   * 
+   * @param value 新结点值
+   * @param rawIndex 插入索引
+   * @return 自身
    */
-  insert(value, rawIndex) {
+  insert(value: T, rawIndex: number)
+  {
     const index = rawIndex < 0 ? 0 : rawIndex;
-    if (index === 0) {
+    if (index === 0)
+    {
       this.prepend(value);
-    } else {
+    } else
+    {
       let count = 1;
       let currentNode = this.head;
       const newNode = new LinkedListNode(value);
-      while (currentNode) {
+      while (currentNode)
+      {
         if (count === index) break;
         currentNode = currentNode.next;
         count += 1;
       }
-      if (currentNode) {
+      if (currentNode)
+      {
         newNode.next = currentNode.next;
         currentNode.next = newNode;
-      } else {
-        if (this.tail) {
+      } else
+      {
+        if (this.tail)
+        {
           this.tail.next = newNode;
           this.tail = newNode;
-        } else {
+        } else
+        {
           this.head = newNode;
           this.tail = newNode;
         }
@@ -89,11 +125,15 @@ export default class LinkedList {
   }
 
   /**
-   * @param {*} value
-   * @return {LinkedListNode}
+   * 删除链表中第一个与指定值相等的结点
+   * 
+   * @param value 结点值
+   * @return 被删除的结点
    */
-  delete(value) {
-    if (!this.head) {
+  delete(value: T)
+  {
+    if (!this.head)
+    {
       return null;
     }
 
@@ -101,27 +141,33 @@ export default class LinkedList {
 
     // If the head must be deleted then make next node that is different
     // from the head to be a new head.
-    while (this.head && this.compare.equal(this.head.value, value)) {
+    while (this.head && this.compare.equal(this.head.value, value))
+    {
       deletedNode = this.head;
       this.head = this.head.next;
     }
 
     let currentNode = this.head;
 
-    if (currentNode !== null) {
+    if (currentNode !== null)
+    {
       // If next node must be deleted then make next node to be a next next one.
-      while (currentNode.next) {
-        if (this.compare.equal(currentNode.next.value, value)) {
+      while (currentNode.next)
+      {
+        if (this.compare.equal(currentNode.next.value, value))
+        {
           deletedNode = currentNode.next;
           currentNode.next = currentNode.next.next;
-        } else {
+        } else
+        {
           currentNode = currentNode.next;
         }
       }
     }
 
     // Check if tail must be deleted.
-    if (this.compare.equal(this.tail.value, value)) {
+    if (this.compare.equal(this.tail.value, value))
+    {
       this.tail = currentNode;
     }
 
@@ -129,26 +175,43 @@ export default class LinkedList {
   }
 
   /**
+   * 查找结点
+   * 
    * @param {Object} findParams
    * @param {*} findParams.value
    * @param {function} [findParams.callback]
-   * @return {LinkedListNode}
+   * 
+   * @return 查找到的结点
    */
-  find({ value = undefined, callback = undefined }) {
-    if (!this.head) {
+  find({ value = undefined, callback = undefined }: {
+    /**
+     * 结点值
+     */
+    value?: T,
+    /**
+     * 比较函数
+     */
+    callback?: (value: T) => boolean
+  })
+  {
+    if (!this.head)
+    {
       return null;
     }
 
     let currentNode = this.head;
 
-    while (currentNode) {
+    while (currentNode)
+    {
       // If callback is specified then try to find node by callback.
-      if (callback && callback(currentNode.value)) {
+      if (callback && callback(currentNode.value))
+      {
         return currentNode;
       }
 
       // If value is specified then try to compare by value..
-      if (value !== undefined && this.compare.equal(currentNode.value, value)) {
+      if (value !== undefined && this.compare.equal(currentNode.value, value))
+      {
         return currentNode;
       }
 
@@ -159,12 +222,16 @@ export default class LinkedList {
   }
 
   /**
-   * @return {LinkedListNode}
+   * 删除表尾
+   * 
+   * @return 被删除的结点
    */
-  deleteTail() {
+  deleteTail()
+  {
     const deletedTail = this.tail;
 
-    if (this.head === this.tail) {
+    if (this.head === this.tail)
+    {
       // There is only one node in linked list.
       this.head = null;
       this.tail = null;
@@ -176,10 +243,13 @@ export default class LinkedList {
 
     // Rewind to the last node and delete "next" link for the node before the last one.
     let currentNode = this.head;
-    while (currentNode.next) {
-      if (!currentNode.next.next) {
+    while (currentNode.next)
+    {
+      if (!currentNode.next.next)
+      {
         currentNode.next = null;
-      } else {
+      } else
+      {
         currentNode = currentNode.next;
       }
     }
@@ -190,18 +260,24 @@ export default class LinkedList {
   }
 
   /**
-   * @return {LinkedListNode}
+   * 删除表头
+   * 
+   * @return 被删除结点
    */
-  deleteHead() {
-    if (!this.head) {
+  deleteHead()
+  {
+    if (!this.head)
+    {
       return null;
     }
 
     const deletedHead = this.head;
 
-    if (this.head.next) {
+    if (this.head.next)
+    {
       this.head = this.head.next;
-    } else {
+    } else
+    {
       this.head = null;
       this.tail = null;
     }
@@ -210,23 +286,28 @@ export default class LinkedList {
   }
 
   /**
-   * @param {*[]} values - Array of values that need to be converted to linked list.
-   * @return {LinkedList}
+   * 从数组中初始化链表
+   * 
+   * @param values - Array of values that need to be converted to linked list.
+   * @return 自身
    */
-  fromArray(values) {
+  fromArray(values: T[])
+  {
     values.forEach((value) => this.append(value));
 
     return this;
   }
 
   /**
-   * @return {LinkedListNode[]}
+   * 转换为数组
    */
-  toArray() {
-    const nodes = [];
+  toArray()
+  {
+    const nodes: LinkedListNode<T>[] = [];
 
     let currentNode = this.head;
-    while (currentNode) {
+    while (currentNode)
+    {
       nodes.push(currentNode);
       currentNode = currentNode.next;
     }
@@ -235,23 +316,28 @@ export default class LinkedList {
   }
 
   /**
-   * @param {function} [callback]
-   * @return {string}
+   * 转换为字符串
+   * 
+   * @param callback 
    */
-  toString(callback) {
+  toString(callback?: (value: T) => string)
+  {
     return this.toArray().map((node) => node.toString(callback)).toString();
   }
 
   /**
    * Reverse a linked list.
-   * @returns {LinkedList}
+   * 
+   * @returns 自身
    */
-  reverse() {
+  reverse()
+  {
     let currNode = this.head;
     let prevNode = null;
     let nextNode = null;
 
-    while (currNode) {
+    while (currNode)
+    {
       // Store next node.
       nextNode = currNode.next;
 
