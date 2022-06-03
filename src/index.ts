@@ -1,3 +1,5 @@
+export { factorial } from './algorithms/math/factorial/factorial';
+export { factorialRecursive } from './algorithms/math/factorial/factorialRecursive';
 export { BloomFilter } from './data-structures/bloom-filter/BloomFilter';
 export { DisjointSet } from './data-structures/disjoint-set/DisjointSet';
 export { DisjointSetItem } from './data-structures/disjoint-set/DisjointSetItem';
