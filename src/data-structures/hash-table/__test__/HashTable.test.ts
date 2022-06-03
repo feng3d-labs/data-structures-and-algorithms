@@ -63,7 +63,7 @@ describe('HashTable', () =>
 
   it('should be possible to add objects to hash table', () =>
   {
-    const hashTable = new HashTable();
+    const hashTable = new HashTable<{ prop1: string, prop2: string }>();
 
     hashTable.set('objectKey', { prop1: 'a', prop2: 'b' });
 

@@ -11,11 +11,11 @@ const defaultHashTableSize = 32;
 /**
  * 哈希表（散列表）
  */
-export class HashTable
+export class HashTable<T>
 {
   private keys: { [key: string]: number };
 
-  buckets: LinkedList<{ key: string, value: any }>[];
+  buckets: LinkedList<{ key: string, value: T }>[];
 
   /**
    * 构建哈希表
@@ -77,7 +77,7 @@ export class HashTable
       // Insert new node.
       bucketLinkedList.append({ key, value });
     }
- else
+    else
     {
       // Update value of existing node.
       node.value.value = value;
@@ -147,12 +147,12 @@ export class HashTable
    */
   getValues()
   {
-    return this.buckets.reduce((values, bucket) =>
+    return this.buckets.reduce((values: T[], bucket) =>
     {
       const bucketValues = bucket.toArray()
         .map((linkedListNode) => linkedListNode.value.value);
 
-return values.concat(bucketValues);
+      return values.concat(bucketValues);
     }, []);
   }
 }

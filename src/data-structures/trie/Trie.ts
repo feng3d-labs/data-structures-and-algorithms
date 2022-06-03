@@ -1,22 +1,33 @@
-import TrieNode from './TrieNode';
+import { TrieNode } from './TrieNode';
 
 // Character that we will use for trie tree root.
 const HEAD_CHARACTER = '*';
 
-export default class Trie {
-  constructor() {
+/**
+ * 字典树
+ */
+export class Trie
+{
+  head: TrieNode<string>;
+
+  constructor()
+  {
     this.head = new TrieNode(HEAD_CHARACTER);
   }
 
   /**
-   * @param {string} word
-   * @return {Trie}
+   * 添加单词
+   *
+   * @param word 单词
+   * @return 自身
    */
-  addWord(word) {
+  addWord(word: string)
+  {
     const characters = Array.from(word);
     let currentNode = this.head;
 
-    for (let charIndex = 0; charIndex < characters.length; charIndex += 1) {
+    for (let charIndex = 0; charIndex < characters.length; charIndex += 1)
+    {
       const isComplete = charIndex === characters.length - 1;
       currentNode = currentNode.addChild(characters[charIndex], isComplete);
     }
@@ -25,12 +36,17 @@ export default class Trie {
   }
 
   /**
-   * @param {string} word
-   * @return {Trie}
+   * 删除单词
+   *
+   * @param word 单词
+   * @return 自身
    */
-  deleteWord(word) {
-    const depthFirstDelete = (currentNode, charIndex = 0) => {
-      if (charIndex >= word.length) {
+  deleteWord(word: string)
+  {
+    const depthFirstDelete = (currentNode: TrieNode<string>, charIndex = 0) =>
+    {
+      if (charIndex >= word.length)
+      {
         // Return if we're trying to delete the character that is out of word's scope.
         return;
       }
@@ -38,7 +54,8 @@ export default class Trie {
       const character = word[charIndex];
       const nextNode = currentNode.getChild(character);
 
-      if (nextNode == null) {
+      if (!nextNode)
+      {
         // Return if we're trying to delete a word that has not been added to the Trie.
         return;
       }
@@ -47,7 +64,8 @@ export default class Trie {
       depthFirstDelete(nextNode, charIndex + 1);
 
       // Since we're going to delete a word let's un-mark its last character isCompleteWord flag.
-      if (charIndex === (word.length - 1)) {
+      if (charIndex === (word.length - 1))
+      {
         nextNode.isCompleteWord = false;
       }
 
@@ -64,13 +82,15 @@ export default class Trie {
   }
 
   /**
-   * @param {string} word
-   * @return {string[]}
+   *
+   * @param word 单词
    */
-  suggestNextCharacters(word) {
+  suggestNextCharacters(word: string)
+  {
     const lastCharacter = this.getLastCharacterNode(word);
 
-    if (!lastCharacter) {
+    if (!lastCharacter)
+    {
       return null;
     }
 
@@ -80,25 +100,28 @@ export default class Trie {
   /**
    * Check if complete word exists in Trie.
    *
-   * @param {string} word
-   * @return {boolean}
+   * @param word 单词
    */
-  doesWordExist(word) {
+  doesWordExist(word: string)
+  {
     const lastCharacter = this.getLastCharacterNode(word);
 
     return !!lastCharacter && lastCharacter.isCompleteWord;
   }
 
   /**
-   * @param {string} word
-   * @return {TrieNode}
+   *
+   * @param word 单词
    */
-  getLastCharacterNode(word) {
+  getLastCharacterNode(word: string)
+  {
     const characters = Array.from(word);
     let currentNode = this.head;
 
-    for (let charIndex = 0; charIndex < characters.length; charIndex += 1) {
-      if (!currentNode.hasChild(characters[charIndex])) {
+    for (let charIndex = 0; charIndex < characters.length; charIndex += 1)
+    {
+      if (!currentNode.hasChild(characters[charIndex]))
+      {
         return null;
       }
 

@@ -15,6 +15,7 @@ export { LinkedListNode } from './data-structures/linked-list/LinkedListNode';
 export { PriorityQueue } from './data-structures/priority-queue/PriorityQueue';
 export { Queue } from './data-structures/queue/Queue';
 export { Stack } from './data-structures/stack/Stack';
+export { Trie } from './data-structures/trie/Trie';
+export { TrieNode } from './data-structures/trie/TrieNode';
 export { Comparator } from './utils/comparator/Comparator';
-
 

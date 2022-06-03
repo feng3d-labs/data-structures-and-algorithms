@@ -1,31 +1,54 @@
-import HashTable from '../hash-table/HashTable';
+import { HashTable } from '../hash-table/HashTable';
 
-export default class TrieNode {
+export class TrieNode<T>
+{
   /**
-   * @param {string} character
-   * @param {boolean} isCompleteWord
+   * 字符
    */
-  constructor(character, isCompleteWord = false) {
+  character: string;
+
+  /**
+   * 是否完整单词
+   */
+  isCompleteWord: boolean;
+
+  /**
+   * 子结点哈希表
+   */
+  children: HashTable<TrieNode<T>>;
+
+  /**
+   * @param character 字符
+   * @param isCompleteWord 是否完整单词
+   */
+  constructor(character: string, isCompleteWord = false)
+  {
     this.character = character;
     this.isCompleteWord = isCompleteWord;
     this.children = new HashTable();
   }
 
   /**
-   * @param {string} character
-   * @return {TrieNode}
+   * 获取子结点
+   *
+   * @param character 字符
    */
-  getChild(character) {
+  getChild(character: string)
+  {
     return this.children.get(character);
   }
 
   /**
-   * @param {string} character
-   * @param {boolean} isCompleteWord
-   * @return {TrieNode}
+   * 添加子结点
+   *
+   * @param character 字符
+   * @param isCompleteWord 字符完整单词
+   * @return 自身
    */
-  addChild(character, isCompleteWord = false) {
-    if (!this.children.has(character)) {
+  addChild(character: string, isCompleteWord = false)
+  {
+    if (!this.children.has(character))
+    {
       this.children.set(character, new TrieNode(character, isCompleteWord));
     }
 
@@ -38,10 +61,13 @@ export default class TrieNode {
   }
 
   /**
-   * @param {string} character
-   * @return {TrieNode}
+   * 移除结点
+   *
+   * @param character 字符
+   * @return 自身
    */
-  removeChild(character) {
+  removeChild(character: string)
+  {
     const childNode = this.getChild(character);
 
     // Delete childNode only if:
@@ -51,7 +77,8 @@ export default class TrieNode {
       childNode
       && !childNode.isCompleteWord
       && !childNode.hasChildren()
-    ) {
+    )
+    {
       this.children.delete(character);
     }
 
@@ -59,32 +86,36 @@ export default class TrieNode {
   }
 
   /**
-   * @param {string} character
-   * @return {boolean}
+   * 是否有指定子结点
+   *
+   * @param character 字符
    */
-  hasChild(character) {
+  hasChild(character: string)
+  {
     return this.children.has(character);
   }
 
   /**
    * Check whether current TrieNode has children or not.
-   * @return {boolean}
    */
-  hasChildren() {
+  hasChildren()
+  {
     return this.children.getKeys().length !== 0;
   }
 
   /**
-   * @return {string[]}
+   *
    */
-  suggestChildren() {
+  suggestChildren()
+  {
     return [...this.children.getKeys()];
   }
 
   /**
-   * @return {string}
+   * 转换为字符串
    */
-  toString() {
+  toString()
+  {
     let childrenAsString = this.suggestChildren().toString();
     childrenAsString = childrenAsString ? `:${childrenAsString}` : '';
     const isCompleteString = this.isCompleteWord ? '*' : '';
