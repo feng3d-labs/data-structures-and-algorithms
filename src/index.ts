@@ -1,3 +1,4 @@
+export * as matrix from './algorithms/math/matrix/Matrix';
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
 export * from './algorithms/cryptography/polynomial-hash/SimplePolynomialHash';
@@ -33,5 +34,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
-
