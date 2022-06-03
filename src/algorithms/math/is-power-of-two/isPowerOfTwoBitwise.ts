@@ -1,10 +1,13 @@
 /**
- * @param {number} number
- * @return {boolean}
+ * 是否为2的幂 2^n
+ * 
+ * @param number 被检查的值
  */
-export default function isPowerOfTwoBitwise(number) {
+export function isPowerOfTwoBitwise(number: number)
+{
   // 1 (2^0) is the smallest power of two.
-  if (number < 1) {
+  if (number < 1)
+  {
     return false;
   }
 

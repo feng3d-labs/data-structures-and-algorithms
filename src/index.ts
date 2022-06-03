@@ -1,5 +1,7 @@
 export { factorial } from './algorithms/math/factorial/factorial';
 export { factorialRecursive } from './algorithms/math/factorial/factorialRecursive';
+export { isPowerOfTwo } from './algorithms/math/is-power-of-two/isPowerOfTwo';
+export { isPowerOfTwoBitwise } from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
 export { BloomFilter } from './data-structures/bloom-filter/BloomFilter';
 export { DisjointSet } from './data-structures/disjoint-set/DisjointSet';
 export { DisjointSetItem } from './data-structures/disjoint-set/DisjointSetItem';
