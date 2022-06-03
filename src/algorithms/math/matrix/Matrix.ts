@@ -18,6 +18,7 @@ export function shape(m: Matrix)
     shapes.push(dimension.length);
     dimension = (dimension.length && [...dimension][0]) || null as any;
   }
+
   return shapes;
 }
 
@@ -110,8 +111,9 @@ export function generate(mShape: Shape, fill: (recIndices: CellIndices) => Cell)
     {
       m.push(generateRecursively(recShape.slice(1), [...recIndices, i]));
     }
+
     return m;
-  };
+  }
 
   return generateRecursively(mShape, []);
 }
@@ -163,7 +165,7 @@ export function dot(a: Matrix, b: Matrix): Matrix
   }
 
   return c;
-};
+}
 
 /**
  * Transposes the matrix.
@@ -183,6 +185,7 @@ export function t(m: Matrix): Matrix
       transposed[col][row] = m[row][col];
     }
   }
+
   return transposed;
 }
 
@@ -215,7 +218,7 @@ export function walk(m: Matrix, visit: (indices: CellIndices, c: Cell) => void)
     {
       recWalk(recM[i], [...cellIndices, i]);
     }
-  };
+  }
 
   recWalk(m, []);
 }
@@ -236,6 +239,7 @@ export function getCellAtIndex(m: Matrix, cellIndices: CellIndices): Cell
   {
     cell = cell[cellIndices[dimIdx]];
   }
+
   // At this moment the cell variable points to the array at the last needed dimension.
   return cell[cellIndices[cellIndices.length - 1]];
 }

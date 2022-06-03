@@ -10,8 +10,7 @@ const englishAlphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
  * @return i.e. {'a': 'd', 'b': 'e', 'c': 'f', ..., 'z': 'c'}
  */
 const getCipherMap = (alphabet: string[], shift: number) =>
-{
-  return alphabet
+alphabet
     .reduce((charsMap, currentChar, charIndex) =>
     {
       const charsMapClone = { ...charsMap };
@@ -24,13 +23,13 @@ const getCipherMap = (alphabet: string[], shift: number) =>
         encryptedCharIndex += alphabet.length;
       }
       charsMapClone[currentChar] = alphabet[encryptedCharIndex];
-      return charsMapClone;
+
+return charsMapClone;
     }, {});
-};
 
 /**
  * 凯撒密码加密
- * 
+ *
  * @param str
  * @param shift
  * @param alphabet
@@ -39,7 +38,8 @@ export const caesarCipherEncrypt = (str: string, shift: number, alphabet = engli
 {
   // Create a cipher map:
   const cipherMap = getCipherMap(alphabet, shift);
-  return str
+
+return str
     .toLowerCase()
     .split('')
     .map((char) => cipherMap[char] || char)
@@ -48,7 +48,7 @@ export const caesarCipherEncrypt = (str: string, shift: number, alphabet = engli
 
 /**
  * 凯撒密码解密
- * 
+ *
  * @param str
  * @param shift
  * @param alphabet
@@ -57,7 +57,8 @@ export const caesarCipherDecrypt = (str: string, shift: number, alphabet = engli
 {
   // Create a cipher map:
   const cipherMap = getCipherMap(alphabet, -shift);
-  return str
+
+return str
     .toLowerCase()
     .split('')
     .map((char) => cipherMap[char] || char)

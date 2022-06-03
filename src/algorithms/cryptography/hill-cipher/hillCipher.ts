@@ -19,7 +19,8 @@ function generateKeyMatrix(keyString: string): number[][]
     );
   }
   let keyStringIndex = 0;
-  return mtrx.generate(
+
+return mtrx.generate(
     [matrixSize, matrixSize],
     // Callback to get a value of each matrix cell.
     // The order the matrix is being filled in is from left to right, from top to bottom.
@@ -28,7 +29,8 @@ function generateKeyMatrix(keyString: string): number[][]
       // A → 0, B → 1, ..., a → 32, b → 33, ...
       const charCodeShifted = (keyString.codePointAt(keyStringIndex)) % alphabetCodeShift;
       keyStringIndex += 1;
-      return charCodeShifted;
+
+return charCodeShifted;
     },
   );
 }
@@ -47,7 +49,8 @@ function generateMessageVector(message: string): number[][]
     (cellIndices) =>
     {
       const rowIndex = cellIndices[0];
-      return message.codePointAt(rowIndex) % alphabetCodeShift;
+
+return message.codePointAt(rowIndex) % alphabetCodeShift;
     },
   );
 }

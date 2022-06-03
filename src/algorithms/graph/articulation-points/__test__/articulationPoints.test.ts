@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import articulationPoints from '../articulationPoints';
+import { deepEqual } from 'assert';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { articulationPoints } from '../articulationPoints';
 
-describe('articulationPoints', () => {
-  it('should find articulation points in simple graph', () => {
+describe('articulationPoints', () =>
+{
+  it('should find articulation points in simple graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -23,12 +26,13 @@ describe('articulationPoints', () => {
 
     const articulationPointsSet = Object.values(articulationPoints(graph));
 
-    expect(articulationPointsSet.length).toBe(2);
-    expect(articulationPointsSet[0].getKey()).toBe(vertexC.getKey());
-    expect(articulationPointsSet[1].getKey()).toBe(vertexB.getKey());
+    deepEqual(articulationPointsSet.length, 2);
+    deepEqual(articulationPointsSet[0].getKey(), vertexC.getKey());
+    deepEqual(articulationPointsSet[1].getKey(), vertexB.getKey());
   });
 
-  it('should find articulation points in simple graph with back edge', () => {
+  it('should find articulation points in simple graph with back edge', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -49,11 +53,12 @@ describe('articulationPoints', () => {
 
     const articulationPointsSet = Object.values(articulationPoints(graph));
 
-    expect(articulationPointsSet.length).toBe(1);
-    expect(articulationPointsSet[0].getKey()).toBe(vertexC.getKey());
+    deepEqual(articulationPointsSet.length, 1);
+    deepEqual(articulationPointsSet[0].getKey(), vertexC.getKey());
   });
 
-  it('should find articulation points in simple graph with back edge #2', () => {
+  it('should find articulation points in simple graph with back edge #2', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -77,11 +82,12 @@ describe('articulationPoints', () => {
 
     const articulationPointsSet = Object.values(articulationPoints(graph));
 
-    expect(articulationPointsSet.length).toBe(1);
-    expect(articulationPointsSet[0].getKey()).toBe(vertexC.getKey());
+    deepEqual(articulationPointsSet.length, 1);
+    deepEqual(articulationPointsSet[0].getKey(), vertexC.getKey());
   });
 
-  it('should find articulation points in graph', () => {
+  it('should find articulation points in graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -116,14 +122,15 @@ describe('articulationPoints', () => {
 
     const articulationPointsSet = Object.values(articulationPoints(graph));
 
-    expect(articulationPointsSet.length).toBe(4);
-    expect(articulationPointsSet[0].getKey()).toBe(vertexF.getKey());
-    expect(articulationPointsSet[1].getKey()).toBe(vertexE.getKey());
-    expect(articulationPointsSet[2].getKey()).toBe(vertexD.getKey());
-    expect(articulationPointsSet[3].getKey()).toBe(vertexC.getKey());
+    deepEqual(articulationPointsSet.length, 4);
+    deepEqual(articulationPointsSet[0].getKey(), vertexF.getKey());
+    deepEqual(articulationPointsSet[1].getKey(), vertexE.getKey());
+    deepEqual(articulationPointsSet[2].getKey(), vertexD.getKey());
+    deepEqual(articulationPointsSet[3].getKey(), vertexC.getKey());
   });
 
-  it('should find articulation points in graph starting with articulation root vertex', () => {
+  it('should find articulation points in graph starting with articulation root vertex', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -158,14 +165,15 @@ describe('articulationPoints', () => {
 
     const articulationPointsSet = Object.values(articulationPoints(graph));
 
-    expect(articulationPointsSet.length).toBe(4);
-    expect(articulationPointsSet[0].getKey()).toBe(vertexF.getKey());
-    expect(articulationPointsSet[1].getKey()).toBe(vertexE.getKey());
-    expect(articulationPointsSet[2].getKey()).toBe(vertexC.getKey());
-    expect(articulationPointsSet[3].getKey()).toBe(vertexD.getKey());
+    deepEqual(articulationPointsSet.length, 4);
+    deepEqual(articulationPointsSet[0].getKey(), vertexF.getKey());
+    deepEqual(articulationPointsSet[1].getKey(), vertexE.getKey());
+    deepEqual(articulationPointsSet[2].getKey(), vertexC.getKey());
+    deepEqual(articulationPointsSet[3].getKey(), vertexD.getKey());
   });
 
-  it('should find articulation points in yet another graph #1', () => {
+  it('should find articulation points in yet another graph #1', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -189,12 +197,13 @@ describe('articulationPoints', () => {
 
     const articulationPointsSet = Object.values(articulationPoints(graph));
 
-    expect(articulationPointsSet.length).toBe(2);
-    expect(articulationPointsSet[0].getKey()).toBe(vertexD.getKey());
-    expect(articulationPointsSet[1].getKey()).toBe(vertexC.getKey());
+    deepEqual(articulationPointsSet.length, 2);
+    deepEqual(articulationPointsSet[0].getKey(), vertexD.getKey());
+    deepEqual(articulationPointsSet[1].getKey(), vertexC.getKey());
   });
 
-  it('should find articulation points in yet another graph #2', () => {
+  it('should find articulation points in yet another graph #2', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -226,7 +235,7 @@ describe('articulationPoints', () => {
 
     const articulationPointsSet = Object.values(articulationPoints(graph));
 
-    expect(articulationPointsSet.length).toBe(1);
-    expect(articulationPointsSet[0].getKey()).toBe(vertexC.getKey());
+    deepEqual(articulationPointsSet.length, 1);
+    deepEqual(articulationPointsSet[0].getKey(), vertexC.getKey());
   });
 });

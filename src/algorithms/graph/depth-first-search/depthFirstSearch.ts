@@ -1,5 +1,5 @@
-import { Graph } from "../../../data-structures/graph/Graph";
-import { GraphVertex } from "../../../data-structures/graph/GraphVertex";
+import { Graph } from '../../../data-structures/graph/Graph';
+import { GraphVertex } from '../../../data-structures/graph/GraphVertex';
 
 interface Callbacks<T>
 {
@@ -31,14 +31,17 @@ function initCallbacks<T>(callbacks: Callbacks<T> = {}): Callbacks<T>
     () =>
     {
       const seen = {};
-      return ({ nextVertex }) =>
+
+return ({ nextVertex }) =>
       {
         if (!seen[nextVertex.getKey()])
         {
           seen[nextVertex.getKey()] = true;
-          return true;
+
+return true;
         }
-        return false;
+
+return false;
       };
     }
   )();

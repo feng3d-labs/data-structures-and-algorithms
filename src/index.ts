@@ -3,6 +3,8 @@ export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
 export * from './algorithms/cryptography/polynomial-hash/SimplePolynomialHash';
 export * from './algorithms/cryptography/rail-fence-cipher/railFenceCipher';
+export * from './algorithms/graph/articulation-points/articulationPoints';
+export * from './algorithms/graph/depth-first-search/depthFirstSearch';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
@@ -35,3 +37,4 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
+

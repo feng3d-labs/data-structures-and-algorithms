@@ -2,9 +2,8 @@ type Rail = string[];
 type Fence = Rail[];
 type Direction = number;
 
-
 /**
- * 
+ *
  */
 const DIRECTIONS: { UP: Direction, DOWN: Direction } = { UP: -1, DOWN: 1 };
 
@@ -13,7 +12,7 @@ const DIRECTIONS: { UP: Direction, DOWN: Direction } = { UP: -1, DOWN: 1 };
  *
  * @param rowsNum
  */
-function buildFence(rowsNum: number) 
+function buildFence(rowsNum: number)
 {
   return Array(rowsNum).fill(null).map(() => []);
 }
@@ -36,7 +35,7 @@ function getNextDirection({ railCount, currentRail, direction }: {
    * Current direction
    */
   direction: Direction
-}) 
+})
 {
   switch (currentRail)
   {
@@ -70,13 +69,14 @@ function addCharToRail(targetRailIndex: number, letter: string)
       ? [...rail, letter]
       : rail;
   }
-  return onEachRail;
+
+return onEachRail;
 }
 
 /**
  * Hangs the characters on the fence.
  */
-function fillEncodeFence({ fence, currentRail, direction, chars, }: {
+function fillEncodeFence({ fence, currentRail, direction, chars }: {
   fence: Fence,
   currentRail: number,
   direction: Direction,
@@ -105,7 +105,7 @@ function fillEncodeFence({ fence, currentRail, direction, chars, }: {
     direction: nextDirection,
     chars: nextChars,
   });
-};
+}
 
 /**
  * @param params
