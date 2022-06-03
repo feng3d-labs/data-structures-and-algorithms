@@ -1,4 +1,5 @@
 type Cell = number;
+// type Matrix = Cell[][]|Cell[][][];
 type Matrix = any;
 type Shape = number[];
 type CellIndices = number[];
