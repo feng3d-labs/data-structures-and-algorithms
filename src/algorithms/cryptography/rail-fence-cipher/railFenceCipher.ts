@@ -1,38 +1,45 @@
-/**
- * @typedef {string[]} Rail
- * @typedef {Rail[]} Fence
- * @typedef {number} Direction
- */
+type Rail = string[];
+type Fence = Rail[];
+type Direction = number;
+
 
 /**
- * @constant DIRECTIONS
- * @type {object}
- * @property {Direction} UP
- * @property {Direction} DOWN
+ * 
  */
-const DIRECTIONS = { UP: -1, DOWN: 1 };
+const DIRECTIONS: { UP: Direction, DOWN: Direction } = { UP: -1, DOWN: 1 };
 
 /**
  * Builds a fence with a specific number of rows.
  *
- * @param {number} rowsNum
- * @returns {Fence}
+ * @param rowsNum
  */
-const buildFence = (rowsNum) => Array(rowsNum)
-  .fill(null)
-  .map(() => []);
+function buildFence(rowsNum: number) 
+{
+  return Array(rowsNum).fill(null).map(() => []);
+}
 
 /**
  * Get next direction to move (based on the current one) while traversing the fence.
  *
- * @param {object} params
- * @param {number} params.railCount - Number of rows in the fence
- * @param {number} params.currentRail - Current row that we're visiting
- * @param {Direction} params.direction - Current direction
- * @returns {Direction} - The next direction to take
+ * @returns The next direction to take
  */
-const getNextDirection = ({ railCount, currentRail, direction }) => {
-  switch (currentRail) {
+function getNextDirection({ railCount, currentRail, direction }: {
+  /**
+   * Number of rows in the fence
+   */
+  railCount: number,
+  /**
+   * Current row that we're visiting
+   */
+  currentRail: number,
+  /**
+   * Current direction
+   */
+  direction: Direction
+}) 
+{
+  switch (currentRail)
+  {
     case 0:
       // Go down if we're on top of the fence.
       return DIRECTIONS.DOWN;
@@ -43,46 +50,41 @@ const getNextDirection = ({ railCount, currentRail, direction }) => {
       // Continue with the same direction if we're in the middle of the fence.
       return direction;
   }
-};
+}
 
 /**
- * @param {number} targetRailIndex
- * @param {string} letter
- * @returns {Function}
+ * @param targetRailIndex
+ * @param letter
  */
-const addCharToRail = (targetRailIndex, letter) => {
+function addCharToRail(targetRailIndex: number, letter: string)
+{
   /**
    * Given a rail, adds a char to it if it matches a targetIndex.
    *
-   * @param {Rail} rail
-   * @param {number} currentRail
-   * @returns {Rail}
+   * @param rail
+   * @param currentRail
    */
-  function onEachRail(rail, currentRail) {
+  function onEachRail(rail: Rail, currentRail: number)
+  {
     return currentRail === targetRailIndex
       ? [...rail, letter]
       : rail;
   }
   return onEachRail;
-};
+}
 
 /**
  * Hangs the characters on the fence.
- *
- * @param {object} params
- * @param {Fence} params.fence
- * @param {number} params.currentRail
- * @param {Direction} params.direction
- * @param {string[]} params.chars
- * @returns {Fence}
  */
-const fillEncodeFence = ({
-  fence,
-  currentRail,
-  direction,
-  chars,
-}) => {
-  if (chars.length === 0) {
+function fillEncodeFence({ fence, currentRail, direction, chars, }: {
+  fence: Fence,
+  currentRail: number,
+  direction: Direction,
+  chars: string[],
+}): Fence
+{
+  if (chars.length === 0)
+  {
     // All chars have been placed on a fence.
     return fence;
   }
@@ -106,23 +108,18 @@ const fillEncodeFence = ({
 };
 
 /**
- * @param {object} params
- * @param {number} params.strLen
- * @param {string[]} params.chars
- * @param {Fence} params.fence
- * @param {number} params.targetRail
- * @param {Direction} params.direction
- * @param {number[]} params.coords
- * @returns {Fence}
+ * @param params
  */
-const fillDecodeFence = (params) => {
+function fillDecodeFence(params: { strLen: number, chars: string[], fence: Fence, targetRail: number, direction: Direction, coords: number[] }): Fence
+{
   const {
     strLen, chars, fence, targetRail, direction, coords,
   } = params;
 
   const railCount = fence.length;
 
-  if (chars.length === 0) {
+  if (chars.length === 0)
+  {
     return fence;
   }
 
@@ -152,18 +149,20 @@ const fillDecodeFence = (params) => {
     direction: nextDirection,
     coords: nextCoords,
   });
-};
+}
 
 /**
- * @param {object} params
- * @param {number} params.strLen
- * @param {Fence} params.fence
- * @param {number} params.currentRail
- * @param {Direction} params.direction
- * @param {number[]} params.code
- * @returns {string}
+ * @param params
  */
-const decodeFence = (params) => {
+function decodeFence(params: {
+  railCount?: number,
+  strLen: number,
+  fence: Fence,
+  currentRail: number,
+  direction: Direction,
+  code: string[],
+}): string
+{
   const {
     strLen,
     fence,
@@ -172,7 +171,8 @@ const decodeFence = (params) => {
     code,
   } = params;
 
-  if (code.length === strLen) {
+  if (code.length === strLen)
+  {
     return code.join('');
   }
 
@@ -191,16 +191,17 @@ const decodeFence = (params) => {
     code: [...code, currentChar],
     fence: fence.map((rail, idx) => (idx === currentRail ? nextRail : rail)),
   });
-};
+}
 
 /**
  * Encodes the message using Rail Fence Cipher.
  *
- * @param {string} string - The string to be encoded
- * @param {number} railCount - The number of rails in a fence
- * @returns {string} - Encoded string
+ * @param string The string to be encoded
+ * @param railCount The number of rails in a fence
+ * @returns Encoded string
  */
-export const encodeRailFenceCipher = (string, railCount) => {
+export function encodeRailFenceCipher(string: string, railCount: number)
+{
   const fence = buildFence(railCount);
 
   const filledFence = fillEncodeFence({
@@ -211,16 +212,17 @@ export const encodeRailFenceCipher = (string, railCount) => {
   });
 
   return filledFence.flat().join('');
-};
+}
 
 /**
  * Decodes the message using Rail Fence Cipher.
  *
- * @param {string} string - Encoded string
- * @param {number} railCount - The number of rows in a fence
- * @returns {string} - Decoded string.
+ * @param string Encoded string
+ * @param railCount The number of rows in a fence
+ * @returns Decoded string.
  */
-export const decodeRailFenceCipher = (string, railCount) => {
+export function decodeRailFenceCipher(string: string, railCount: number)
+{
   const strLen = string.length;
   const emptyFence = buildFence(railCount);
   const filledFence = fillDecodeFence({
@@ -239,4 +241,4 @@ export const decodeRailFenceCipher = (string, railCount) => {
     direction: DIRECTIONS.DOWN,
     code: [],
   });
-};
+}

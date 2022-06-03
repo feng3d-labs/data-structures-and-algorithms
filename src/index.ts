@@ -1,6 +1,7 @@
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
 export * from './algorithms/cryptography/polynomial-hash/SimplePolynomialHash';
+export * from './algorithms/cryptography/rail-fence-cipher/railFenceCipher';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
@@ -32,4 +33,5 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
+
 
