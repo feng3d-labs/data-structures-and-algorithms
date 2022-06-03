@@ -21,7 +21,7 @@ export { AvlTree } from './data-structures/tree/avl-tree/AvlTree';
 export { BinarySearchTree } from './data-structures/tree/binary-search-tree/BinarySearchTree';
 export { BinarySearchTreeNode } from './data-structures/tree/binary-search-tree/BinarySearchTreeNode';
 export { BinaryTreeNode } from './data-structures/tree/BinaryTreeNode';
+export { FenwickTree } from './data-structures/tree/fenwick-tree/FenwickTree';
 export { Trie } from './data-structures/trie/Trie';
 export { TrieNode } from './data-structures/trie/TrieNode';
 export { Comparator } from './utils/comparator/Comparator';
-
