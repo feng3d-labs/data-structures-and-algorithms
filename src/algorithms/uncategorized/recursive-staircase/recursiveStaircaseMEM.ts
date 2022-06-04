@@ -1,34 +1,40 @@
 /**
  * Recursive Staircase Problem (Recursive Solution With Memoization).
  *
- * @param {number} totalStairs - Number of stairs to climb on.
- * @return {number} - Number of ways to climb a staircase.
+ * @param totalStairs Number of stairs to climb on.
+ * @return Number of ways to climb a staircase.
  */
-export default function recursiveStaircaseMEM(totalStairs) {
+export function recursiveStaircaseMEM(totalStairs: number): number
+{
   // Memo table that will hold all recursively calculated results to avoid calculating them
   // over and over again.
   const memo = [];
 
   // Recursive closure.
-  const getSteps = (stairsNum) => {
-    if (stairsNum <= 0) {
+  const getSteps = (stairsNum) =>
+  {
+    if (stairsNum <= 0)
+    {
       // There is no way to go down - you climb the stairs only upwards.
       // Also if you're standing on the ground floor that you don't need to do any further steps.
       return 0;
     }
 
-    if (stairsNum === 1) {
+    if (stairsNum === 1)
+    {
       // There is only one way to go to the first step.
       return 1;
     }
 
-    if (stairsNum === 2) {
+    if (stairsNum === 2)
+    {
       // There are two ways to get to the second steps: (1 + 1) or (2).
       return 2;
     }
 
     // Avoid recursion for the steps that we've calculated recently.
-    if (memo[stairsNum]) {
+    if (memo[stairsNum])
+    {
       return memo[stairsNum];
     }
 
