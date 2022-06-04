@@ -10,6 +10,7 @@ export * from './algorithms/graph/bridges/graphBridges';
 export * from './algorithms/graph/depth-first-search/depthFirstSearch';
 export * from './algorithms/graph/detect-cycle/detectDirectedCycle';
 export * from './algorithms/graph/detect-cycle/detectUndirectedCycle';
+export * from './algorithms/graph/detect-cycle/detectUndirectedCycleUsingDisjointSet';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
