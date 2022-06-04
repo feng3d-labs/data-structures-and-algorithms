@@ -1,3 +1,5 @@
+export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircaseIT';
+
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -85,4 +87,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
