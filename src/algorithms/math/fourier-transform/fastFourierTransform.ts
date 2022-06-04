@@ -1,20 +1,22 @@
-import ComplexNumber from '../complex-number/ComplexNumber';
-import bitLength from '../bits/bitLength';
+import { bitLength } from '../bits/bitLength';
+import { ComplexNumber } from '../complex-number/ComplexNumber';
 
 /**
  * Returns the number which is the flipped binary representation of input.
  *
- * @param {number} input
- * @param {number} bitsCount
- * @return {number}
+ * @param input
+ * @param bitsCount
  */
-function reverseBits(input, bitsCount) {
+function reverseBits(input: number, bitsCount: number): number
+{
   let reversedBits = 0;
 
-  for (let bitIndex = 0; bitIndex < bitsCount; bitIndex += 1) {
+  for (let bitIndex = 0; bitIndex < bitsCount; bitIndex += 1)
+  {
     reversedBits *= 2;
 
-    if (Math.floor(input / (1 << bitIndex)) % 2 === 1) {
+    if (Math.floor(input / (1 << bitIndex)) % 2 === 1)
+    {
       reversedBits += 1;
     }
   }
@@ -26,34 +28,39 @@ function reverseBits(input, bitsCount) {
  * Returns the radix-2 fast fourier transform of the given array.
  * Optionally computes the radix-2 inverse fast fourier transform.
  *
- * @param {ComplexNumber[]} inputData
- * @param {boolean} [inverse]
- * @return {ComplexNumber[]}
+ * @param inputData
+ * @param inverse
  */
-export default function fastFourierTransform(inputData, inverse = false) {
+export function fastFourierTransform(inputData: ComplexNumber[], inverse = false): ComplexNumber[]
+{
   const bitsCount = bitLength(inputData.length - 1);
   const N = 1 << bitsCount;
 
-  while (inputData.length < N) {
+  while (inputData.length < N)
+  {
     inputData.push(new ComplexNumber());
   }
 
-  const output = [];
-  for (let dataSampleIndex = 0; dataSampleIndex < N; dataSampleIndex += 1) {
+  const output: ComplexNumber[] = [];
+  for (let dataSampleIndex = 0; dataSampleIndex < N; dataSampleIndex += 1)
+  {
     output[dataSampleIndex] = inputData[reverseBits(dataSampleIndex, bitsCount)];
   }
 
-  for (let blockLength = 2; blockLength <= N; blockLength *= 2) {
+  for (let blockLength = 2; blockLength <= N; blockLength *= 2)
+  {
     const imaginarySign = inverse ? -1 : 1;
     const phaseStep = new ComplexNumber({
       re: Math.cos((2 * Math.PI) / blockLength),
       im: imaginarySign * Math.sin((2 * Math.PI) / blockLength),
     });
 
-    for (let blockStart = 0; blockStart < N; blockStart += blockLength) {
+    for (let blockStart = 0; blockStart < N; blockStart += blockLength)
+    {
       let phase = new ComplexNumber({ re: 1, im: 0 });
 
-      for (let signalId = blockStart; signalId < (blockStart + blockLength / 2); signalId += 1) {
+      for (let signalId = blockStart; signalId < (blockStart + blockLength / 2); signalId += 1)
+      {
         const component = output[signalId + blockLength / 2].multiply(phase);
 
         const upd1 = output[signalId].add(component);
@@ -67,9 +74,12 @@ export default function fastFourierTransform(inputData, inverse = false) {
     }
   }
 
-  if (inverse) {
-    for (let signalId = 0; signalId < N; signalId += 1) {
-      output[signalId] /= N;
+  if (inverse)
+  {
+    for (let signalId = 0; signalId < N; signalId += 1)
+    {
+      // output[signalId] /= N;
+      output[signalId].divide(N);
     }
   }
 

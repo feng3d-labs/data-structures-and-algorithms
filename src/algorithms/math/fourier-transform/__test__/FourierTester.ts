@@ -1,4 +1,5 @@
-import ComplexNumber from '../../complex-number/ComplexNumber';
+import { deepEqual } from 'assert';
+import { ComplexNumber } from '../../complex-number/ComplexNumber';
 
 export const fourierTestCases = [
   {
@@ -235,60 +236,66 @@ export const fourierTestCases = [
   },
 ];
 
-export default class FourierTester {
+export class FourierTester
+{
   /**
-   * @param {function} fourierTransform
+   * @param fourierTransform
    */
-  static testDirectFourierTransform(fourierTransform) {
-    fourierTestCases.forEach((testCase) => {
-      const { input, output: expectedOutput } = testCase;
+  static testDirectFourierTransform(fourierTransform: (n: number[]) => ComplexNumber[])
+  {
+    fourierTestCases.forEach((testCase) =>
+    {
+      const { input, output: deepEqualedOutput } = testCase;
 
       // Try to split input signal into sequence of pure sinusoids.
       const formattedInput = input.map((sample) => sample.amplitude);
       const currentOutput = fourierTransform(formattedInput);
 
       // Check the signal has been split into proper amount of sub-signals.
-      expect(currentOutput.length).toBeGreaterThanOrEqual(formattedInput.length);
+      deepEqual(currentOutput.length >= formattedInput.length, true);
 
       // Now go through all the signals and check their frequency, amplitude and phase.
-      expectedOutput.forEach((expectedSignal, frequency) => {
+      deepEqualedOutput.forEach((deepEqualedSignal, frequency) =>
+      {
         // Get template data we want to test against.
         const currentSignal = currentOutput[frequency];
         const currentPolarSignal = currentSignal.getPolarForm(false);
 
         // Check all signal parameters.
-        expect(frequency).toBe(expectedSignal.frequency);
-        expect(currentSignal.re).toBeCloseTo(expectedSignal.re, 4);
-        expect(currentSignal.im).toBeCloseTo(expectedSignal.im, 4);
-        expect(currentPolarSignal.phase).toBeCloseTo(expectedSignal.phase, 4);
-        expect(currentPolarSignal.radius).toBeCloseTo(expectedSignal.amplitude, 4);
+        deepEqual(frequency, deepEqualedSignal.frequency);
+        deepEqual(currentSignal.re - deepEqualedSignal.re < 0.0001, true);
+        deepEqual(currentSignal.im - deepEqualedSignal.im < 0.0001, true);
+        deepEqual(currentPolarSignal.phase - deepEqualedSignal.phase < 0.0001, true);
+        deepEqual(currentPolarSignal.radius - deepEqualedSignal.amplitude < 0.0001, true);
       });
     });
   }
 
   /**
-   * @param {function} inverseFourierTransform
+   * @param inverseFourierTransform
    */
-  static testInverseFourierTransform(inverseFourierTransform) {
-    fourierTestCases.forEach((testCase) => {
-      const { input: expectedOutput, output: inputFrequencies } = testCase;
+  static testInverseFourierTransform(inverseFourierTransform: (n: ComplexNumber[]) => number[])
+  {
+    fourierTestCases.forEach((testCase) =>
+    {
+      const { input: deepEqualedOutput, output: inputFrequencies } = testCase;
 
       // Try to join frequencies into time signal.
-      const formattedInput = inputFrequencies.map((frequency) => {
-        return new ComplexNumber({ re: frequency.re, im: frequency.im });
-      });
+      const formattedInput = inputFrequencies.map((frequency) =>
+        new ComplexNumber({ re: frequency.re, im: frequency.im }));
       const currentOutput = inverseFourierTransform(formattedInput);
 
       // Check the signal has been combined of proper amount of time samples.
-      expect(currentOutput.length).toBeLessThanOrEqual(formattedInput.length);
+      deepEqual(currentOutput.length <= formattedInput.length, true);
 
       // Now go through all the amplitudes and check their values.
-      expectedOutput.forEach((expectedAmplitudes, timer) => {
+      deepEqualedOutput.forEach((deepEqualedAmplitudes, timer) =>
+      {
         // Get template data we want to test against.
         const currentAmplitude = currentOutput[timer];
 
         // Check if current amplitude is close enough to the calculated one.
-        expect(currentAmplitude).toBeCloseTo(expectedAmplitudes.amplitude, 4);
+        deepEqual(currentAmplitude - deepEqualedAmplitudes.amplitude < 0.0001, true);
       });
     });
   }

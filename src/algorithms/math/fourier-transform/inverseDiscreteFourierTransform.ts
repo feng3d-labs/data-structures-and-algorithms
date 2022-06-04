@@ -1,4 +1,4 @@
-import ComplexNumber from '../complex-number/ComplexNumber';
+import { ComplexNumber } from '../complex-number/ComplexNumber';
 
 const CLOSE_TO_ZERO_THRESHOLD = 1e-10;
 
@@ -7,26 +7,29 @@ const CLOSE_TO_ZERO_THRESHOLD = 1e-10;
  *
  * Time complexity: O(N^2)
  *
- * @param {ComplexNumber[]} frequencies - Frequencies summands of the final signal.
- * @param {number} zeroThreshold - Threshold that is used to convert real and imaginary numbers
+ * @param frequencies Frequencies summands of the final signal.
+ * @param zeroThreshold Threshold that is used to convert real and imaginary numbers
  * to zero in case if they are smaller then this.
  *
- * @return {number[]} - Discrete amplitudes distributed in time.
+ * @return Discrete amplitudes distributed in time.
  */
-export default function inverseDiscreteFourierTransform(
-  frequencies,
+export function inverseDiscreteFourierTransform(
+  frequencies: ComplexNumber[],
   zeroThreshold = CLOSE_TO_ZERO_THRESHOLD,
-) {
+)
+{
   const N = frequencies.length;
-  const amplitudes = [];
+  const amplitudes: number[] = [];
 
   // Go through every discrete point of time.
-  for (let timer = 0; timer < N; timer += 1) {
+  for (let timer = 0; timer < N; timer += 1)
+  {
     // Compound amplitude at current time.
     let amplitude = new ComplexNumber();
 
     // Go through all discrete frequencies.
-    for (let frequency = 0; frequency < N; frequency += 1) {
+    for (let frequency = 0; frequency < N; frequency += 1)
+    {
       const currentFrequency = frequencies[frequency];
 
       // Calculate rotation angle.
@@ -42,11 +45,13 @@ export default function inverseDiscreteFourierTransform(
     }
 
     // Close to zero? You're zero.
-    if (Math.abs(amplitude.re) < zeroThreshold) {
+    if (Math.abs(amplitude.re) < zeroThreshold)
+    {
       amplitude.re = 0;
     }
 
-    if (Math.abs(amplitude.im) < zeroThreshold) {
+    if (Math.abs(amplitude.im) < zeroThreshold)
+    {
       amplitude.im = 0;
     }
 
