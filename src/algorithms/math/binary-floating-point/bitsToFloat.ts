@@ -1,23 +1,19 @@
 /**
  * Sequence of 0s and 1s.
- * @typedef {number[]} Bits
  */
+type Bits = number[];
 
-/**
- * @typedef {{
- *   signBitsCount: number,
- *   exponentBitsCount: number,
- *   fractionBitsCount: number,
- * }} PrecisionConfig
- */
+type PrecisionConfig = {
+  signBitsCount: number;
+  exponentBitsCount: number;
+  fractionBitsCount: number;
+};
 
-/**
- * @typedef {{
- *   half: PrecisionConfig,
- *   single: PrecisionConfig,
- *   double: PrecisionConfig
- * }} PrecisionConfigs
- */
+type PrecisionConfigs = {
+  half: PrecisionConfig;
+  single: PrecisionConfig;
+  double: PrecisionConfig;
+};
 
 /**
  * ┌───────────────── sign bit
@@ -26,9 +22,8 @@
  * │   │       │
  * X XXXXX XXXXXXXXXX
  *
- * @type {PrecisionConfigs}
  */
-const precisionConfigs = {
+const precisionConfigs: PrecisionConfigs = {
   // @see: https://en.wikipedia.org/wiki/Half-precision_floating-point_format
   half: {
     signBitsCount: 1,
@@ -52,11 +47,12 @@ const precisionConfigs = {
 /**
  * Converts the binary representation of the floating point number to decimal float number.
  *
- * @param {Bits} bits - sequence of bits that represents the floating point number.
- * @param {PrecisionConfig} precisionConfig - half/single/double precision config.
- * @return {number} - floating point number decoded from its binary representation.
+ * @param bits sequence of bits that represents the floating point number.
+ * @param precisionConfig half/single/double precision config.
+ * @return floating point number decoded from its binary representation.
  */
-function bitsToFloat(bits, precisionConfig) {
+function bitsToFloat(bits: Bits, precisionConfig: PrecisionConfig): number
+{
   const { signBitsCount, exponentBitsCount } = precisionConfig;
 
   // Figuring out the sign.
@@ -66,8 +62,10 @@ function bitsToFloat(bits, precisionConfig) {
   const exponentBias = 2 ** (exponentBitsCount - 1) - 1;
   const exponentBits = bits.slice(signBitsCount, signBitsCount + exponentBitsCount);
   const exponentUnbiased = exponentBits.reduce(
-    (exponentSoFar, currentBit, bitIndex) => {
+    (exponentSoFar, currentBit, bitIndex) =>
+    {
       const bitPowerOfTwo = 2 ** (exponentBitsCount - bitIndex - 1);
+
       return exponentSoFar + currentBit * bitPowerOfTwo;
     },
     0,
@@ -77,8 +75,10 @@ function bitsToFloat(bits, precisionConfig) {
   // Calculating the fraction value.
   const fractionBits = bits.slice(signBitsCount + exponentBitsCount);
   const fraction = fractionBits.reduce(
-    (fractionSoFar, currentBit, bitIndex) => {
+    (fractionSoFar, currentBit, bitIndex) =>
+    {
       const bitPowerOfTwo = 2 ** -(bitIndex + 1);
+
       return fractionSoFar + currentBit * bitPowerOfTwo;
     },
     0,
@@ -91,29 +91,32 @@ function bitsToFloat(bits, precisionConfig) {
 /**
  *  Converts the 16-bit binary representation of the floating point number to decimal float number.
  *
- * @param {Bits} bits - sequence of bits that represents the floating point number.
- * @return {number} - floating point number decoded from its binary representation.
+ * @param bits sequence of bits that represents the floating point number.
+ * @return floating point number decoded from its binary representation.
  */
-export function bitsToFloat16(bits) {
+export function bitsToFloat16(bits: Bits): number
+{
   return bitsToFloat(bits, precisionConfigs.half);
 }
 
 /**
  * Converts the 32-bit binary representation of the floating point number to decimal float number.
  *
- * @param {Bits} bits - sequence of bits that represents the floating point number.
- * @return {number} - floating point number decoded from its binary representation.
+ * @param bits sequence of bits that represents the floating point number.
+ * @return floating point number decoded from its binary representation.
  */
-export function bitsToFloat32(bits) {
+export function bitsToFloat32(bits: Bits): number
+{
   return bitsToFloat(bits, precisionConfigs.single);
 }
 
 /**
  * Converts the 64-bit binary representation of the floating point number to decimal float number.
  *
- * @param {Bits} bits - sequence of bits that represents the floating point number.
- * @return {number} - floating point number decoded from its binary representation.
+ * @param bits sequence of bits that represents the floating point number.
+ * @return floating point number decoded from its binary representation.
  */
-export function bitsToFloat64(bits) {
+export function bitsToFloat64(bits: Bits): number
+{
   return bitsToFloat(bits, precisionConfigs.double);
 }
