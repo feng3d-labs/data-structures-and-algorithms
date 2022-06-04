@@ -47,6 +47,7 @@ export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/accumulat
 export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/dpBestTimeToBuySellStocks';
 export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/dqBestTimeToBuySellStocks';
 export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/peakvalleyBestTimeToBuySellStocks';
+export * from './algorithms/uncategorized/hanoi-tower/hanoiTower';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
