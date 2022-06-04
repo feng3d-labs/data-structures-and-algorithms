@@ -36,6 +36,7 @@ export * from './algorithms/string/palindrome/isPalindrome';
 export * from './algorithms/string/rabin-karp/rabinKarp';
 export * from './algorithms/string/regular-expression-matching/regularExpressionMatching';
 export * from './algorithms/string/z-algorithm/zAlgorithm';
+export * from './algorithms/tree/breadth-first-search/breadthFirstSearch';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
@@ -63,4 +64,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
