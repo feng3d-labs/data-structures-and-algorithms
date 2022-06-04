@@ -43,6 +43,7 @@ export * from './algorithms/string/regular-expression-matching/regularExpression
 export * from './algorithms/string/z-algorithm/zAlgorithm';
 export * from './algorithms/tree/breadth-first-search/breadthFirstSearch';
 export * from './algorithms/tree/depth-first-search/depthFirstSearch';
+export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/accumulatorBestTimeToBuySellStocks';
 export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/dpBestTimeToBuySellStocks';
 export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/dqBestTimeToBuySellStocks';
 export * from './data-structures/bloom-filter/BloomFilter';
@@ -72,4 +73,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
