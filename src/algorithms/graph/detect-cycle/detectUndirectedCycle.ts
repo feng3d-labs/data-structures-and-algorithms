@@ -1,24 +1,29 @@
-import depthFirstSearch from '../depth-first-search/depthFirstSearch';
+import { Graph } from '../../../data-structures/graph/Graph';
+import { GraphVertex } from '../../../data-structures/graph/GraphVertex';
+import { depthFirstSearch } from '../depth-first-search/depthFirstSearch';
 
 /**
  * Detect cycle in undirected graph using Depth First Search.
  *
- * @param {Graph} graph
+ * @param graph
  */
-export default function detectUndirectedCycle(graph) {
-  let cycle = null;
+export function detectUndirectedCycle<T>(graph: Graph<T>)
+{
+  let cycle: { [key: string]: GraphVertex<T> } = null;
 
   // List of vertices that we have visited.
-  const visitedVertices = {};
+  const visitedVertices: { [key: string]: GraphVertex<T> } = {};
 
   // List of parents vertices for every visited vertex.
-  const parents = {};
+  const parents: { [key: string]: GraphVertex<T> } = {};
 
   // Callbacks for DFS traversing.
   const callbacks = {
-    allowTraversal: ({ currentVertex, nextVertex }) => {
+    allowTraversal: ({ currentVertex, nextVertex }: { currentVertex: GraphVertex<T>, nextVertex: GraphVertex<T> }) =>
+    {
       // Don't allow further traversal in case if cycle has been detected.
-      if (cycle) {
+      if (cycle)
+      {
         return false;
       }
 
@@ -28,22 +33,27 @@ export default function detectUndirectedCycle(graph) {
 
       return currentVertexParentKey !== nextVertex.getKey();
     },
-    enterVertex: ({ currentVertex, previousVertex }) => {
-      if (visitedVertices[currentVertex.getKey()]) {
+    enterVertex: ({ currentVertex, previousVertex }: { currentVertex: GraphVertex<T>, previousVertex: GraphVertex<T> }) =>
+    {
+      if (visitedVertices[currentVertex.getKey()])
+      {
         // Compile cycle path based on parents of previous vertices.
         cycle = {};
 
         let currentCycleVertex = currentVertex;
         let previousCycleVertex = previousVertex;
 
-        while (previousCycleVertex.getKey() !== currentVertex.getKey()) {
+        while (previousCycleVertex.getKey() !== currentVertex.getKey())
+        {
           cycle[currentCycleVertex.getKey()] = previousCycleVertex;
           currentCycleVertex = previousCycleVertex;
           previousCycleVertex = parents[previousCycleVertex.getKey()];
         }
 
         cycle[currentCycleVertex.getKey()] = previousCycleVertex;
-      } else {
+      }
+      else
+      {
         // Add next vertex to visited set.
         visitedVertices[currentVertex.getKey()] = currentVertex;
         parents[currentVertex.getKey()] = previousVertex;

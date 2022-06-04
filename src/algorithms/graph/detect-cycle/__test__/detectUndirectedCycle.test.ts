@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import detectUndirectedCycle from '../detectUndirectedCycle';
+import { deepEqual } from 'assert';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { detectUndirectedCycle } from '../detectUndirectedCycle';
 
-describe('detectUndirectedCycle', () => {
-  it('should detect undirected cycle', () => {
+describe('detectUndirectedCycle', () =>
+{
+  it('should detect undirected cycle', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -27,11 +30,11 @@ describe('detectUndirectedCycle', () => {
       .addEdge(edgeBC)
       .addEdge(edgeCD);
 
-    expect(detectUndirectedCycle(graph)).toBeNull();
+    deepEqual(detectUndirectedCycle(graph), null);
 
     graph.addEdge(edgeDE);
 
-    expect(detectUndirectedCycle(graph)).toEqual({
+    deepEqual(detectUndirectedCycle(graph), {
       B: vertexC,
       C: vertexD,
       D: vertexE,
