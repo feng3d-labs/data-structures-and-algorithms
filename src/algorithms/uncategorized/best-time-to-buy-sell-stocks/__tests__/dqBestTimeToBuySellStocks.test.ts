@@ -6,10 +6,7 @@ describe('dqBestTimeToBuySellStocks', () =>
   it('should find the best time to buy and sell stocks', () =>
   {
     let visitTimes = 0;
-    const visit = () =>
-    {
-      visitTimes++;
-    };
+    const visit = () => { visitTimes++; };
 
     deepEqual(dqBestTimeToBuySellStocks([1, 5]), 4);
 

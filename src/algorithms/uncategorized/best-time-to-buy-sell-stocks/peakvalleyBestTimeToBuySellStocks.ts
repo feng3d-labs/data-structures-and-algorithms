@@ -2,24 +2,29 @@
  * Finds the maximum profit from selling and buying the stocks.
  * PEAK VALLEY APPROACH.
  *
- * @param {number[]} prices - Array of stock prices, i.e. [7, 6, 4, 3, 1]
- * @param {function(): void} visit - Visiting callback to calculate the number of iterations.
- * @return {number} - The maximum profit
+ * @param prices Array of stock prices, i.e. [7, 6, 4, 3, 1]
+ * @param visit Visiting callback to calculate the number of iterations.
+ * @return The maximum profit
  */
-const peakvalleyBestTimeToBuySellStocks = (prices, visit = () => {}) => {
+export function peakvalleyBestTimeToBuySellStocks(prices: number[], visit = () => { })
+{
   visit();
   let profit = 0;
   let low = prices[0];
   let high = prices[0];
 
-  prices.slice(1).forEach((currentPrice) => {
+  prices.slice(1).forEach((currentPrice) =>
+  {
     visit();
-    if (currentPrice < high) {
+    if (currentPrice < high)
+    {
       // If price went down, we need to sell.
       profit += high - low;
       low = currentPrice;
       high = currentPrice;
-    } else {
+    }
+    else
+    {
       // If price went up, we don't need to do anything but increase a high record.
       high = currentPrice;
     }
@@ -30,6 +35,5 @@ const peakvalleyBestTimeToBuySellStocks = (prices, visit = () => {}) => {
   profit += high - low;
 
   return profit;
-};
+}
 
-export default peakvalleyBestTimeToBuySellStocks;
