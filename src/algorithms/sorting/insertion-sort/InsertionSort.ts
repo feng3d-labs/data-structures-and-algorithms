@@ -1,11 +1,14 @@
-import Sort from '../Sort';
+import { Sort } from '../Sort';
 
-export default class InsertionSort extends Sort {
-  sort(originalArray) {
+export class InsertionSort<T> extends Sort<T>
+{
+  sort(originalArray: T[])
+  {
     const array = [...originalArray];
 
     // Go through all array elements...
-    for (let i = 1; i < array.length; i += 1) {
+    for (let i = 1; i < array.length; i += 1)
+    {
       let currentIndex = i;
 
       // Call visiting callback.
@@ -16,7 +19,8 @@ export default class InsertionSort extends Sort {
       while (
         array[currentIndex - 1] !== undefined
         && this.comparator.lessThan(array[currentIndex], array[currentIndex - 1])
-      ) {
+      )
+      {
         // Call visiting callback.
         this.callbacks.visitingCallback(array[currentIndex - 1]);
 
@@ -25,9 +29,9 @@ export default class InsertionSort extends Sort {
           array[currentIndex - 1],
           array[currentIndex],
         ] = [
-          array[currentIndex],
-          array[currentIndex - 1],
-        ];
+            array[currentIndex],
+            array[currentIndex - 1],
+          ];
 
         // Shift current index left.
         currentIndex -= 1;

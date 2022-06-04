@@ -1,4 +1,3 @@
-
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -22,6 +21,7 @@ export * from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
 export * as matrix from './algorithms/math/matrix/Matrix';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
+export * from './algorithms/sorting/insertion-sort/InsertionSort';
 export * from './algorithms/sorting/Sort';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
