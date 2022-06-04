@@ -56,6 +56,7 @@ export * from './algorithms/uncategorized/knight-tour/knightTour';
 export * from './algorithms/uncategorized/n-queens/nQueens';
 export * from './algorithms/uncategorized/rain-terraces/bfRainTerraces';
 export * from './algorithms/uncategorized/rain-terraces/dpRainTerraces';
+export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircaseBF';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
@@ -83,4 +84,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
