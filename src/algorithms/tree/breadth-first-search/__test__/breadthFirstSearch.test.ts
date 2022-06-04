@@ -1,6 +1,6 @@
 import { deepEqual } from 'assert';
 import { BinaryTreeNode } from '../../../../data-structures/tree/BinaryTreeNode';
-import { breadthFirstSearch } from '../breadthFirstSearch';
+import { breadthFirstSearch1 } from '../breadthFirstSearch';
 
 describe('breadthFirstSearch', () =>
 {
@@ -38,10 +38,10 @@ describe('breadthFirstSearch', () =>
     };
 
     // Traverse tree without callbacks first to check default ones.
-    breadthFirstSearch(nodeA);
+    breadthFirstSearch1(nodeA);
 
     // Traverse tree with callbacks.
-    breadthFirstSearch(nodeA, {
+    breadthFirstSearch1(nodeA, {
       enterNode: enterNodeCallback,
       leaveNode: leaveNodeCallback,
     });
@@ -102,10 +102,10 @@ describe('breadthFirstSearch', () =>
     };
 
     // Traverse tree without callbacks first to check default ones.
-    breadthFirstSearch(nodeA);
+    breadthFirstSearch1(nodeA);
 
     // Traverse tree with callbacks.
-    breadthFirstSearch(nodeA, {
+    breadthFirstSearch1(nodeA, {
       allowTraversal: (node, child) =>
 
         // Forbid traversing left half of the tree.

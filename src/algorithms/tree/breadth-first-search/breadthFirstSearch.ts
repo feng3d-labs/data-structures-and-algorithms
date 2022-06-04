@@ -42,7 +42,7 @@ function initCallbacks<T>(callbacks: Callbacks<T> = {})
  * @param rootNode
  * @param originalCallbacks
  */
-export function breadthFirstSearch<T>(rootNode: BinaryTreeNode<T>, originalCallbacks?: Callbacks<T>)
+export function breadthFirstSearch1<T>(rootNode: BinaryTreeNode<T>, originalCallbacks?: Callbacks<T>)
 {
   const callbacks = initCallbacks(originalCallbacks);
   const nodeQueue = new Queue<BinaryTreeNode<T>>();

@@ -80,7 +80,7 @@ export function depthFirstSearchRecursive<T>(node: BinaryTreeNode<T>, callbacks:
  * @param rootNode The node from which we start traversing.
  * @param callbacks Traversal callbacks.
  */
-export function depthFirstSearch<T>(rootNode: BinaryTreeNode<T>, callbacks?: TraversalCallbacks<T>)
+export function depthFirstSearch1<T>(rootNode: BinaryTreeNode<T>, callbacks?: TraversalCallbacks<T>)
 {
   // In case if user didn't provide some callback we need to replace them with default ones.
   const processedCallbacks = initCallbacks(callbacks);

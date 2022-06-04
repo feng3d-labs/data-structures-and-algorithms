@@ -1,6 +1,6 @@
 import { deepEqual } from 'assert';
 import { BinaryTreeNode } from '../../../../data-structures/tree/BinaryTreeNode';
-import { depthFirstSearch } from '../depthFirstSearch';
+import { depthFirstSearch1 } from '../depthFirstSearch';
 
 describe('depthFirstSearch', () =>
 {
@@ -38,10 +38,10 @@ describe('depthFirstSearch', () =>
     };
 
     // Traverse tree without callbacks first to check default ones.
-    depthFirstSearch(nodeA);
+    depthFirstSearch1(nodeA);
 
     // Traverse tree with callbacks.
-    depthFirstSearch(nodeA, {
+    depthFirstSearch1(nodeA, {
       enterNode: enterNodeCallback,
       leaveNode: leaveNodeCallback,
     });
@@ -102,10 +102,10 @@ describe('depthFirstSearch', () =>
     };
 
     // Traverse tree without callbacks first to check default ones.
-    depthFirstSearch(nodeA);
+    depthFirstSearch1(nodeA);
 
     // Traverse tree with callbacks.
-    depthFirstSearch(nodeA, {
+    depthFirstSearch1(nodeA, {
       // Forbid traversing left part of the tree.
       allowTraversal: (node, child) => child.value !== 'B',
       enterNode: enterNodeCallback,
