@@ -1,12 +1,15 @@
-import Sort from '../Sort';
+import { Sort } from '../Sort';
 
-export default class MergeSort extends Sort {
-  sort(originalArray) {
+export class MergeSort<T> extends Sort<T>
+{
+  sort(originalArray: T[]): T[]
+  {
     // Call visiting callback.
     this.callbacks.visitingCallback(null);
 
     // If array is empty or consists of one element then return this array since it is sorted.
-    if (originalArray.length <= 1) {
+    if (originalArray.length <= 1)
+    {
       return originalArray;
     }
 
@@ -23,22 +26,27 @@ export default class MergeSort extends Sort {
     return this.mergeSortedArrays(leftSortedArray, rightSortedArray);
   }
 
-  mergeSortedArrays(leftArray, rightArray) {
-    const sortedArray = [];
+  mergeSortedArrays(leftArray: T[], rightArray: T[])
+  {
+    const sortedArray: T[] = [];
 
     // Use array pointers to exclude old elements after they have been added to the sorted array.
     let leftIndex = 0;
     let rightIndex = 0;
 
-    while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+    while (leftIndex < leftArray.length && rightIndex < rightArray.length)
+    {
       let minElement = null;
 
       // Find the minimum element between the left and right array.
-      if (this.comparator.lessThanOrEqual(leftArray[leftIndex], rightArray[rightIndex])) {
+      if (this.comparator.lessThanOrEqual(leftArray[leftIndex], rightArray[rightIndex]))
+      {
         minElement = leftArray[leftIndex];
         // Increment index pointer to the right
         leftIndex += 1;
-      } else {
+      }
+      else
+      {
         minElement = rightArray[rightIndex];
         // Increment index pointer to the right
         rightIndex += 1;
