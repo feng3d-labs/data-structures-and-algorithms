@@ -161,33 +161,33 @@ describe('ComplexNumber', () =>
     deepEqual(complexNumber4.getPolarForm(false).phase, -45);
 
     const complexNumber5 = new ComplexNumber({ re: 5, im: 7 });
-    deepEqual(complexNumber5.getPolarForm().radius - 8.60 < 0.0001, true);
-    deepEqual(complexNumber5.getPolarForm().phase - 0.95 < 0.0001, true);
-    deepEqual(complexNumber5.getPolarForm(false).phase - 54.46 < 0.0001, true);
+    deepEqual(complexNumber5.getPolarForm().radius - 8.60 < 0.01, true);
+    deepEqual(complexNumber5.getPolarForm().phase - 0.95 < 0.01, true);
+    deepEqual(complexNumber5.getPolarForm(false).phase - 54.46 < 0.01, true);
 
     const complexNumber6 = new ComplexNumber({ re: 0, im: 0.25 });
-    deepEqual(complexNumber6.getPolarForm().radius - 0.25 < 0.0001, true);
-    deepEqual(complexNumber6.getPolarForm().phase - 1.57 < 0.0001, true);
-    deepEqual(complexNumber6.getPolarForm(false).phase - 90 < 0.0001, true);
+    deepEqual(complexNumber6.getPolarForm().radius - 0.25 < 0.01, true);
+    deepEqual(complexNumber6.getPolarForm().phase - 1.57 < 0.01, true);
+    deepEqual(complexNumber6.getPolarForm(false).phase - 90 < 0.01, true);
 
     const complexNumber7 = new ComplexNumber({ re: 0, im: -0.25 });
-    deepEqual(complexNumber7.getPolarForm().radius - 0.25 < 0.0001, true);
-    deepEqual(complexNumber7.getPolarForm().phase - -1.57 < 0.0001, true);
-    deepEqual(complexNumber7.getPolarForm(false).phase - -90 < 0.0001, true);
+    deepEqual(complexNumber7.getPolarForm().radius - 0.25 < 0.01, true);
+    deepEqual(complexNumber7.getPolarForm().phase - -1.57 < 0.01, true);
+    deepEqual(complexNumber7.getPolarForm(false).phase - -90 < 0.01, true);
 
     const complexNumber8 = new ComplexNumber();
-    deepEqual(complexNumber8.getPolarForm().radius - 0 < 0.0001, true);
-    deepEqual(complexNumber8.getPolarForm().phase - 0 < 0.0001, true);
-    deepEqual(complexNumber8.getPolarForm(false).phase - 0 < 0.0001, true);
+    deepEqual(complexNumber8.getPolarForm().radius - 0 < 0.01, true);
+    deepEqual(complexNumber8.getPolarForm().phase - 0 < 0.01, true);
+    deepEqual(complexNumber8.getPolarForm(false).phase - 0 < 0.01, true);
 
     const complexNumber9 = new ComplexNumber({ re: -0.25, im: 0 });
-    deepEqual(complexNumber9.getPolarForm().radius - 0.25 < 0.0001, true);
-    deepEqual(complexNumber9.getPolarForm().phase - Math.PI < 0.0001, true);
-    deepEqual(complexNumber9.getPolarForm(false).phase - 180 < 0.0001, true);
+    deepEqual(complexNumber9.getPolarForm().radius - 0.25 < 0.01, true);
+    deepEqual(complexNumber9.getPolarForm().phase - Math.PI < 0.01, true);
+    deepEqual(complexNumber9.getPolarForm(false).phase - 180 < 0.01, true);
 
     const complexNumber10 = new ComplexNumber({ re: 0.25, im: 0 });
-    deepEqual(complexNumber10.getPolarForm().radius - 0.25 < 0.0001, true);
-    deepEqual(complexNumber10.getPolarForm().phase - 0 < 0.0001, true);
-    deepEqual(complexNumber10.getPolarForm(false).phase - 0 < 0.0001, true);
+    deepEqual(complexNumber10.getPolarForm().radius - 0.25 < 0.01, true);
+    deepEqual(complexNumber10.getPolarForm().phase - 0 < 0.01, true);
+    deepEqual(complexNumber10.getPolarForm(false).phase - 0 < 0.01, true);
   });
 });
