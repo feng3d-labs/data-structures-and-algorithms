@@ -1,13 +1,16 @@
-import Sort from '../Sort';
-import MinHeap from '../../../data-structures/heap/MinHeap';
+import { Sort } from '../Sort';
+import { MinHeap } from '../../../data-structures/heap/MinHeap';
 
-export default class HeapSort extends Sort {
-  sort(originalArray) {
-    const sortedArray = [];
+export class HeapSort<T> extends Sort<T>
+{
+  sort(originalArray: T[])
+  {
+    const sortedArray: T[] = [];
     const minHeap = new MinHeap(this.callbacks.compareCallback);
 
     // Insert all array elements to the heap.
-    originalArray.forEach((element) => {
+    originalArray.forEach((element) =>
+    {
       // Call visiting callback.
       this.callbacks.visitingCallback(element);
 
@@ -16,7 +19,8 @@ export default class HeapSort extends Sort {
 
     // Now we have min heap with minimal element always on top.
     // Let's poll that minimal element one by one and thus form the sorted array.
-    while (!minHeap.isEmpty()) {
+    while (!minHeap.isEmpty())
+    {
       const nextMinElement = minHeap.poll();
 
       // Call visiting callback.

@@ -1,28 +1,37 @@
-import Sort from '../Sort';
+import { Sort } from '../Sort';
 
-export default class CountingSort extends Sort {
+/**
+ * 计数排序（Counting sort）
+ */
+export class CountingSort extends Sort<number>
+{
   /**
-   * @param {number[]} originalArray
-   * @param {number} [smallestElement]
-   * @param {number} [biggestElement]
+   * @param originalArray
+   * @param smallestElement
+   * @param biggestElement
    */
-  sort(originalArray, smallestElement = undefined, biggestElement = undefined) {
+  sort(originalArray: number[], smallestElement: number = undefined, biggestElement: number = undefined)
+  {
     // Init biggest and smallest elements in array in order to build number bucket array later.
     let detectedSmallestElement = smallestElement || 0;
     let detectedBiggestElement = biggestElement || 0;
 
-    if (smallestElement === undefined || biggestElement === undefined) {
-      originalArray.forEach((element) => {
+    if (smallestElement === undefined || biggestElement === undefined)
+    {
+      originalArray.forEach((element) =>
+      {
         // Visit element.
         this.callbacks.visitingCallback(element);
 
         // Detect biggest element.
-        if (this.comparator.greaterThan(element, detectedBiggestElement)) {
+        if (this.comparator.greaterThan(element, detectedBiggestElement))
+        {
           detectedBiggestElement = element;
         }
 
         // Detect smallest element.
-        if (this.comparator.lessThan(element, detectedSmallestElement)) {
+        if (this.comparator.lessThan(element, detectedSmallestElement))
+        {
           detectedSmallestElement = element;
         }
       });
@@ -30,9 +39,10 @@ export default class CountingSort extends Sort {
 
     // Init buckets array.
     // This array will hold frequency of each number from originalArray.
-    const buckets = Array(detectedBiggestElement - detectedSmallestElement + 1).fill(0);
+    const buckets: number[] = Array(detectedBiggestElement - detectedSmallestElement + 1).fill(0);
 
-    originalArray.forEach((element) => {
+    originalArray.forEach((element) =>
+    {
       // Visit element.
       this.callbacks.visitingCallback(element);
 
@@ -42,7 +52,8 @@ export default class CountingSort extends Sort {
     // Add previous frequencies to the current one for each number in bucket
     // to detect how many numbers less then current one should be standing to
     // the left of current one.
-    for (let bucketIndex = 1; bucketIndex < buckets.length; bucketIndex += 1) {
+    for (let bucketIndex = 1; bucketIndex < buckets.length; bucketIndex += 1)
+    {
       buckets[bucketIndex] += buckets[bucketIndex - 1];
     }
 
@@ -54,8 +65,9 @@ export default class CountingSort extends Sort {
     buckets.unshift(0);
 
     // Now let's assemble sorted array.
-    const sortedArray = Array(originalArray.length).fill(null);
-    for (let elementIndex = 0; elementIndex < originalArray.length; elementIndex += 1) {
+    const sortedArray: number[] = Array(originalArray.length).fill(null);
+    for (let elementIndex = 0; elementIndex < originalArray.length; elementIndex += 1)
+    {
       // Get the element that we want to put into correct sorted position.
       const element = originalArray[elementIndex];
 
