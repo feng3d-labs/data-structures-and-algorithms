@@ -111,7 +111,7 @@ export class Graph<T>
     {
       throw new Error('Edge has already been added before');
     }
- else
+    else
     {
       this.edges[edge.getKey()] = edge;
     }
@@ -122,7 +122,7 @@ export class Graph<T>
       // If graph IS directed then add the edge only to start vertex.
       startVertex.addEdge(edge);
     }
- else
+    else
     {
       // If graph ISN'T directed then add the edge to both vertices.
       startVertex.addEdge(edge);
@@ -144,7 +144,7 @@ export class Graph<T>
     {
       delete this.edges[edge.getKey()];
     }
- else
+    else
     {
       throw new Error('Edge not found in graph');
     }
@@ -182,7 +182,7 @@ export class Graph<T>
   getWeight()
   {
     return this.getAllEdges().reduce((weight, graphEdge) =>
-    weight + graphEdge.weight, 0);
+      weight + graphEdge.weight, 0);
   }
 
   /**
@@ -210,7 +210,7 @@ export class Graph<T>
    */
   getVerticesIndices()
   {
-    const verticesIndices = {};
+    const verticesIndices: { [key: string]: number } = {};
     this.getAllVertices().forEach((vertex, index) =>
     {
       verticesIndices[vertex.getKey()] = index;
@@ -230,7 +230,7 @@ export class Graph<T>
     // Init matrix with infinities meaning that there is no ways of
     // getting from one vertex to another yet.
     const adjacencyMatrix: number[][] = Array(vertices.length).fill(null).map(() =>
-    Array(vertices.length).fill(Infinity));
+      Array(vertices.length).fill(Infinity));
 
     // Fill the columns.
     vertices.forEach((vertex, vertexIndex) =>

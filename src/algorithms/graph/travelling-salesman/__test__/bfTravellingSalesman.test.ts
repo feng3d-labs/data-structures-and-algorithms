@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import bfTravellingSalesman from '../bfTravellingSalesman';
+import { deepEqual } from 'assert';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { bfTravellingSalesman } from '../bfTravellingSalesman';
 
-describe('bfTravellingSalesman', () => {
-  it('should solve problem for simple graph', () => {
+describe('bfTravellingSalesman', () =>
+{
+  it('should solve problem for simple graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -41,11 +44,11 @@ describe('bfTravellingSalesman', () => {
 
     const salesmanPath = bfTravellingSalesman(graph);
 
-    expect(salesmanPath.length).toBe(4);
+    deepEqual(salesmanPath.length, 4);
 
-    expect(salesmanPath[0].getKey()).toEqual(vertexA.getKey());
-    expect(salesmanPath[1].getKey()).toEqual(vertexB.getKey());
-    expect(salesmanPath[2].getKey()).toEqual(vertexD.getKey());
-    expect(salesmanPath[3].getKey()).toEqual(vertexC.getKey());
+    deepEqual(salesmanPath[0].getKey(), vertexA.getKey());
+    deepEqual(salesmanPath[1].getKey(), vertexB.getKey());
+    deepEqual(salesmanPath[2].getKey(), vertexD.getKey());
+    deepEqual(salesmanPath[3].getKey(), vertexC.getKey());
   });
 });

@@ -13,3 +13,4 @@ export * from './kruskal/kruskal';
 export * from './prim/prim';
 export * from './strongly-connected-components/stronglyConnectedComponents';
 export * from './topological-sorting/topologicalSort';
+export * from './travelling-salesman/bfTravellingSalesman';
