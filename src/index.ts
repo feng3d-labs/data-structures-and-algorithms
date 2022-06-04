@@ -62,6 +62,7 @@ export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircase
 export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircaseMEM';
 export * from './algorithms/uncategorized/square-matrix-rotation/squareMatrixRotation';
 export * from './algorithms/uncategorized/unique-paths/btUniquePaths';
+export * from './algorithms/uncategorized/unique-paths/dpUniquePaths';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
