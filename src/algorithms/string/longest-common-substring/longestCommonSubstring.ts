@@ -1,4 +1,6 @@
 /**
+ * 最长公共子串
+ *
  * @param string1
  * @param string2
  */
