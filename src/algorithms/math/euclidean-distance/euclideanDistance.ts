@@ -3,26 +3,28 @@
  */
 
 import * as mtrx from '../matrix/Matrix';
+import { Matrix } from '../matrix/Matrix';
 
 /**
  * Calculates the euclidean distance between 2 matrices.
  *
- * @param {Matrix} a
- * @param {Matrix} b
- * @returns {number}
- * @trows {Error}
+ * @param a
+ * @param b
+ *
+ * @trows Error
  */
-const euclideanDistance = (a, b) => {
+export function euclideanDistance(a: Matrix, b: Matrix): number
+{
   mtrx.validateSameShape(a, b);
 
   let squaresTotal = 0;
 
-  mtrx.walk(a, (indices, aCellValue) => {
+  mtrx.walk(a, (indices, aCellValue) =>
+  {
     const bCellValue = mtrx.getCellAtIndex(b, indices);
     squaresTotal += (aCellValue - bCellValue) ** 2;
   });
 
   return Number(Math.sqrt(squaresTotal).toFixed(2));
-};
+}
 
-export default euclideanDistance;

@@ -1,6 +1,6 @@
 type Cell = number;
 // type Matrix = Cell[][]|Cell[][][];
-type Matrix = any;
+export type Matrix = any;
 type Shape = number[];
 type CellIndices = number[];
 
