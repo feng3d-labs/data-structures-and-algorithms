@@ -1,16 +1,19 @@
 import Sort from '../Sort';
 
-export default class QuickSort extends Sort {
+export default class QuickSort extends Sort
+{
   /**
    * @param {*[]} originalArray
    * @return {*[]}
    */
-  sort(originalArray) {
+  sort(originalArray)
+  {
     // Clone original array to prevent it from modification.
     const array = [...originalArray];
 
     // If array has less than or equal to one elements then it is already sorted.
-    if (array.length <= 1) {
+    if (array.length <= 1)
+    {
       return array;
     }
 
@@ -23,17 +26,21 @@ export default class QuickSort extends Sort {
     const centerArray = [pivotElement];
 
     // Split all array elements between left, center and right arrays.
-    while (array.length) {
+    while (array.length)
+    {
       const currentElement = array.shift();
 
       // Call visiting callback.
       this.callbacks.visitingCallback(currentElement);
 
-      if (this.comparator.equal(currentElement, pivotElement)) {
+      if (this.comparator.equal(currentElement, pivotElement))
+      {
         centerArray.push(currentElement);
-      } else if (this.comparator.lessThan(currentElement, pivotElement)) {
+      } else if (this.comparator.lessThan(currentElement, pivotElement))
+      {
         leftArray.push(currentElement);
-      } else {
+      } else
+      {
         rightArray.push(currentElement);
       }
     }
