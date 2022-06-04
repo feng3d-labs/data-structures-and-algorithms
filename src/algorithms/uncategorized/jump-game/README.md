@@ -110,7 +110,7 @@ In other words, the left-most one. If we keep track of this left-most
 GOOD position as a separate variable, we can avoid searching for it in
 the array. Not only that, but we can stop using the array altogether.
 
-> See [greedyJumpGame.js](greedyJumpGame.js) file
+> See [greedyJumpGame.ts](greedyJumpGame.ts) file
 
 **Time complexity:**: `O(n)`.
 We are doing a single pass through the `nums` array, hence `n` steps,

@@ -1,9 +1,9 @@
 /**
- * @param {number[][]} chessboard
- * @param {number[]} position
- * @return {number[][]}
+ * @param chessboard
+ * @param position
  */
-function getPossibleMoves(chessboard, position) {
+function getPossibleMoves(chessboard: number[][], position: number[]): number[][]
+{
   // Generate all knight moves (even those that go beyond the board).
   const possibleMoves = [
     [position[0] - 1, position[1] - 2],
@@ -17,27 +17,29 @@ function getPossibleMoves(chessboard, position) {
   ];
 
   // Filter out all moves that go beyond the board.
-  return possibleMoves.filter((move) => {
+  return possibleMoves.filter((move) =>
+  {
     const boardSize = chessboard.length;
+
     return move[0] >= 0 && move[1] >= 0 && move[0] < boardSize && move[1] < boardSize;
   });
 }
 
 /**
- * @param {number[][]} chessboard
- * @param {number[]} move
- * @return {boolean}
+ * @param chessboard
+ * @param move
  */
-function isMoveAllowed(chessboard, move) {
+function isMoveAllowed(chessboard: number[][], move: number[]): boolean
+{
   return chessboard[move[0]][move[1]] !== 1;
 }
 
 /**
- * @param {number[][]} chessboard
- * @param {number[][]} moves
- * @return {boolean}
+ * @param chessboard
+ * @param moves
  */
-function isBoardCompletelyVisited(chessboard, moves) {
+function isBoardCompletelyVisited(chessboard: number[][], moves: number[][]): boolean
+{
   const totalPossibleMovesCount = chessboard.length ** 2;
   const existingMovesCount = moves.length;
 
@@ -45,15 +47,16 @@ function isBoardCompletelyVisited(chessboard, moves) {
 }
 
 /**
- * @param {number[][]} chessboard
- * @param {number[][]} moves
- * @return {boolean}
+ * @param chessboard
+ * @param moves
  */
-function knightTourRecursive(chessboard, moves) {
+function knightTourRecursive(chessboard: number[][], moves: number[][]): boolean
+{
   const currentChessboard = chessboard;
 
   // If board has been completely visited then we've found a solution.
-  if (isBoardCompletelyVisited(currentChessboard, moves)) {
+  if (isBoardCompletelyVisited(currentChessboard, moves))
+  {
     return true;
   }
 
@@ -62,19 +65,22 @@ function knightTourRecursive(chessboard, moves) {
   const possibleMoves = getPossibleMoves(currentChessboard, lastMove);
 
   // Try to do next possible moves.
-  for (let moveIndex = 0; moveIndex < possibleMoves.length; moveIndex += 1) {
+  for (let moveIndex = 0; moveIndex < possibleMoves.length; moveIndex += 1)
+  {
     const currentMove = possibleMoves[moveIndex];
 
     // Check if current move is allowed. We aren't allowed to go to
     // the same cells twice.
-    if (isMoveAllowed(currentChessboard, currentMove)) {
+    if (isMoveAllowed(currentChessboard, currentMove))
+    {
       // Actually do the move.
       moves.push(currentMove);
       currentChessboard[currentMove[0]][currentMove[1]] = 1;
 
       // If further moves starting from current are successful then
       // return true meaning the solution is found.
-      if (knightTourRecursive(currentChessboard, moves)) {
+      if (knightTourRecursive(currentChessboard, moves))
+      {
         return true;
       }
 
@@ -90,15 +96,15 @@ function knightTourRecursive(chessboard, moves) {
 }
 
 /**
- * @param {number} chessboardSize
- * @return {number[][]}
+ * @param chessboardSize
  */
-export default function knightTour(chessboardSize) {
+export function knightTour(chessboardSize: number): number[][]
+{
   // Init chessboard.
-  const chessboard = Array(chessboardSize).fill(null).map(() => Array(chessboardSize).fill(0));
+  const chessboard: number[][] = Array(chessboardSize).fill(null).map(() => Array(chessboardSize).fill(0));
 
   // Init moves array.
-  const moves = [];
+  const moves: number[][] = [];
 
   // Do first move and place the knight to the 0x0 cell.
   const firstMove = [0, 0];
