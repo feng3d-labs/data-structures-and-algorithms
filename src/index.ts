@@ -42,6 +42,7 @@ export * from './algorithms/math/euclidean-algorithm/euclideanAlgorithmIterative
 export * from './algorithms/math/euclidean-distance/euclideanDistance';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
+export * from './algorithms/math/fast-powering/fastPowering';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
 export * as matrix from './algorithms/math/matrix/Matrix';
