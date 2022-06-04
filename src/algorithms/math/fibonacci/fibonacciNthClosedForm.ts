@@ -2,14 +2,15 @@
  * Calculate fibonacci number at specific position using closed form function (Binet's formula).
  * @see: https://en.wikipedia.org/wiki/Fibonacci_number#Closed-form_expression
  *
- * @param {number} position - Position number of fibonacci sequence (must be number from 1 to 75).
- * @return {number}
+ * @param position Position number of fibonacci sequence (must be number from 1 to 75).
  */
-export default function fibonacciClosedForm(position) {
+export function fibonacciNthClosedForm(position: number): number
+{
   const topMaxValidPosition = 70;
 
   // Check that position is valid.
-  if (position < 1 || position > topMaxValidPosition) {
+  if (position < 1 || position > topMaxValidPosition)
+  {
     throw new Error(`Can't handle position smaller than 1 or greater than ${topMaxValidPosition}`);
   }
 

@@ -2,21 +2,23 @@
  * Return a fibonacci sequence as an array.
  *
  * @param n
- * @return {number[]}
  */
-export default function fibonacci(n) {
+export function fibonacci(n: number): number[]
+{
   const fibSequence = [1];
 
   let currentValue = 1;
   let previousValue = 0;
 
-  if (n === 1) {
+  if (n === 1)
+  {
     return fibSequence;
   }
 
   let iterationsCounter = n - 1;
 
-  while (iterationsCounter) {
+  while (iterationsCounter)
+  {
     currentValue += previousValue;
     previousValue = currentValue - previousValue;
 
