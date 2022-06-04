@@ -44,6 +44,7 @@ export * from './algorithms/string/z-algorithm/zAlgorithm';
 export * from './algorithms/tree/breadth-first-search/breadthFirstSearch';
 export * from './algorithms/tree/depth-first-search/depthFirstSearch';
 export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/dpBestTimeToBuySellStocks';
+export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/dqBestTimeToBuySellStocks';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
