@@ -37,6 +37,8 @@ export * from './algorithms/math/bits/multiplyUnsigned';
 export * from './algorithms/math/bits/setBit';
 export * from './algorithms/math/bits/switchSign';
 export * from './algorithms/math/complex-number/ComplexNumber';
+export * from './algorithms/math/euclidean-algorithm/euclideanAlgorithm';
+export * from './algorithms/math/euclidean-algorithm/euclideanAlgorithmIterative';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';

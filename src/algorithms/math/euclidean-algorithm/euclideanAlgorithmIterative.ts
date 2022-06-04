@@ -1,17 +1,18 @@
 /**
  * Iterative version of Euclidean Algorithm of finding greatest common divisor (GCD).
- * @param {number} originalA
- * @param {number} originalB
- * @return {number}
+ * @param originalA
+ * @param originalB
  */
-export default function euclideanAlgorithmIterative(originalA, originalB) {
+export function euclideanAlgorithmIterative(originalA: number, originalB: number)
+{
   // Make input numbers positive.
   let a = Math.abs(originalA);
   let b = Math.abs(originalB);
 
   // Subtract one number from another until both numbers would become the same.
   // This will be out GCD. Also quit the loop if one of the numbers is zero.
-  while (a && b && a !== b) {
+  while (a && b && a !== b)
+  {
     [a, b] = a > b ? [a - b, b] : [a, b - a];
   }
 

@@ -1,10 +1,10 @@
 /**
  * Recursive version of Euclidean Algorithm of finding greatest common divisor (GCD).
- * @param {number} originalA
- * @param {number} originalB
- * @return {number}
+ * @param originalA
+ * @param originalB
  */
-export default function euclideanAlgorithm(originalA, originalB) {
+export function euclideanAlgorithm(originalA: number, originalB: number)
+{
   // Make input numbers positive.
   const a = Math.abs(originalA);
   const b = Math.abs(originalB);
