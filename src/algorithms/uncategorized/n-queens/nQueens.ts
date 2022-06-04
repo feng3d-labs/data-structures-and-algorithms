@@ -1,17 +1,18 @@
-import QueenPosition from './QueenPosition';
+import { QueenPosition } from './QueenPosition';
 
 /**
- * @param {QueenPosition[]} queensPositions
- * @param {number} rowIndex
- * @param {number} columnIndex
- * @return {boolean}
+ * @param queensPositions
+ * @param rowIndex
+ * @param columnIndex
  */
-function isSafe(queensPositions, rowIndex, columnIndex) {
+function isSafe(queensPositions: QueenPosition[], rowIndex: number, columnIndex: number): boolean
+{
   // New position to which the Queen is going to be placed.
   const newQueenPosition = new QueenPosition(rowIndex, columnIndex);
 
   // Check if new queen position conflicts with any other queens.
-  for (let queenIndex = 0; queenIndex < queensPositions.length; queenIndex += 1) {
+  for (let queenIndex = 0; queenIndex < queensPositions.length; queenIndex += 1)
+  {
     const currentQueenPosition = queensPositions[queenIndex];
 
     if (
@@ -27,7 +28,8 @@ function isSafe(queensPositions, rowIndex, columnIndex) {
         // Check if there are any queen on the same right diagonal.
         || newQueenPosition.rightDiagonal === currentQueenPosition.rightDiagonal
       )
-    ) {
+    )
+    {
       // Can't place queen into current position since there are other queens that
       // are threatening it.
       return false;
@@ -39,22 +41,22 @@ function isSafe(queensPositions, rowIndex, columnIndex) {
 }
 
 /**
- * @param {QueenPosition[][]} solutions
- * @param {QueenPosition[]} previousQueensPositions
- * @param {number} queensCount
- * @param {number} rowIndex
- * @return {boolean}
+ * @param solutions
+ * @param previousQueensPositions
+ * @param queensCount
+ * @param rowIndex
  */
-function nQueensRecursive(solutions, previousQueensPositions, queensCount, rowIndex) {
+function nQueensRecursive(solutions: QueenPosition[][], previousQueensPositions: QueenPosition[], queensCount: number, rowIndex: number): boolean
+{
   // Clone positions array.
-  const queensPositions = [...previousQueensPositions].map((queenPosition) => {
-    return !queenPosition ? queenPosition : new QueenPosition(
-      queenPosition.rowIndex,
-      queenPosition.columnIndex,
-    );
-  });
+  const queensPositions = [...previousQueensPositions].map((queenPosition) =>
+  (!queenPosition ? queenPosition : new QueenPosition(
+    queenPosition.rowIndex,
+    queenPosition.columnIndex,
+  )));
 
-  if (rowIndex === queensCount) {
+  if (rowIndex === queensCount)
+  {
     // We've successfully reached the end of the board.
     // Store solution to the list of solutions.
     solutions.push(queensPositions);
@@ -64,8 +66,10 @@ function nQueensRecursive(solutions, previousQueensPositions, queensCount, rowIn
   }
 
   // Let's try to put queen at row rowIndex into its safe column position.
-  for (let columnIndex = 0; columnIndex < queensCount; columnIndex += 1) {
-    if (isSafe(queensPositions, rowIndex, columnIndex)) {
+  for (let columnIndex = 0; columnIndex < queensCount; columnIndex += 1)
+  {
+    if (isSafe(queensPositions, rowIndex, columnIndex))
+    {
       // Place current queen to its current position.
       queensPositions[rowIndex] = new QueenPosition(rowIndex, columnIndex);
 
@@ -82,10 +86,10 @@ function nQueensRecursive(solutions, previousQueensPositions, queensCount, rowIn
 }
 
 /**
- * @param {number} queensCount
- * @return {QueenPosition[][]}
+ * @param queensCount
  */
-export default function nQueens(queensCount) {
+export function nQueens(queensCount: number): QueenPosition[][]
+{
   // Init NxN chessboard with zeros.
   // const chessboard = Array(queensCount).fill(null).map(() => Array(queensCount).fill(0));
 

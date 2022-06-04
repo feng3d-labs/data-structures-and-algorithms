@@ -53,6 +53,7 @@ export * from './algorithms/uncategorized/jump-game/dpBottomUpJumpGame';
 export * from './algorithms/uncategorized/jump-game/dpTopDownJumpGame';
 export * from './algorithms/uncategorized/jump-game/greedyJumpGame';
 export * from './algorithms/uncategorized/knight-tour/knightTour';
+export * from './algorithms/uncategorized/n-queens/nQueens';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';

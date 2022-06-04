@@ -1,23 +1,24 @@
 /**
  * Checks all possible board configurations.
  *
- * @param {number} boardSize - Size of the squared chess board.
- * @param {number} leftDiagonal - Sequence of N bits that show whether the corresponding location
+ * @param boardSize Size of the squared chess board.
+ * @param leftDiagonal Sequence of N bits that show whether the corresponding location
  * on the current row is "available" (no other queens are threatening from left diagonal).
- * @param {number} column - Sequence of N bits that show whether the corresponding location
+ * @param column Sequence of N bits that show whether the corresponding location
  * on the current row is "available" (no other queens are threatening from columns).
- * @param {number} rightDiagonal - Sequence of N bits that show whether the corresponding location
+ * @param rightDiagonal Sequence of N bits that show whether the corresponding location
  * on the current row is "available" (no other queens are threatening from right diagonal).
- * @param {number} solutionsCount - Keeps track of the number of valid solutions.
- * @return {number} - Number of possible solutions.
+ * @param solutionsCount Keeps track of the number of valid solutions.
+ * @return Number of possible solutions.
  */
 function nQueensBitwiseRecursive(
-  boardSize,
+  boardSize: number,
   leftDiagonal = 0,
   column = 0,
   rightDiagonal = 0,
   solutionsCount = 0,
-) {
+)
+{
   // Keeps track of the number of valid solutions.
   let currentSolutionsCount = solutionsCount;
 
@@ -30,7 +31,8 @@ function nQueensBitwiseRecursive(
   // All columns are occupied (i.e. 0b1111 for boardSize = 4), so the solution must be complete.
   // Since the algorithm never places a queen illegally (ie. when it can attack or be attacked),
   // we know that if all the columns have been filled, we must have a valid solution.
-  if (column === isDone) {
+  if (column === isDone)
+  {
     return currentSolutionsCount + 1;
   }
 
@@ -44,7 +46,8 @@ function nQueensBitwiseRecursive(
   // Loops as long as there is a valid place to put another queen.
   // For N=4 the isDone=0b1111. Then if availablePositions=0b0000 (which would mean that all places
   // are under threatening) we must stop trying to place a queen.
-  while (availablePositions & isDone) {
+  while (availablePositions & isDone)
+  {
     // firstAvailablePosition just stores the first non-zero bit (ie. the first available location).
     // So if firstAvailablePosition was 0010, it would mean the 3rd column of the current row.
     // And that would be the position will be placing our next queen.
@@ -92,10 +95,11 @@ function nQueensBitwiseRecursive(
 }
 
 /**
- * @param {number} boardSize - Size of the squared chess board.
- * @return {number} - Number of possible solutions.
+ * @param boardSize Size of the squared chess board.
+ * @return Number of possible solutions.
  * @see http://gregtrowbridge.com/a-bitwise-solution-to-the-n-queens-problem-in-javascript/
  */
-export default function nQueensBitwise(boardSize) {
+export function nQueensBitwise(boardSize: number)
+{
   return nQueensBitwiseRecursive(boardSize);
 }

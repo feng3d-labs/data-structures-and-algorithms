@@ -1,20 +1,23 @@
 /**
  * Class that represents queen position on the chessboard.
  */
-export default class QueenPosition {
+export class QueenPosition
+{
+  rowIndex: number;
+  columnIndex: number;
+
   /**
-   * @param {number} rowIndex
-   * @param {number} columnIndex
+   * @param rowIndex
+   * @param columnIndex
    */
-  constructor(rowIndex, columnIndex) {
+  constructor(rowIndex: number, columnIndex: number)
+  {
     this.rowIndex = rowIndex;
     this.columnIndex = columnIndex;
   }
 
-  /**
-   * @return {number}
-   */
-  get leftDiagonal() {
+  get leftDiagonal()
+  {
     // Each position on the same left (\) diagonal has the same difference of
     // rowIndex and columnIndex. This fact may be used to quickly check if two
     // positions (queens) are on the same left diagonal.
@@ -22,10 +25,8 @@ export default class QueenPosition {
     return this.rowIndex - this.columnIndex;
   }
 
-  /**
-   * @return {number}
-   */
-  get rightDiagonal() {
+  get rightDiagonal()
+  {
     // Each position on the same right diagonal (/) has the same
     // sum of rowIndex and columnIndex. This fact may be used to quickly
     // check if two positions (queens) are on the same right diagonal.
@@ -33,7 +34,8 @@ export default class QueenPosition {
     return this.rowIndex + this.columnIndex;
   }
 
-  toString() {
+  toString()
+  {
     return `${this.rowIndex},${this.columnIndex}`;
   }
 }
