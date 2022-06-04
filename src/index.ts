@@ -19,6 +19,8 @@ export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
 export * as matrix from './algorithms/math/matrix/Matrix';
+export * from './algorithms/sorting/bubble-sort/BubbleSort';
+export * from './algorithms/sorting/Sort';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
@@ -46,5 +48,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
-

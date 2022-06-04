@@ -1,5 +1,6 @@
-import BubbleSort from '../BubbleSort';
-import {
+import { BubbleSort } from '../BubbleSort';
+import
+{
   equalArr,
   notSortedArr,
   reverseArr,
@@ -13,24 +14,30 @@ const NOT_SORTED_ARRAY_VISITING_COUNT = 189;
 const REVERSE_SORTED_ARRAY_VISITING_COUNT = 209;
 const EQUAL_ARRAY_VISITING_COUNT = 20;
 
-describe('BubbleSort', () => {
-  it('should sort array', () => {
+describe('BubbleSort', () =>
+{
+  it('should sort array', () =>
+  {
     SortTester.testSort(BubbleSort);
   });
 
-  it('should sort array with custom comparator', () => {
+  it('should sort array with custom comparator', () =>
+  {
     SortTester.testSortWithCustomComparator(BubbleSort);
   });
 
-  it('should do stable sorting', () => {
+  it('should do stable sorting', () =>
+  {
     SortTester.testSortStability(BubbleSort);
   });
 
-  it('should sort negative numbers', () => {
+  it('should sort negative numbers', () =>
+  {
     SortTester.testNegativeNumbersSort(BubbleSort);
   });
 
-  it('should visit EQUAL array element specified number of times', () => {
+  it('should visit EQUAL array element specified number of times', () =>
+  {
     SortTester.testAlgorithmTimeComplexity(
       BubbleSort,
       equalArr,
@@ -38,7 +45,8 @@ describe('BubbleSort', () => {
     );
   });
 
-  it('should visit SORTED array element specified number of times', () => {
+  it('should visit SORTED array element specified number of times', () =>
+  {
     SortTester.testAlgorithmTimeComplexity(
       BubbleSort,
       sortedArr,
@@ -46,7 +54,8 @@ describe('BubbleSort', () => {
     );
   });
 
-  it('should visit NOT SORTED array element specified number of times', () => {
+  it('should visit NOT SORTED array element specified number of times', () =>
+  {
     SortTester.testAlgorithmTimeComplexity(
       BubbleSort,
       notSortedArr,
@@ -54,7 +63,8 @@ describe('BubbleSort', () => {
     );
   });
 
-  it('should visit REVERSE SORTED array element specified number of times', () => {
+  it('should visit REVERSE SORTED array element specified number of times', () =>
+  {
     SortTester.testAlgorithmTimeComplexity(
       BubbleSort,
       reverseArr,

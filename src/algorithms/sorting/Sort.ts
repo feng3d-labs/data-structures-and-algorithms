@@ -12,7 +12,7 @@ interface SorterCallbacks<T>
    * If provided it will be called each time the sorting
    * function is visiting the next element.
    */
-  visitingCallback?: () => void;
+  visitingCallback?: (v?: T) => void;
 }
 
 export class Sort<T>
@@ -40,7 +40,7 @@ export class Sort<T>
     return callbacks;
   }
 
-  sort()
+  sort(_p?: T[])
   {
     throw new Error('sort method must be implemented');
   }
