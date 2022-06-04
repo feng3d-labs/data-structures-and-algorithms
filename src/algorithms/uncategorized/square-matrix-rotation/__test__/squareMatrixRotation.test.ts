@@ -1,15 +1,19 @@
-import squareMatrixRotation from '../squareMatrixRotation';
+import { deepEqual } from 'assert';
+import { squareMatrixRotation } from '../squareMatrixRotation';
 
-describe('squareMatrixRotation', () => {
-  it('should rotate matrix #0 in-place', () => {
+describe('squareMatrixRotation', () =>
+{
+  it('should rotate matrix #0 in-place', () =>
+  {
     const matrix = [[1]];
 
     const rotatedMatrix = [[1]];
 
-    expect(squareMatrixRotation(matrix)).toEqual(rotatedMatrix);
+    deepEqual(squareMatrixRotation(matrix), rotatedMatrix);
   });
 
-  it('should rotate matrix #1 in-place', () => {
+  it('should rotate matrix #1 in-place', () =>
+  {
     const matrix = [
       [1, 2],
       [3, 4],
@@ -20,10 +24,11 @@ describe('squareMatrixRotation', () => {
       [4, 2],
     ];
 
-    expect(squareMatrixRotation(matrix)).toEqual(rotatedMatrix);
+    deepEqual(squareMatrixRotation(matrix), rotatedMatrix);
   });
 
-  it('should rotate matrix #2 in-place', () => {
+  it('should rotate matrix #2 in-place', () =>
+  {
     const matrix = [
       [1, 2, 3],
       [4, 5, 6],
@@ -36,10 +41,11 @@ describe('squareMatrixRotation', () => {
       [9, 6, 3],
     ];
 
-    expect(squareMatrixRotation(matrix)).toEqual(rotatedMatrix);
+    deepEqual(squareMatrixRotation(matrix), rotatedMatrix);
   });
 
-  it('should rotate matrix #3 in-place', () => {
+  it('should rotate matrix #3 in-place', () =>
+  {
     const matrix = [
       [5, 1, 9, 11],
       [2, 4, 8, 10],
@@ -54,6 +60,6 @@ describe('squareMatrixRotation', () => {
       [16, 7, 10, 11],
     ];
 
-    expect(squareMatrixRotation(matrix)).toEqual(rotatedMatrix);
+    deepEqual(squareMatrixRotation(matrix), rotatedMatrix);
   });
 });

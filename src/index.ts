@@ -60,6 +60,7 @@ export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircase
 export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircaseDP';
 export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircaseIT';
 export * from './algorithms/uncategorized/recursive-staircase/recursiveStaircaseMEM';
+export * from './algorithms/uncategorized/square-matrix-rotation/squareMatrixRotation';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
@@ -87,5 +88,4 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
 
