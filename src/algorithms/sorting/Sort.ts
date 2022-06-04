@@ -40,7 +40,7 @@ export class Sort<T>
     return callbacks;
   }
 
-  sort(_p?: T[])
+  sort(_array?: T[]): T[]
   {
     throw new Error('sort method must be implemented');
   }

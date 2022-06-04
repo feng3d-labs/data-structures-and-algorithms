@@ -1,12 +1,11 @@
-import Sort from '../Sort';
+import { Sort } from '../Sort';
 
-export default class QuickSort extends Sort
+export class QuickSort<T> extends Sort<T>
 {
   /**
-   * @param {*[]} originalArray
-   * @return {*[]}
+   * @param originalArray
    */
-  sort(originalArray)
+  sort(originalArray: T[]): T[]
   {
     // Clone original array to prevent it from modification.
     const array = [...originalArray];
@@ -36,10 +35,12 @@ export default class QuickSort extends Sort
       if (this.comparator.equal(currentElement, pivotElement))
       {
         centerArray.push(currentElement);
-      } else if (this.comparator.lessThan(currentElement, pivotElement))
+      }
+      else if (this.comparator.lessThan(currentElement, pivotElement))
       {
         leftArray.push(currentElement);
-      } else
+      }
+      else
       {
         rightArray.push(currentElement);
       }
