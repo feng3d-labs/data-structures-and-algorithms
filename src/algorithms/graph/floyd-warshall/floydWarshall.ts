@@ -1,40 +1,51 @@
+import { Graph } from '../../../data-structures/graph/Graph';
+import { GraphVertex } from '../../../data-structures/graph/GraphVertex';
+
 /**
- * @param {Graph} graph
- * @return {{distances: number[][], nextVertices: GraphVertex[][]}}
+ * 弗洛伊德算法(Floyd-Warshall algorithm)
+ *
+ * @param graph
  */
-export default function floydWarshall(graph) {
+export function floydWarshall<T>(graph: Graph<T>): { distances: number[][], nextVertices: GraphVertex<T>[][] }
+{
   // Get all graph vertices.
   const vertices = graph.getAllVertices();
 
   // Init previous vertices matrix with nulls meaning that there are no
   // previous vertices exist that will give us shortest path.
-  const nextVertices = Array(vertices.length).fill(null).map(() => {
-    return Array(vertices.length).fill(null);
-  });
+  const nextVertices: GraphVertex<T>[][] = Array(vertices.length).fill(null).map(() =>
+    Array(vertices.length).fill(null));
 
   // Init distances matrix with Infinities meaning there are no paths
   // between vertices exist so far.
-  const distances = Array(vertices.length).fill(null).map(() => {
-    return Array(vertices.length).fill(Infinity);
-  });
+  const distances: number[][] = Array(vertices.length).fill(null).map(() =>
+    Array(vertices.length).fill(Infinity));
 
   // Init distance matrix with the distance we already now (from existing edges).
   // And also init previous vertices from the edges.
-  vertices.forEach((startVertex, startIndex) => {
-    vertices.forEach((endVertex, endIndex) => {
-      if (startVertex === endVertex) {
+  vertices.forEach((startVertex, startIndex) =>
+  {
+    vertices.forEach((endVertex, endIndex) =>
+    {
+      if (startVertex === endVertex)
+      {
         // Distance to the vertex itself is 0.
         distances[startIndex][endIndex] = 0;
-      } else {
+      }
+      else
+      {
         // Find edge between the start and end vertices.
         const edge = graph.findEdge(startVertex, endVertex);
 
-        if (edge) {
+        if (edge)
+        {
           // There is an edge from vertex with startIndex to vertex with endIndex.
           // Save distance and previous vertex.
           distances[startIndex][endIndex] = edge.weight;
           nextVertices[startIndex][endIndex] = startVertex;
-        } else {
+        }
+        else
+        {
           distances[startIndex][endIndex] = Infinity;
         }
       }
@@ -46,18 +57,22 @@ export default function floydWarshall(graph) {
   // is a shorter path exists between them via middle vertex. Middle vertex may also
   // be one of the graph vertices. As you may see now we're going to have three
   // loops over all graph vertices: for start, end and middle vertices.
-  vertices.forEach((middleVertex, middleIndex) => {
+  vertices.forEach((middleVertex, middleIndex) =>
+  {
     // Path starts from startVertex with startIndex.
-    vertices.forEach((startVertex, startIndex) => {
+    vertices.forEach((startVertex, startIndex) =>
+    {
       // Path ends to endVertex with endIndex.
-      vertices.forEach((endVertex, endIndex) => {
+      vertices.forEach((endVertex, endIndex) =>
+      {
         // Compare existing distance from startVertex to endVertex, with distance
         // from startVertex to endVertex but via middleVertex.
         // Save the shortest distance and previous vertex that allows
         // us to have this shortest distance.
         const distViaMiddle = distances[startIndex][middleIndex] + distances[middleIndex][endIndex];
 
-        if (distances[startIndex][endIndex] > distViaMiddle) {
+        if (distances[startIndex][endIndex] > distViaMiddle)
+        {
           // We've found a shortest pass via middle vertex.
           distances[startIndex][endIndex] = distViaMiddle;
           nextVertices[startIndex][endIndex] = middleVertex;

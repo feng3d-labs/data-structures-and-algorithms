@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import floydWarshall from '../floydWarshall';
+import { deepEqual } from 'assert';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { floydWarshall } from '../floydWarshall';
 
-describe('floydWarshall', () => {
-  it('should find minimum paths to all vertices for undirected graph', () => {
+describe('floydWarshall', () =>
+{
+  it('should find minimum paths to all vertices for undirected graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -68,25 +71,26 @@ describe('floydWarshall', () => {
     const vertexGIndex = vertices.indexOf(vertexG);
     const vertexHIndex = vertices.indexOf(vertexH);
 
-    expect(distances[vertexAIndex][vertexHIndex]).toBe(Infinity);
-    expect(distances[vertexAIndex][vertexAIndex]).toBe(0);
-    expect(distances[vertexAIndex][vertexBIndex]).toBe(4);
-    expect(distances[vertexAIndex][vertexEIndex]).toBe(7);
-    expect(distances[vertexAIndex][vertexCIndex]).toBe(3);
-    expect(distances[vertexAIndex][vertexDIndex]).toBe(9);
-    expect(distances[vertexAIndex][vertexGIndex]).toBe(12);
-    expect(distances[vertexAIndex][vertexFIndex]).toBe(11);
+    deepEqual(distances[vertexAIndex][vertexHIndex], Infinity);
+    deepEqual(distances[vertexAIndex][vertexAIndex], 0);
+    deepEqual(distances[vertexAIndex][vertexBIndex], 4);
+    deepEqual(distances[vertexAIndex][vertexEIndex], 7);
+    deepEqual(distances[vertexAIndex][vertexCIndex], 3);
+    deepEqual(distances[vertexAIndex][vertexDIndex], 9);
+    deepEqual(distances[vertexAIndex][vertexGIndex], 12);
+    deepEqual(distances[vertexAIndex][vertexFIndex], 11);
 
-    expect(nextVertices[vertexAIndex][vertexFIndex]).toBe(vertexD);
-    expect(nextVertices[vertexAIndex][vertexDIndex]).toBe(vertexB);
-    expect(nextVertices[vertexAIndex][vertexBIndex]).toBe(vertexA);
-    expect(nextVertices[vertexAIndex][vertexGIndex]).toBe(vertexE);
-    expect(nextVertices[vertexAIndex][vertexCIndex]).toBe(vertexA);
-    expect(nextVertices[vertexAIndex][vertexAIndex]).toBe(null);
-    expect(nextVertices[vertexAIndex][vertexHIndex]).toBe(null);
+    deepEqual(nextVertices[vertexAIndex][vertexFIndex], vertexD);
+    deepEqual(nextVertices[vertexAIndex][vertexDIndex], vertexB);
+    deepEqual(nextVertices[vertexAIndex][vertexBIndex], vertexA);
+    deepEqual(nextVertices[vertexAIndex][vertexGIndex], vertexE);
+    deepEqual(nextVertices[vertexAIndex][vertexCIndex], vertexA);
+    deepEqual(nextVertices[vertexAIndex][vertexAIndex], null);
+    deepEqual(nextVertices[vertexAIndex][vertexHIndex], null);
   });
 
-  it('should find minimum paths to all vertices for directed graph', () => {
+  it('should find minimum paths to all vertices for directed graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -128,26 +132,27 @@ describe('floydWarshall', () => {
     const vertexCIndex = vertices.indexOf(vertexC);
     const vertexDIndex = vertices.indexOf(vertexD);
 
-    expect(distances[vertexAIndex][vertexAIndex]).toBe(0);
-    expect(distances[vertexAIndex][vertexBIndex]).toBe(3);
-    expect(distances[vertexAIndex][vertexCIndex]).toBe(5);
-    expect(distances[vertexAIndex][vertexDIndex]).toBe(6);
+    deepEqual(distances[vertexAIndex][vertexAIndex], 0);
+    deepEqual(distances[vertexAIndex][vertexBIndex], 3);
+    deepEqual(distances[vertexAIndex][vertexCIndex], 5);
+    deepEqual(distances[vertexAIndex][vertexDIndex], 6);
 
-    expect(distances).toEqual([
+    deepEqual(distances, [
       [0, 3, 5, 6],
       [5, 0, 2, 3],
       [3, 6, 0, 1],
       [2, 5, 7, 0],
     ]);
 
-    expect(nextVertices[vertexAIndex][vertexDIndex]).toBe(vertexC);
-    expect(nextVertices[vertexAIndex][vertexCIndex]).toBe(vertexB);
-    expect(nextVertices[vertexBIndex][vertexDIndex]).toBe(vertexC);
-    expect(nextVertices[vertexAIndex][vertexAIndex]).toBe(null);
-    expect(nextVertices[vertexAIndex][vertexBIndex]).toBe(vertexA);
+    deepEqual(nextVertices[vertexAIndex][vertexDIndex], vertexC);
+    deepEqual(nextVertices[vertexAIndex][vertexCIndex], vertexB);
+    deepEqual(nextVertices[vertexBIndex][vertexDIndex], vertexC);
+    deepEqual(nextVertices[vertexAIndex][vertexAIndex], null);
+    deepEqual(nextVertices[vertexAIndex][vertexBIndex], vertexA);
   });
 
-  it('should find minimum paths to all vertices for directed graph with negative edge weights', () => {
+  it('should find minimum paths to all vertices for directed graph with negative edge weights', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -200,21 +205,21 @@ describe('floydWarshall', () => {
     const vertexGIndex = vertices.indexOf(vertexG);
     const vertexFIndex = vertices.indexOf(vertexF);
 
-    expect(distances[vertexFIndex][vertexGIndex]).toBe(Infinity);
-    expect(distances[vertexFIndex][vertexFIndex]).toBe(0);
-    expect(distances[vertexFIndex][vertexAIndex]).toBe(5);
-    expect(distances[vertexFIndex][vertexBIndex]).toBe(5);
-    expect(distances[vertexFIndex][vertexCIndex]).toBe(7);
-    expect(distances[vertexFIndex][vertexDIndex]).toBe(9);
-    expect(distances[vertexFIndex][vertexEIndex]).toBe(8);
+    deepEqual(distances[vertexFIndex][vertexGIndex], Infinity);
+    deepEqual(distances[vertexFIndex][vertexFIndex], 0);
+    deepEqual(distances[vertexFIndex][vertexAIndex], 5);
+    deepEqual(distances[vertexFIndex][vertexBIndex], 5);
+    deepEqual(distances[vertexFIndex][vertexCIndex], 7);
+    deepEqual(distances[vertexFIndex][vertexDIndex], 9);
+    deepEqual(distances[vertexFIndex][vertexEIndex], 8);
 
-    expect(nextVertices[vertexFIndex][vertexGIndex]).toBe(null);
-    expect(nextVertices[vertexFIndex][vertexFIndex]).toBe(null);
-    expect(nextVertices[vertexAIndex][vertexBIndex]).toBe(vertexC);
-    expect(nextVertices[vertexAIndex][vertexCIndex]).toBe(vertexA);
-    expect(nextVertices[vertexFIndex][vertexBIndex]).toBe(vertexE);
-    expect(nextVertices[vertexEIndex][vertexBIndex]).toBe(vertexD);
-    expect(nextVertices[vertexDIndex][vertexBIndex]).toBe(vertexC);
-    expect(nextVertices[vertexCIndex][vertexBIndex]).toBe(vertexC);
+    deepEqual(nextVertices[vertexFIndex][vertexGIndex], null);
+    deepEqual(nextVertices[vertexFIndex][vertexFIndex], null);
+    deepEqual(nextVertices[vertexAIndex][vertexBIndex], vertexC);
+    deepEqual(nextVertices[vertexAIndex][vertexCIndex], vertexA);
+    deepEqual(nextVertices[vertexFIndex][vertexBIndex], vertexE);
+    deepEqual(nextVertices[vertexEIndex][vertexBIndex], vertexD);
+    deepEqual(nextVertices[vertexDIndex][vertexBIndex], vertexC);
+    deepEqual(nextVertices[vertexCIndex][vertexBIndex], vertexC);
   });
 });
