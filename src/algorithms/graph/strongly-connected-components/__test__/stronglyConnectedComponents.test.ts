@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import stronglyConnectedComponents from '../stronglyConnectedComponents';
+import { deepEqual } from 'assert';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { stronglyConnectedComponents } from '../stronglyConnectedComponents';
 
-describe('stronglyConnectedComponents', () => {
-  it('should detect strongly connected components in simple graph', () => {
+describe('stronglyConnectedComponents', () =>
+{
+  it('should detect strongly connected components in simple graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -25,17 +28,18 @@ describe('stronglyConnectedComponents', () => {
 
     const components = stronglyConnectedComponents(graph);
 
-    expect(components).toBeDefined();
-    expect(components.length).toBe(2);
+    deepEqual(!!components, true);
+    deepEqual(components.length, 2);
 
-    expect(components[0][0].getKey()).toBe(vertexA.getKey());
-    expect(components[0][1].getKey()).toBe(vertexC.getKey());
-    expect(components[0][2].getKey()).toBe(vertexB.getKey());
+    deepEqual(components[0][0].getKey(), vertexA.getKey());
+    deepEqual(components[0][1].getKey(), vertexC.getKey());
+    deepEqual(components[0][2].getKey(), vertexB.getKey());
 
-    expect(components[1][0].getKey()).toBe(vertexD.getKey());
+    deepEqual(components[1][0].getKey(), vertexD.getKey());
   });
 
-  it('should detect strongly connected components in graph', () => {
+  it('should detect strongly connected components in graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -81,22 +85,22 @@ describe('stronglyConnectedComponents', () => {
 
     const components = stronglyConnectedComponents(graph);
 
-    expect(components).toBeDefined();
-    expect(components.length).toBe(4);
+    deepEqual(!!components, true);
+    deepEqual(components.length, 4);
 
-    expect(components[0][0].getKey()).toBe(vertexG.getKey());
-    expect(components[0][1].getKey()).toBe(vertexJ.getKey());
-    expect(components[0][2].getKey()).toBe(vertexI.getKey());
-    expect(components[0][3].getKey()).toBe(vertexH.getKey());
+    deepEqual(components[0][0].getKey(), vertexG.getKey());
+    deepEqual(components[0][1].getKey(), vertexJ.getKey());
+    deepEqual(components[0][2].getKey(), vertexI.getKey());
+    deepEqual(components[0][3].getKey(), vertexH.getKey());
 
-    expect(components[1][0].getKey()).toBe(vertexK.getKey());
+    deepEqual(components[1][0].getKey(), vertexK.getKey());
 
-    expect(components[2][0].getKey()).toBe(vertexA.getKey());
-    expect(components[2][1].getKey()).toBe(vertexC.getKey());
-    expect(components[2][2].getKey()).toBe(vertexB.getKey());
+    deepEqual(components[2][0].getKey(), vertexA.getKey());
+    deepEqual(components[2][1].getKey(), vertexC.getKey());
+    deepEqual(components[2][2].getKey(), vertexB.getKey());
 
-    expect(components[3][0].getKey()).toBe(vertexD.getKey());
-    expect(components[3][1].getKey()).toBe(vertexF.getKey());
-    expect(components[3][2].getKey()).toBe(vertexE.getKey());
+    deepEqual(components[3][0].getKey(), vertexD.getKey());
+    deepEqual(components[3][1].getKey(), vertexF.getKey());
+    deepEqual(components[3][2].getKey(), vertexE.getKey());
   });
 });

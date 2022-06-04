@@ -11,4 +11,4 @@ export * from './eulerian-path/eulerianPath';
 export * from './hamiltonian-cycle/hamiltonianCycle';
 export * from './kruskal/kruskal';
 export * from './prim/prim';
-
+export * from './strongly-connected-components/stronglyConnectedComponents';
