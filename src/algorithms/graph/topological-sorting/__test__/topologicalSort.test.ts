@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import topologicalSort from '../topologicalSort';
+import { deepEqual } from 'assert';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { topologicalSort } from '../topologicalSort';
 
-describe('topologicalSort', () => {
-  it('should do topological sorting on graph', () => {
+describe('topologicalSort', () =>
+{
+  it('should do topological sorting on graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -37,9 +40,9 @@ describe('topologicalSort', () => {
 
     const sortedVertices = topologicalSort(graph);
 
-    expect(sortedVertices).toBeDefined();
-    expect(sortedVertices.length).toBe(graph.getAllVertices().length);
-    expect(sortedVertices).toEqual([
+    deepEqual(!!sortedVertices, true);
+    deepEqual(sortedVertices.length, graph.getAllVertices().length);
+    deepEqual(sortedVertices, [
       vertexB,
       vertexD,
       vertexA,
