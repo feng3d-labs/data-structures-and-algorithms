@@ -7,13 +7,14 @@
  * is reachable. We repeat the process until last index is reached.
  * When stuck, backtrack.
  *
- * @param {number[]} numbers - array of possible jump length.
- * @param {number} startIndex - index from where we start jumping.
- * @param {number[]} currentJumps - current jumps path.
- * @return {boolean}
+ * @param numbers array of possible jump length.
+ * @param startIndex index from where we start jumping.
+ * @param currentJumps current jumps path.
  */
-export default function backtrackingJumpGame(numbers, startIndex = 0, currentJumps = []) {
-  if (startIndex === numbers.length - 1) {
+export function backtrackingJumpGame(numbers: number[], startIndex = 0, currentJumps: number[] = []): boolean
+{
+  if (startIndex === numbers.length - 1)
+  {
     // We've jumped directly to last cell. This situation is a solution.
     return true;
   }
@@ -27,7 +28,8 @@ export default function backtrackingJumpGame(numbers, startIndex = 0, currentJum
 
   // Let's start jumping from startIndex and see whether any
   // jump is successful and has reached the end of the array.
-  for (let jumpLength = maxJumpLength; jumpLength > 0; jumpLength -= 1) {
+  for (let jumpLength = maxJumpLength; jumpLength > 0; jumpLength -= 1)
+  {
     // Try next jump.
     const nextIndex = startIndex + jumpLength;
     currentJumps.push(nextIndex);
@@ -35,7 +37,8 @@ export default function backtrackingJumpGame(numbers, startIndex = 0, currentJum
     const isJumpSuccessful = backtrackingJumpGame(numbers, nextIndex, currentJumps);
 
     // Check if current jump was successful.
-    if (isJumpSuccessful) {
+    if (isJumpSuccessful)
+    {
       return true;
     }
 
