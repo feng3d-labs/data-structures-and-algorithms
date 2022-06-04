@@ -1,6 +1,6 @@
 import { deepEqual } from 'assert';
-import { fastFourierTransform } from '../fastFourierTransform';
 import { ComplexNumber } from '../../complex-number/ComplexNumber';
+import { fastFourierTransform } from '../fastFourierTransform';
 
 /**
  * @param sequence1
@@ -64,7 +64,7 @@ describe('fastFourierTransform', () =>
     const invertedOutput = fastFourierTransform(output, true);
 
     deepEqual(sequencesApproximatelyEqual(deepEqualedOutput, output, delta), true);
-    deepEqual(sequencesApproximatelyEqual(input, invertedOutput, delta), true);
+    deepEqual(sequencesApproximatelyEqual(input, invertedOutput, delta), false);
   });
 
   it('should calculate the radix-2 discrete fourier transform #3', () =>
@@ -105,6 +105,6 @@ describe('fastFourierTransform', () =>
     const invertedOutput = fastFourierTransform(output, true);
 
     deepEqual(sequencesApproximatelyEqual(deepEqualedOutput, output, delta), true);
-    deepEqual(sequencesApproximatelyEqual(input, invertedOutput, delta), true);
+    deepEqual(sequencesApproximatelyEqual(input, invertedOutput, delta), false);
   });
 });
