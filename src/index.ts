@@ -25,6 +25,7 @@ export * from './algorithms/sorting/insertion-sort/InsertionSort';
 export * from './algorithms/sorting/merge-sort/MergeSort';
 export * from './algorithms/sorting/quick-sort/QuickSort';
 export * from './algorithms/sorting/radix-sort/RadixSort';
+export * from './algorithms/sorting/selection-sort/SelectionSort';
 export * from './algorithms/sorting/Sort';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
