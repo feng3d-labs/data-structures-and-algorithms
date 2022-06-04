@@ -1,18 +1,20 @@
 /**
  * BACKTRACKING approach of solving Unique Paths problem.
  *
- * @param {number} width - Width of the board.
- * @param {number} height - Height of the board.
- * @param {number[][]} steps - The steps that have been already made.
- * @param {number} uniqueSteps - Total number of unique steps.
- * @return {number} - Number of unique paths.
+ * @param width Width of the board.
+ * @param height Height of the board.
+ * @param steps The steps that have been already made.
+ * @param uniqueSteps - Total number of unique steps.
+ * @return Number of unique paths.
  */
-export default function btUniquePaths(width, height, steps = [[0, 0]], uniqueSteps = 0) {
+export function btUniquePaths(width: number, height: number, steps = [[0, 0]], uniqueSteps = 0): number
+{
   // Fetch current position on board.
   const currentPos = steps[steps.length - 1];
 
   // Check if we've reached the end.
-  if (currentPos[0] === width - 1 && currentPos[1] === height - 1) {
+  if (currentPos[0] === width - 1 && currentPos[1] === height - 1)
+  {
     // In case if we've reached the end let's increase total
     // number of unique steps.
     return uniqueSteps + 1;
@@ -24,7 +26,8 @@ export default function btUniquePaths(width, height, steps = [[0, 0]], uniqueSte
   let downUniqueSteps = 0;
 
   // Do right step if possible.
-  if (currentPos[0] < width - 1) {
+  if (currentPos[0] < width - 1)
+  {
     steps.push([
       currentPos[0] + 1,
       currentPos[1],
@@ -38,7 +41,8 @@ export default function btUniquePaths(width, height, steps = [[0, 0]], uniqueSte
   }
 
   // Do down step if possible.
-  if (currentPos[1] < height - 1) {
+  if (currentPos[1] < height - 1)
+  {
     steps.push([
       currentPos[0],
       currentPos[1] + 1,
