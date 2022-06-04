@@ -20,6 +20,7 @@ export * from './algorithms/graph/strongly-connected-components/stronglyConnecte
 export * from './algorithms/graph/topological-sorting/topologicalSort';
 export * from './algorithms/graph/travelling-salesman/bfTravellingSalesman';
 export * from './algorithms/math/binary-floating-point/bitsToFloat';
+export * from './algorithms/math/binary-floating-point/floatAsBinaryString';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
