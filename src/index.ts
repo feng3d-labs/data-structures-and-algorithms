@@ -50,6 +50,7 @@ export * from './algorithms/uncategorized/best-time-to-buy-sell-stocks/peakvalle
 export * from './algorithms/uncategorized/hanoi-tower/hanoiTower';
 export * from './algorithms/uncategorized/jump-game/backtrackingJumpGame';
 export * from './algorithms/uncategorized/jump-game/dpBottomUpJumpGame';
+export * from './algorithms/uncategorized/jump-game/dpTopDownJumpGame';
 export * from './algorithms/uncategorized/jump-game/greedyJumpGame';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
@@ -78,4 +79,5 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
+
 
