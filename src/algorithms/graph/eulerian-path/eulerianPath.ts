@@ -1,32 +1,40 @@
-import graphBridges from '../bridges/graphBridges';
+import { Graph } from '../../../data-structures/graph/Graph';
+import { GraphEdge } from '../../../data-structures/graph/GraphEdge';
+import { GraphVertex } from '../../../data-structures/graph/GraphVertex';
+import { graphBridges } from '../bridges/graphBridges';
 
 /**
  * Fleury's algorithm of finding Eulerian Path (visit all graph edges exactly once).
  *
- * @param {Graph} graph
- * @return {GraphVertex[]}
+ * @param graph
  */
-export default function eulerianPath(graph) {
-  const eulerianPathVertices = [];
+export function eulerianPath<T>(graph: Graph<T>): GraphVertex<T>[]
+{
+  const eulerianPathVertices: GraphVertex<T>[] = [];
 
   // Set that contains all vertices with even rank (number of neighbors).
-  const evenRankVertices = {};
+  const evenRankVertices: { [key: string]: GraphVertex<T> } = {};
 
   // Set that contains all vertices with odd rank (number of neighbors).
-  const oddRankVertices = {};
+  const oddRankVertices: { [key: string]: GraphVertex<T> } = {};
 
   // Set of all not visited edges.
-  const notVisitedEdges = {};
-  graph.getAllEdges().forEach((vertex) => {
+  const notVisitedEdges: { [key: string]: GraphEdge<T> } = {};
+  graph.getAllEdges().forEach((vertex) =>
+  {
     notVisitedEdges[vertex.getKey()] = vertex;
   });
 
   // Detect whether graph contains Eulerian Circuit or Eulerian Path or none of them.
   /** @params {GraphVertex} vertex */
-  graph.getAllVertices().forEach((vertex) => {
-    if (vertex.getDegree() % 2) {
+  graph.getAllVertices().forEach((vertex) =>
+  {
+    if (vertex.getDegree() % 2)
+    {
       oddRankVertices[vertex.getKey()] = vertex;
-    } else {
+    }
+    else
+    {
       evenRankVertices[vertex.getKey()] = vertex;
     }
   });
@@ -37,19 +45,23 @@ export default function eulerianPath(graph) {
   // vertices in order to have Euler Path.
   const isCircuit = !Object.values(oddRankVertices).length;
 
-  if (!isCircuit && Object.values(oddRankVertices).length !== 2) {
+  if (!isCircuit && Object.values(oddRankVertices).length !== 2)
+  {
     throw new Error('Eulerian path must contain two odd-ranked vertices');
   }
 
   // Pick start vertex for traversal.
-  let startVertex = null;
+  let startVertex: GraphVertex<T> = null;
 
-  if (isCircuit) {
+  if (isCircuit)
+  {
     // For Eulerian Circuit it doesn't matter from what vertex to start thus we'll just
     // peek a first node.
     const evenVertexKey = Object.keys(evenRankVertices)[0];
     startVertex = evenRankVertices[evenVertexKey];
-  } else {
+  }
+  else
+  {
     // For Eulerian Path we need to start from one of two odd-degree vertices.
     const oddVertexKey = Object.keys(oddRankVertices)[0];
     startVertex = oddRankVertices[oddVertexKey];
@@ -57,7 +69,8 @@ export default function eulerianPath(graph) {
 
   // Start traversing the graph.
   let currentVertex = startVertex;
-  while (Object.values(notVisitedEdges).length) {
+  while (Object.values(notVisitedEdges).length)
+  {
     // Add current vertex to Eulerian path.
     eulerianPathVertices.push(currentVertex);
 
@@ -70,18 +83,24 @@ export default function eulerianPath(graph) {
     const currentEdges = currentVertex.getEdges();
     /** @var {GraphEdge} edgeToDelete */
     let edgeToDelete = null;
-    if (currentEdges.length === 1) {
+    if (currentEdges.length === 1)
+    {
       // If there is only one edge left we need to peek it.
       [edgeToDelete] = currentEdges;
-    } else {
+    }
+    else
+    {
       // If there are many edges left then we need to peek any of those except bridges.
       [edgeToDelete] = currentEdges.filter((edge) => !bridges[edge.getKey()]);
     }
 
     // Detect next current vertex.
-    if (currentVertex.getKey() === edgeToDelete.startVertex.getKey()) {
+    if (currentVertex.getKey() === edgeToDelete.startVertex.getKey())
+    {
       currentVertex = edgeToDelete.endVertex;
-    } else {
+    }
+    else
+    {
       currentVertex = edgeToDelete.startVertex;
     }
 
@@ -89,7 +108,8 @@ export default function eulerianPath(graph) {
     delete notVisitedEdges[edgeToDelete.getKey()];
 
     // If last edge were deleted then add finish vertex to Eulerian Path.
-    if (Object.values(notVisitedEdges).length === 0) {
+    if (Object.values(notVisitedEdges).length === 0)
+    {
       eulerianPathVertices.push(currentVertex);
     }
 

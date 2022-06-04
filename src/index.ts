@@ -12,6 +12,7 @@ export * from './algorithms/graph/detect-cycle/detectDirectedCycle';
 export * from './algorithms/graph/detect-cycle/detectUndirectedCycle';
 export * from './algorithms/graph/detect-cycle/detectUndirectedCycleUsingDisjointSet';
 export * from './algorithms/graph/dijkstra/dijkstra';
+export * from './algorithms/graph/eulerian-path/eulerianPath';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
@@ -44,5 +45,4 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
 

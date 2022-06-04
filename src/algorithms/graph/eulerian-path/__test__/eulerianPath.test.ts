@@ -1,11 +1,15 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import eulerianPath from '../eulerianPath';
+import { deepEqual, throws } from 'assert';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { eulerianPath } from '../eulerianPath';
 
-describe('eulerianPath', () => {
-  it('should throw an error when graph is not Eulerian', () => {
-    function findEulerianPathInNotEulerianGraph() {
+describe('eulerianPath', () =>
+{
+  it('should throw an error when graph is not Eulerian', () =>
+  {
+    function findEulerianPathInNotEulerianGraph()
+    {
       const vertexA = new GraphVertex('A');
       const vertexB = new GraphVertex('B');
       const vertexC = new GraphVertex('C');
@@ -30,10 +34,11 @@ describe('eulerianPath', () => {
       eulerianPath(graph);
     }
 
-    expect(findEulerianPathInNotEulerianGraph).toThrowError();
+    throws(findEulerianPathInNotEulerianGraph);
   });
 
-  it('should find Eulerian Circuit in graph', () => {
+  it('should find Eulerian Circuit in graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -71,22 +76,23 @@ describe('eulerianPath', () => {
 
     const eulerianPathSet = eulerianPath(graph);
 
-    expect(eulerianPathSet.length).toBe(graphEdgesCount + 1);
+    deepEqual(eulerianPathSet.length, graphEdgesCount + 1);
 
-    expect(eulerianPathSet[0].getKey()).toBe(vertexA.getKey());
-    expect(eulerianPathSet[1].getKey()).toBe(vertexB.getKey());
-    expect(eulerianPathSet[2].getKey()).toBe(vertexE.getKey());
-    expect(eulerianPathSet[3].getKey()).toBe(vertexB.getKey());
-    expect(eulerianPathSet[4].getKey()).toBe(vertexC.getKey());
-    expect(eulerianPathSet[5].getKey()).toBe(vertexD.getKey());
-    expect(eulerianPathSet[6].getKey()).toBe(vertexE.getKey());
-    expect(eulerianPathSet[7].getKey()).toBe(vertexA.getKey());
-    expect(eulerianPathSet[8].getKey()).toBe(vertexF.getKey());
-    expect(eulerianPathSet[9].getKey()).toBe(vertexG.getKey());
-    expect(eulerianPathSet[10].getKey()).toBe(vertexA.getKey());
+    deepEqual(eulerianPathSet[0].getKey(), vertexA.getKey());
+    deepEqual(eulerianPathSet[1].getKey(), vertexB.getKey());
+    deepEqual(eulerianPathSet[2].getKey(), vertexE.getKey());
+    deepEqual(eulerianPathSet[3].getKey(), vertexB.getKey());
+    deepEqual(eulerianPathSet[4].getKey(), vertexC.getKey());
+    deepEqual(eulerianPathSet[5].getKey(), vertexD.getKey());
+    deepEqual(eulerianPathSet[6].getKey(), vertexE.getKey());
+    deepEqual(eulerianPathSet[7].getKey(), vertexA.getKey());
+    deepEqual(eulerianPathSet[8].getKey(), vertexF.getKey());
+    deepEqual(eulerianPathSet[9].getKey(), vertexG.getKey());
+    deepEqual(eulerianPathSet[10].getKey(), vertexA.getKey());
   });
 
-  it('should find Eulerian Path in graph', () => {
+  it('should find Eulerian Path in graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -123,17 +129,17 @@ describe('eulerianPath', () => {
 
     const eulerianPathSet = eulerianPath(graph);
 
-    expect(eulerianPathSet.length).toBe(graphEdgesCount + 1);
+    deepEqual(eulerianPathSet.length, graphEdgesCount + 1);
 
-    expect(eulerianPathSet[0].getKey()).toBe(vertexC.getKey());
-    expect(eulerianPathSet[1].getKey()).toBe(vertexA.getKey());
-    expect(eulerianPathSet[2].getKey()).toBe(vertexB.getKey());
-    expect(eulerianPathSet[3].getKey()).toBe(vertexD.getKey());
-    expect(eulerianPathSet[4].getKey()).toBe(vertexC.getKey());
-    expect(eulerianPathSet[5].getKey()).toBe(vertexE.getKey());
-    expect(eulerianPathSet[6].getKey()).toBe(vertexF.getKey());
-    expect(eulerianPathSet[7].getKey()).toBe(vertexH.getKey());
-    expect(eulerianPathSet[8].getKey()).toBe(vertexG.getKey());
-    expect(eulerianPathSet[9].getKey()).toBe(vertexF.getKey());
+    deepEqual(eulerianPathSet[0].getKey(), vertexC.getKey());
+    deepEqual(eulerianPathSet[1].getKey(), vertexA.getKey());
+    deepEqual(eulerianPathSet[2].getKey(), vertexB.getKey());
+    deepEqual(eulerianPathSet[3].getKey(), vertexD.getKey());
+    deepEqual(eulerianPathSet[4].getKey(), vertexC.getKey());
+    deepEqual(eulerianPathSet[5].getKey(), vertexE.getKey());
+    deepEqual(eulerianPathSet[6].getKey(), vertexF.getKey());
+    deepEqual(eulerianPathSet[7].getKey(), vertexH.getKey());
+    deepEqual(eulerianPathSet[8].getKey(), vertexG.getKey());
+    deepEqual(eulerianPathSet[9].getKey(), vertexF.getKey());
   });
 });
