@@ -1,13 +1,14 @@
-/**
- * @typedef {[number, string]} TestCase
- * @property {number} decimal
- * @property {string} binary
- */
+type TestCase = [
+  /**
+   * decimal
+   */
+  number,
+  /**
+   * binary
+   */
+  string];
 
-/**
- * @type {TestCase[]}
- */
-export const testCases16Bits = [
+export const testCases16Bits: TestCase[] = [
   [-65504, '1111101111111111'],
   [-10344, '1111000100001101'],
   [-27.15625, '1100111011001010'],
@@ -26,10 +27,7 @@ export const testCases16Bits = [
   [65504, '0111101111111111'],
 ];
 
-/**
- * @type {TestCase[]}
- */
-export const testCases32Bits = [
+export const testCases32Bits: TestCase[] = [
   [-3.40282346638528859812e+38, '11111111011111111111111111111111'],
   [-10345.5595703125, '11000110001000011010011000111101'],
   [-27.15625, '11000001110110010100000000000000'],
@@ -48,10 +46,7 @@ export const testCases32Bits = [
   [3.40282346638528859812e+38, '01111111011111111111111111111111'],
 ];
 
-/**
- * @type {TestCase[]}
- */
-export const testCases64Bits = [
+export const testCases64Bits: TestCase[] = [
   [-1.79769313486231570815e+308, '1111111111101111111111111111111111111111111111111111111111111111'],
   [-10345.5595703125, '1100000011000100001101001100011110100000000000000000000000000000'],
   [-27.15625, '1100000000111011001010000000000000000000000000000000000000000000'],
