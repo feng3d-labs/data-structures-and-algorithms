@@ -8,6 +8,7 @@ export * from './algorithms/graph/bellman-ford/bellmanFord';
 export * from './algorithms/graph/breadth-first-search/breadthFirstSearch';
 export * from './algorithms/graph/bridges/graphBridges';
 export * from './algorithms/graph/depth-first-search/depthFirstSearch';
+export * from './algorithms/graph/detect-cycle/detectDirectedCycle';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
@@ -40,4 +41,5 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
+
 
