@@ -1,13 +1,14 @@
-import GraphVertex from '../../../data-structures/graph/GraphVertex';
+import { GraphVertex } from '../../../data-structures/graph/GraphVertex';
 
 /**
- * @param {number[][]} adjacencyMatrix
- * @param {object} verticesIndices
- * @param {GraphVertex[]} cycle
- * @param {GraphVertex} vertexCandidate
- * @return {boolean}
+ *
+ * @param adjacencyMatrix
+ * @param verticesIndices
+ * @param cycle
+ * @param vertexCandidate
  */
-function isSafe(adjacencyMatrix, verticesIndices, cycle, vertexCandidate) {
+function isSafe<T>(adjacencyMatrix: number[][], verticesIndices: { [key: string]: number }, cycle: GraphVertex<T>[], vertexCandidate: GraphVertex<T>)
+{
   const endVertex = cycle[cycle.length - 1];
 
   // Get end and candidate vertices indices in adjacency matrix.
@@ -15,7 +16,8 @@ function isSafe(adjacencyMatrix, verticesIndices, cycle, vertexCandidate) {
   const endVertexAdjacencyIndex = verticesIndices[endVertex.getKey()];
 
   // Check if last vertex in the path and candidate vertex are adjacent.
-  if (adjacencyMatrix[endVertexAdjacencyIndex][candidateVertexAdjacencyIndex] === Infinity) {
+  if (adjacencyMatrix[endVertexAdjacencyIndex][candidateVertexAdjacencyIndex] === Infinity)
+  {
     return false;
   }
 
@@ -31,7 +33,8 @@ function isSafe(adjacencyMatrix, verticesIndices, cycle, vertexCandidate) {
  * @param {GraphVertex[]} cycle
  * @return {boolean}
  */
-function isCycle(adjacencyMatrix, verticesIndices, cycle) {
+function isCycle(adjacencyMatrix, verticesIndices, cycle)
+{
   // Check if first and last vertices in hamiltonian path are adjacent.
 
   // Get start and end vertices from the path.
@@ -59,26 +62,32 @@ function hamiltonianCycleRecursive({
   verticesIndices,
   cycles,
   cycle,
-}) {
+})
+{
   // Clone cycle in order to prevent it from modification by other DFS branches.
   const currentCycle = [...cycle].map((vertex) => new GraphVertex(vertex.value));
 
-  if (vertices.length === currentCycle.length) {
+  if (vertices.length === currentCycle.length)
+  {
     // Hamiltonian path is found.
     // Now we need to check if it is cycle or not.
-    if (isCycle(adjacencyMatrix, verticesIndices, currentCycle)) {
+    if (isCycle(adjacencyMatrix, verticesIndices, currentCycle))
+    {
       // Another solution has been found. Save it.
       cycles.push(currentCycle);
     }
-    return;
+
+return;
   }
 
-  for (let vertexIndex = 0; vertexIndex < vertices.length; vertexIndex += 1) {
+  for (let vertexIndex = 0; vertexIndex < vertices.length; vertexIndex += 1)
+  {
     // Get vertex candidate that we will try to put into next path step and see if it fits.
     const vertexCandidate = vertices[vertexIndex];
 
     // Check if it is safe to put vertex candidate to cycle.
-    if (isSafe(adjacencyMatrix, verticesIndices, currentCycle, vertexCandidate)) {
+    if (isSafe(adjacencyMatrix, verticesIndices, currentCycle, vertexCandidate))
+    {
       // Add candidate vertex to cycle path.
       currentCycle.push(vertexCandidate);
 
@@ -102,7 +111,8 @@ function hamiltonianCycleRecursive({
  * @param {Graph} graph
  * @return {GraphVertex[][]}
  */
-export default function hamiltonianCycle(graph) {
+export default function hamiltonianCycle(graph)
+{
   // Gather some information about the graph that we will need to during
   // the problem solving.
   const verticesIndices = graph.getVerticesIndices();
