@@ -1,4 +1,6 @@
 /**
+ * 是否回文
+ *
  * @param string
  */
 export function isPalindrome(string: string)

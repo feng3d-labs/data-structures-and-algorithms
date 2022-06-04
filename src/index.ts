@@ -33,6 +33,7 @@ export * from './algorithms/string/hamming-distance/hammingDistance';
 export * from './algorithms/string/knuth-morris-pratt/knuthMorrisPratt';
 export * from './algorithms/string/longest-common-substring/longestCommonSubstring';
 export * from './algorithms/string/palindrome/isPalindrome';
+export * from './algorithms/string/rabin-karp/rabinKarp';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
@@ -61,3 +62,5 @@ export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
 
+
+rabinKarp
