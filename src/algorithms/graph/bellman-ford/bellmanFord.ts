@@ -1,5 +1,5 @@
-import { Graph } from "../../../data-structures/graph/Graph";
-import { GraphVertex } from "../../../data-structures/graph/GraphVertex";
+import { Graph } from '../../../data-structures/graph/Graph';
+import { GraphVertex } from '../../../data-structures/graph/GraphVertex';
 
 /**
  * @param graph
