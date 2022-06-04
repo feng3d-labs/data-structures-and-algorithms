@@ -31,6 +31,7 @@ export * from './algorithms/sorting/Sort';
 export * from './algorithms/statistics/weighted-random/weightedRandom';
 export * from './algorithms/string/hamming-distance/hammingDistance';
 export * from './algorithms/string/knuth-morris-pratt/knuthMorrisPratt';
+export * from './algorithms/string/longest-common-substring/longestCommonSubstring';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
