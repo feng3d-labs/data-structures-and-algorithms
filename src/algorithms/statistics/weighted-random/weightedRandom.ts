@@ -8,17 +8,19 @@
  * - weightedRandom(items, weights) in 80% of cases will return 'apple', in 20% of cases will return
  * 'orange' and it will never return 'banana' (because probability of picking the banana is 0%)
  *
- * @param {any[]} items
- * @param {number[]} weights
- * @returns {{item: any, index: number}}
+ * @param items
+ * @param weights
  */
 /* eslint-disable consistent-return */
-export default function weightedRandom(items, weights) {
-  if (items.length !== weights.length) {
+export function weightedRandom<T>(items: T[], weights: number[]): { item: T, index: number }
+{
+  if (items.length !== weights.length)
+  {
     throw new Error('Items and weights must be of the same size');
   }
 
-  if (!items.length) {
+  if (!items.length)
+  {
     throw new Error('Items must not be empty');
   }
 
@@ -26,8 +28,9 @@ export default function weightedRandom(items, weights) {
   // For example:
   // - weights = [1, 4, 3]
   // - cumulativeWeights = [1, 5, 8]
-  const cumulativeWeights = [];
-  for (let i = 0; i < weights.length; i += 1) {
+  const cumulativeWeights: number[] = [];
+  for (let i = 0; i < weights.length; i += 1)
+  {
     cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
   }
 
@@ -41,8 +44,10 @@ export default function weightedRandom(items, weights) {
 
   // Picking the random item based on its weight.
   // The items with higher weight will be picked more often.
-  for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
-    if (cumulativeWeights[itemIndex] >= randomNumber) {
+  for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1)
+  {
+    if (cumulativeWeights[itemIndex] >= randomNumber)
+    {
       return {
         item: items[itemIndex],
         index: itemIndex,

@@ -28,6 +28,7 @@ export * from './algorithms/sorting/radix-sort/RadixSort';
 export * from './algorithms/sorting/selection-sort/SelectionSort';
 export * from './algorithms/sorting/shell-sort/ShellSort';
 export * from './algorithms/sorting/Sort';
+export * from './algorithms/statistics/weighted-random/weightedRandom';
 export * from './data-structures/bloom-filter/BloomFilter';
 export * from './data-structures/disjoint-set/DisjointSet';
 export * from './data-structures/disjoint-set/DisjointSetItem';
@@ -55,3 +56,4 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
+
