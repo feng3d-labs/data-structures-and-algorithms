@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import bellmanFord from '../bellmanFord';
+import { deepEqual } from 'assert';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { bellmanFord } from '../bellmanFord';
 
-describe('bellmanFord', () => {
-  it('should find minimum paths to all vertices for undirected graph', () => {
+describe('bellmanFord', () =>
+{
+  it('should find minimum paths to all vertices for undirected graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -45,7 +48,7 @@ describe('bellmanFord', () => {
 
     const { distances, previousVertices } = bellmanFord(graph, vertexA);
 
-    expect(distances).toEqual({
+    deepEqual(distances, {
       H: Infinity,
       A: 0,
       B: 4,
@@ -56,16 +59,17 @@ describe('bellmanFord', () => {
       F: 11,
     });
 
-    expect(previousVertices.F.getKey()).toBe('D');
-    expect(previousVertices.D.getKey()).toBe('B');
-    expect(previousVertices.B.getKey()).toBe('A');
-    expect(previousVertices.G.getKey()).toBe('E');
-    expect(previousVertices.C.getKey()).toBe('A');
-    expect(previousVertices.A).toBeNull();
-    expect(previousVertices.H).toBeNull();
+    deepEqual(previousVertices.F.getKey(), 'D');
+    deepEqual(previousVertices.D.getKey(), 'B');
+    deepEqual(previousVertices.B.getKey(), 'A');
+    deepEqual(previousVertices.G.getKey(), 'E');
+    deepEqual(previousVertices.C.getKey(), 'A');
+    deepEqual(previousVertices.A, null);
+    deepEqual(previousVertices.H, null);
   });
 
-  it('should find minimum paths to all vertices for directed graph with negative edge weights', () => {
+  it('should find minimum paths to all vertices for directed graph with negative edge weights', () =>
+  {
     const vertexS = new GraphVertex('S');
     const vertexE = new GraphVertex('E');
     const vertexA = new GraphVertex('A');
@@ -97,7 +101,7 @@ describe('bellmanFord', () => {
 
     const { distances, previousVertices } = bellmanFord(graph, vertexS);
 
-    expect(distances).toEqual({
+    deepEqual(distances, {
       H: Infinity,
       S: 0,
       A: 5,
@@ -107,11 +111,11 @@ describe('bellmanFord', () => {
       E: 8,
     });
 
-    expect(previousVertices.H).toBeNull();
-    expect(previousVertices.S).toBeNull();
-    expect(previousVertices.B.getKey()).toBe('C');
-    expect(previousVertices.C.getKey()).toBe('A');
-    expect(previousVertices.A.getKey()).toBe('D');
-    expect(previousVertices.D.getKey()).toBe('E');
+    deepEqual(previousVertices.H, null);
+    deepEqual(previousVertices.S, null);
+    deepEqual(previousVertices.B.getKey(), 'C');
+    deepEqual(previousVertices.C.getKey(), 'A');
+    deepEqual(previousVertices.A.getKey(), 'D');
+    deepEqual(previousVertices.D.getKey(), 'E');
   });
 });
