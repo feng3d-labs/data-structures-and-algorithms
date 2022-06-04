@@ -6,6 +6,7 @@ export * from './algorithms/cryptography/rail-fence-cipher/railFenceCipher';
 export * from './algorithms/graph/articulation-points/articulationPoints';
 export * from './algorithms/graph/bellman-ford/bellmanFord';
 export * from './algorithms/graph/breadth-first-search/breadthFirstSearch';
+export * from './algorithms/graph/bridges/graphBridges';
 export * from './algorithms/graph/depth-first-search/depthFirstSearch';
 export * from './algorithms/math/factorial/factorial';
 export * from './algorithms/math/factorial/factorialRecursive';

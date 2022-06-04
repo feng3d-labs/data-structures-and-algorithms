@@ -1,10 +1,13 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import graphBridges from '../graphBridges';
+import { deepEqual } from 'assert';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { graphBridges } from '../graphBridges';
 
-describe('graphBridges', () => {
-  it('should find bridges in simple graph', () => {
+describe('graphBridges', () =>
+{
+  it('should find bridges in simple graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -23,13 +26,14 @@ describe('graphBridges', () => {
 
     const bridges = Object.values(graphBridges(graph));
 
-    expect(bridges.length).toBe(3);
-    expect(bridges[0].getKey()).toBe(edgeCD.getKey());
-    expect(bridges[1].getKey()).toBe(edgeBC.getKey());
-    expect(bridges[2].getKey()).toBe(edgeAB.getKey());
+    deepEqual(bridges.length, 3);
+    deepEqual(bridges[0].getKey(), edgeCD.getKey());
+    deepEqual(bridges[1].getKey(), edgeBC.getKey());
+    deepEqual(bridges[2].getKey(), edgeAB.getKey());
   });
 
-  it('should find bridges in simple graph with back edge', () => {
+  it('should find bridges in simple graph with back edge', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -50,11 +54,12 @@ describe('graphBridges', () => {
 
     const bridges = Object.values(graphBridges(graph));
 
-    expect(bridges.length).toBe(1);
-    expect(bridges[0].getKey()).toBe(edgeCD.getKey());
+    deepEqual(bridges.length, 1);
+    deepEqual(bridges[0].getKey(), edgeCD.getKey());
   });
 
-  it('should find bridges in graph', () => {
+  it('should find bridges in graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -89,13 +94,14 @@ describe('graphBridges', () => {
 
     const bridges = Object.values(graphBridges(graph));
 
-    expect(bridges.length).toBe(3);
-    expect(bridges[0].getKey()).toBe(edgeFH.getKey());
-    expect(bridges[1].getKey()).toBe(edgeDE.getKey());
-    expect(bridges[2].getKey()).toBe(edgeCD.getKey());
+    deepEqual(bridges.length, 3);
+    deepEqual(bridges[0].getKey(), edgeFH.getKey());
+    deepEqual(bridges[1].getKey(), edgeDE.getKey());
+    deepEqual(bridges[2].getKey(), edgeCD.getKey());
   });
 
-  it('should find bridges in graph starting with different root vertex', () => {
+  it('should find bridges in graph starting with different root vertex', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -130,13 +136,14 @@ describe('graphBridges', () => {
 
     const bridges = Object.values(graphBridges(graph));
 
-    expect(bridges.length).toBe(3);
-    expect(bridges[0].getKey()).toBe(edgeFH.getKey());
-    expect(bridges[1].getKey()).toBe(edgeDE.getKey());
-    expect(bridges[2].getKey()).toBe(edgeCD.getKey());
+    deepEqual(bridges.length, 3);
+    deepEqual(bridges[0].getKey(), edgeFH.getKey());
+    deepEqual(bridges[1].getKey(), edgeDE.getKey());
+    deepEqual(bridges[2].getKey(), edgeCD.getKey());
   });
 
-  it('should find bridges in yet another graph #1', () => {
+  it('should find bridges in yet another graph #1', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -160,12 +167,13 @@ describe('graphBridges', () => {
 
     const bridges = Object.values(graphBridges(graph));
 
-    expect(bridges.length).toBe(2);
-    expect(bridges[0].getKey()).toBe(edgeDE.getKey());
-    expect(bridges[1].getKey()).toBe(edgeCD.getKey());
+    deepEqual(bridges.length, 2);
+    deepEqual(bridges[0].getKey(), edgeDE.getKey());
+    deepEqual(bridges[1].getKey(), edgeCD.getKey());
   });
 
-  it('should find bridges in yet another graph #2', () => {
+  it('should find bridges in yet another graph #2', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -197,7 +205,7 @@ describe('graphBridges', () => {
 
     const bridges = Object.values(graphBridges(graph));
 
-    expect(bridges.length).toBe(1);
-    expect(bridges[0].getKey()).toBe(edgeCD.getKey());
+    deepEqual(bridges.length, 1);
+    deepEqual(bridges[0].getKey(), edgeCD.getKey());
   });
 });
