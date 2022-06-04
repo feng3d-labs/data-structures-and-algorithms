@@ -1,20 +1,25 @@
-import GraphVertex from '../../../../data-structures/graph/GraphVertex';
-import GraphEdge from '../../../../data-structures/graph/GraphEdge';
-import Graph from '../../../../data-structures/graph/Graph';
-import prim from '../prim';
+import { deepEqual, throws } from 'assert';
+import { Graph } from '../../../../data-structures/graph/Graph';
+import { GraphEdge } from '../../../../data-structures/graph/GraphEdge';
+import { GraphVertex } from '../../../../data-structures/graph/GraphVertex';
+import { prim } from '../prim';
 
-describe('prim', () => {
-  it('should fire an error for directed graph', () => {
-    function applyPrimToDirectedGraph() {
+describe('prim', () =>
+{
+  it('should fire an error for directed graph', () =>
+  {
+    function applyPrimToDirectedGraph()
+    {
       const graph = new Graph(true);
 
       prim(graph);
     }
 
-    expect(applyPrimToDirectedGraph).toThrowError();
+    throws(applyPrimToDirectedGraph);
   });
 
-  it('should find minimum spanning tree', () => {
+  it('should find minimum spanning tree', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -48,17 +53,18 @@ describe('prim', () => {
       .addEdge(edgeFC)
       .addEdge(edgeFG);
 
-    expect(graph.getWeight()).toEqual(46);
+    deepEqual(graph.getWeight(), 46);
 
     const minimumSpanningTree = prim(graph);
 
-    expect(minimumSpanningTree.getWeight()).toBe(24);
-    expect(minimumSpanningTree.getAllVertices().length).toBe(graph.getAllVertices().length);
-    expect(minimumSpanningTree.getAllEdges().length).toBe(graph.getAllVertices().length - 1);
-    expect(minimumSpanningTree.toString()).toBe('A,B,C,E,D,F,G');
+    deepEqual(minimumSpanningTree.getWeight(), 24);
+    deepEqual(minimumSpanningTree.getAllVertices().length, graph.getAllVertices().length);
+    deepEqual(minimumSpanningTree.getAllEdges().length, graph.getAllVertices().length - 1);
+    deepEqual(minimumSpanningTree.toString(), 'A,B,C,E,D,F,G');
   });
 
-  it('should find minimum spanning tree for simple graph', () => {
+  it('should find minimum spanning tree for simple graph', () =>
+  {
     const vertexA = new GraphVertex('A');
     const vertexB = new GraphVertex('B');
     const vertexC = new GraphVertex('C');
@@ -79,13 +85,13 @@ describe('prim', () => {
       .addEdge(edgeBD)
       .addEdge(edgeCD);
 
-    expect(graph.getWeight()).toEqual(9);
+    deepEqual(graph.getWeight(), 9);
 
     const minimumSpanningTree = prim(graph);
 
-    expect(minimumSpanningTree.getWeight()).toBe(3);
-    expect(minimumSpanningTree.getAllVertices().length).toBe(graph.getAllVertices().length);
-    expect(minimumSpanningTree.getAllEdges().length).toBe(graph.getAllVertices().length - 1);
-    expect(minimumSpanningTree.toString()).toBe('A,B,C,D');
+    deepEqual(minimumSpanningTree.getWeight(), 3);
+    deepEqual(minimumSpanningTree.getAllVertices().length, graph.getAllVertices().length);
+    deepEqual(minimumSpanningTree.getAllEdges().length, graph.getAllVertices().length - 1);
+    deepEqual(minimumSpanningTree.toString(), 'A,B,C,D');
   });
 });
