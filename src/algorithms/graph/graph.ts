@@ -9,3 +9,5 @@ export * from './detect-cycle/detectUndirectedCycleUsingDisjointSet';
 export * from './dijkstra/dijkstra';
 export * from './eulerian-path/eulerianPath';
 export * from './hamiltonian-cycle/hamiltonianCycle';
+export * from './kruskal/kruskal';
+
