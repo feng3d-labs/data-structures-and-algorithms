@@ -1,26 +1,36 @@
-/**
- * @typedef {Object} TraversalCallbacks
- *
- * @property {function(node: BinaryTreeNode, child: BinaryTreeNode): boolean} allowTraversal
- * - Determines whether DFS should traverse from the node to its child.
- *
- * @property {function(node: BinaryTreeNode)} enterNode - Called when DFS enters the node.
- *
- * @property {function(node: BinaryTreeNode)} leaveNode - Called when DFS leaves the node.
- */
+import { BinaryTreeNode } from '../../../data-structures/tree/BinaryTreeNode';
+
+interface TraversalCallbacks<T>
+{
+  /**
+   * Determines whether DFS should traverse from the node to its child.
+   */
+  allowTraversal?: (node: BinaryTreeNode<T>, child: BinaryTreeNode<T>) => boolean;
+
+  /**
+   * Called when DFS enters the node.
+   */
+  enterNode?: (node: BinaryTreeNode<T>) => void;
+
+  /**
+   * Called when DFS leaves the node.
+   */
+  leaveNode?: (node: BinaryTreeNode<T>) => void;
+}
 
 /**
  * Extend missing traversal callbacks with default callbacks.
  *
- * @param {TraversalCallbacks} [callbacks] - The object that contains traversal callbacks.
- * @returns {TraversalCallbacks} - Traversal callbacks extended with defaults callbacks.
+ * @param callbacks The object that contains traversal callbacks.
+ * @returns  Traversal callbacks extended with defaults callbacks.
  */
-function initCallbacks(callbacks = {}) {
+function initCallbacks<T>(callbacks: TraversalCallbacks<T> = {})
+{
   // Init empty callbacks object.
-  const initiatedCallbacks = {};
+  const initiatedCallbacks: TraversalCallbacks<T> = {};
 
   // Empty callback that we will use in case if user didn't provide real callback function.
-  const stubCallback = () => {};
+  const stubCallback = () => { };
   // By default we will allow traversal of every node
   // in case if user didn't provide a callback for that.
   const defaultAllowTraversalCallback = () => true;
@@ -37,20 +47,23 @@ function initCallbacks(callbacks = {}) {
 /**
  * Recursive depth-first-search traversal for binary.
  *
- * @param {BinaryTreeNode} node - binary tree node that we will start traversal from.
- * @param {TraversalCallbacks} callbacks - the object that contains traversal callbacks.
+ * @param node binary tree node that we will start traversal from.
+ * @param callbacks the object that contains traversal callbacks.
  */
-export function depthFirstSearchRecursive(node, callbacks) {
+export function depthFirstSearchRecursive<T>(node: BinaryTreeNode<T>, callbacks: TraversalCallbacks<T>)
+{
   // Call the "enterNode" callback to notify that the node is going to be entered.
   callbacks.enterNode(node);
 
   // Traverse left branch only if case if traversal of the left node is allowed.
-  if (node.left && callbacks.allowTraversal(node, node.left)) {
+  if (node.left && callbacks.allowTraversal(node, node.left))
+  {
     depthFirstSearchRecursive(node.left, callbacks);
   }
 
   // Traverse right branch only if case if traversal of the right node is allowed.
-  if (node.right && callbacks.allowTraversal(node, node.right)) {
+  if (node.right && callbacks.allowTraversal(node, node.right))
+  {
     depthFirstSearchRecursive(node.right, callbacks);
   }
 
@@ -64,10 +77,11 @@ export function depthFirstSearchRecursive(node, callbacks) {
  * For every traversal step call "allowTraversal", "enterNode" and "leaveNode" callbacks.
  * See TraversalCallbacks type definition for more details about the shape of callbacks object.
  *
- * @param {BinaryTreeNode} rootNode - The node from which we start traversing.
- * @param {TraversalCallbacks} [callbacks] - Traversal callbacks.
+ * @param rootNode The node from which we start traversing.
+ * @param callbacks Traversal callbacks.
  */
-export default function depthFirstSearch(rootNode, callbacks) {
+export function depthFirstSearch<T>(rootNode: BinaryTreeNode<T>, callbacks?: TraversalCallbacks<T>)
+{
   // In case if user didn't provide some callback we need to replace them with default ones.
   const processedCallbacks = initCallbacks(callbacks);
 
