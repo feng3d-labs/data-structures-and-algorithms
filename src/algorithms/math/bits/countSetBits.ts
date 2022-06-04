@@ -1,12 +1,13 @@
 /**
- * @param {number} originalNumber
- * @return {number}
+ * @param originalNumber
  */
-export default function countSetBits(originalNumber) {
+export function countSetBits(originalNumber: number)
+{
   let setBitsCount = 0;
   let number = originalNumber;
 
-  while (number) {
+  while (number)
+  {
     // Add last bit of the number to the sum of set bits.
     setBitsCount += number & 1;
 

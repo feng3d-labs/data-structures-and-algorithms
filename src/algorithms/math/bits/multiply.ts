@@ -1,7 +1,7 @@
-import multiplyByTwo from './multiplyByTwo';
-import divideByTwo from './divideByTwo';
-import isEven from './isEven';
-import isPositive from './isPositive';
+import { multiplyByTwo } from './multiplyByTwo';
+import { divideByTwo } from './divideByTwo';
+import { isEven } from './isEven';
+import { isPositive } from './isPositive';
 
 /**
  * Multiply two signed numbers using bitwise operations.
@@ -20,13 +20,14 @@ import isPositive from './isPositive';
  *
  * Time complexity: O(log b)
  *
- * @param {number} a
- * @param {number} b
- * @return {number}
+ * @param a
+ * @param b
  */
-export default function multiply(a, b) {
+export function multiply(a: number, b: number): number
+{
   // If a is zero or b is zero or if both a and b are zeros then the production is also zero.
-  if (b === 0 || a === 0) {
+  if (b === 0 || a === 0)
+  {
     return 0;
   }
 

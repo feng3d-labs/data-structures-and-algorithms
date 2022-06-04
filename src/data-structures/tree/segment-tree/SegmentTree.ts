@@ -1,4 +1,4 @@
-import { isPowerOfTwo } from '../../../algorithms/math/is-power-of-two/isPowerOfTwo';
+import { isPowerOfTwo1 } from '../../../algorithms/math/is-power-of-two/isPowerOfTwo';
 
 /**
  * 线段树
@@ -44,7 +44,7 @@ export class SegmentTree
     let segmentTreeArrayLength: number;
     const inputArrayLength = inputArray.length;
 
-    if (isPowerOfTwo(inputArrayLength))
+    if (isPowerOfTwo1(inputArrayLength))
     {
       // If original array length is a power of two.
       segmentTreeArrayLength = (2 * inputArrayLength) - 1;

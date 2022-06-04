@@ -1,4 +1,4 @@
-import getBit from './getBit';
+import { getBit } from './getBit';
 
 /**
  * Add two numbers using only binary operators.
@@ -30,18 +30,19 @@ import getBit from './getBit';
  * OUT Si = Bit Sum, ith least significant bit of the result
  *
  *
- * @param {number} a
- * @param {number} b
- * @return {number}
+ * @param a
+ * @param b
  */
-export default function fullAdder(a, b) {
+export function fullAdder(a: number, b: number): number
+{
   let result = 0;
   let carry = 0;
 
   // The operands of all bitwise operators are converted to signed
   // 32-bit integers in two's complement format.
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Signed_32-bit_integers
-  for (let i = 0; i < 32; i += 1) {
+  for (let i = 0; i < 32; i += 1)
+  {
     const ai = getBit(a, i);
     const bi = getBit(b, i);
     const carryIn = carry;

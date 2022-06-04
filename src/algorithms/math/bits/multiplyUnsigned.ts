@@ -12,11 +12,11 @@
  *
  * Now we need to remember that (x * 2^4) is equivalent of shifting x left by 4 bits (x << 4).
  *
- * @param {number} number1
- * @param {number} number2
- * @return {number}
+ * @param number1
+ * @param number2
  */
-export default function multiplyUnsigned(number1, number2) {
+export function multiplyUnsigned(number1: number, number2: number)
+{
   let result = 0;
 
   // Let's treat number2 as a multiplier for the number1.
@@ -26,9 +26,11 @@ export default function multiplyUnsigned(number1, number2) {
   let bitIndex = 0;
 
   // Go through all bits of number2.
-  while (multiplier !== 0) {
+  while (multiplier !== 0)
+  {
     // Check if current multiplier bit is set.
-    if (multiplier & 1) {
+    if (multiplier & 1)
+    {
       // In case if multiplier's bit at position bitIndex is set
       // it would mean that we need to multiply number1 by the power
       // of bit with index bitIndex and then add it to the result.

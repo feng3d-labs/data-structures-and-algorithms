@@ -3,7 +3,7 @@
  *
  * @param number 被检查的值
  */
-export function isPowerOfTwo(number: number)
+export function isPowerOfTwo1(number: number)
 {
   // 1 (2^0) is the smallest power of two.
   if (number < 1)

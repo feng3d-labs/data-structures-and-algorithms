@@ -1,8 +1,8 @@
 /**
  * Switch the sign of the number using "Twos Complement" approach.
- * @param {number} number
- * @return {number}
+ * @param number
  */
-export default function switchSign(number) {
+export function switchSign(number: number)
+{
   return ~number + 1;
 }

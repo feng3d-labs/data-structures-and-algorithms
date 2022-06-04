@@ -1,10 +1,11 @@
 /**
- * @param {number} number - 32-bit integer.
- * @return {boolean}
+ * @param number 32-bit integer.
  */
-export default function isPositive(number) {
+export function isPositive(number: number): boolean
+{
   // Zero is neither a positive nor a negative number.
-  if (number === 0) {
+  if (number === 0)
+  {
     return false;
   }
 
