@@ -13,26 +13,29 @@
  * position, we can reach the last index. Otherwise, that index
  * is called a "bad" one.
  *
- * @param {number[]} numbers - array of possible jump length.
- * @return {boolean}
+ * @param numbers array of possible jump length.
  */
-export default function dpBottomUpJumpGame(numbers) {
+export function dpBottomUpJumpGame(numbers: number[]): boolean
+{
   // Init cells goodness table.
-  const cellsGoodness = Array(numbers.length).fill(undefined);
+  const cellsGoodness: boolean[] = Array(numbers.length).fill(undefined);
   // Mark the last cell as "good" one since it is where we ultimately want to get.
   cellsGoodness[cellsGoodness.length - 1] = true;
 
   // Go throw all cells starting from the one before the last
   // one (since the last one is "good" already) and fill cellsGoodness table.
-  for (let cellIndex = numbers.length - 2; cellIndex >= 0; cellIndex -= 1) {
+  for (let cellIndex = numbers.length - 2; cellIndex >= 0; cellIndex -= 1)
+  {
     const maxJumpLength = Math.min(
       numbers[cellIndex],
       numbers.length - 1 - cellIndex,
     );
 
-    for (let jumpLength = maxJumpLength; jumpLength > 0; jumpLength -= 1) {
+    for (let jumpLength = maxJumpLength; jumpLength > 0; jumpLength -= 1)
+    {
       const nextIndex = cellIndex + jumpLength;
-      if (cellsGoodness[nextIndex] === true) {
+      if (cellsGoodness[nextIndex] === true)
+      {
         cellsGoodness[cellIndex] = true;
         // Once we detected that current cell is good one we don't need to
         // do further cells checking.
