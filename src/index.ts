@@ -21,6 +21,7 @@ export * from './algorithms/graph/topological-sorting/topologicalSort';
 export * from './algorithms/graph/travelling-salesman/bfTravellingSalesman';
 export * from './algorithms/image-processing/seam-carving/resizeImageWidth';
 export * from './algorithms/image-processing/utils/imageData';
+export * from './algorithms/linked-list/reverse-traversal/reverseTraversal';
 export * from './algorithms/linked-list/traversal/traversal';
 export * from './algorithms/math/binary-floating-point/bitsToFloat';
 export * from './algorithms/math/binary-floating-point/floatAsBinaryString';
