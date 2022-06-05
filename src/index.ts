@@ -2,6 +2,7 @@ import { permutateWithoutRepetitions } from './algorithms/sets/permutations/perm
 import { permutateWithRepetitions } from './algorithms/sets/permutations/permutateWithRepetitions';
 import { btPowerSet } from './algorithms/sets/power-set/btPowerSet';
 import { bwPowerSet } from './algorithms/sets/power-set/bwPowerSet';
+import { shortestCommonSupersequence } from './algorithms/sets/shortest-common-supersequence/shortestCommonSupersequence';
 
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
@@ -160,3 +161,4 @@ permutateWithoutRepetitions
 permutateWithRepetitions
 btPowerSet
 bwPowerSet
+shortestCommonSupersequence
