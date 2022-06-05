@@ -1,7 +1,3 @@
-import { degreeToRadian } from './algorithms/math/radian/degreeToRadian';
-import { sieveOfEratosthenes } from './algorithms/math/sieve-of-eratosthenes/sieveOfEratosthenes';
-import { squareRoot } from './algorithms/math/square-root/squareRoot';
-
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -65,7 +61,11 @@ export * from './algorithms/math/pascal-triangle/pascalTriangle';
 export * from './algorithms/math/pascal-triangle/pascalTriangleRecursive';
 export * from './algorithms/math/primality-test/trialDivision';
 export * from './algorithms/math/prime-factors/primeFactors';
+export * from './algorithms/math/radian/degreeToRadian';
 export * from './algorithms/math/radian/radianToDegree';
+export * from './algorithms/math/sieve-of-eratosthenes/sieveOfEratosthenes';
+export * from './algorithms/math/square-root/squareRoot';
+export * from './algorithms/ml/k-means/kMeans';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
 export * from './algorithms/sorting/insertion-sort/InsertionSort';
@@ -134,8 +134,3 @@ export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
 
-
-
-degreeToRadian
-sieveOfEratosthenes
-squareRoot
