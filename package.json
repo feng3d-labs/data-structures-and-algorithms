@@ -8,6 +8,14 @@
   "types": "dist/index.d.ts",
   "author": "Oleksii Trekhleb (https://trekhleb.dev)",
   "license": "MIT",
+  "origin": {
+    "name": "javascript-algorithms-and-data-structures",
+    "version": "0.0.4",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/trekhleb/javascript-algorithms.git"
+    }
+  },
   "scripts": {
     "start": "npm run watch",
     "clean": "rimraf \"{lib,dist}\"",
@@ -22,10 +30,6 @@
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/feng3d/data-structures-and-algorithms.git"
-  },
-  "origin-repository": {
-    "type": "git",
-    "url": "git+https://github.com/trekhleb/javascript-algorithms.git"
   },
   "publishConfig": {
     "access": "public"
