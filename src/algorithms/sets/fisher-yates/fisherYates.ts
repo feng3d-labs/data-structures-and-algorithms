@@ -1,12 +1,13 @@
 /**
- * @param {*[]} originalArray
- * @return {*[]}
+ * @param originalArray
  */
-export default function fisherYates(originalArray) {
+export function fisherYates<T>(originalArray: T[]): T[]
+{
   // Clone array from preventing original array from modification (for testing purpose).
   const array = originalArray.slice(0);
 
-  for (let i = (array.length - 1); i > 0; i -= 1) {
+  for (let i = (array.length - 1); i > 0; i -= 1)
+  {
     const randomIndex = Math.floor(Math.random() * (i + 1));
     [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
   }
