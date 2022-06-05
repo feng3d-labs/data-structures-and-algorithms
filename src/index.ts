@@ -66,6 +66,7 @@ export * from './algorithms/math/radian/radianToDegree';
 export * from './algorithms/math/sieve-of-eratosthenes/sieveOfEratosthenes';
 export * from './algorithms/math/square-root/squareRoot';
 export * from './algorithms/ml/k-means/kMeans';
+export * from './algorithms/ml/knn/kNN';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
 export * from './algorithms/sorting/insertion-sort/InsertionSort';
@@ -133,4 +134,5 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
+
 
