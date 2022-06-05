@@ -55,6 +55,7 @@ export * from './algorithms/math/integer-partition/integerPartition';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
 export * from './algorithms/math/least-common-multiple/leastCommonMultiple';
+export * from './algorithms/math/liu-hui/liuHui';
 export * as matrix from './algorithms/math/matrix/Matrix';
 export * from './algorithms/math/pascal-triangle/pascalTriangle';
 export * from './algorithms/math/pascal-triangle/pascalTriangleRecursive';
@@ -126,3 +127,4 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
+

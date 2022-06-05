@@ -5,12 +5,13 @@
 const circleRadius = 1;
 
 /**
- * @param {number} sideLength
- * @param {number} splitCounter
- * @return {number}
+ * @param sideLength
+ * @param splitCounter
  */
-function getNGonSideLength(sideLength, splitCounter) {
-  if (splitCounter <= 0) {
+function getNGonSideLength(sideLength: number, splitCounter: number)
+{
+  if (splitCounter <= 0)
+  {
     return sideLength;
   }
 
@@ -25,10 +26,10 @@ function getNGonSideLength(sideLength, splitCounter) {
 }
 
 /**
- * @param {number} splitCount
- * @return {number}
+ * @param splitCount
  */
-function getNGonSideCount(splitCount) {
+function getNGonSideCount(splitCount: number)
+{
   // Liu Hui began with an inscribed hexagon (6-gon).
   const hexagonSidesCount = 6;
 
@@ -39,11 +40,11 @@ function getNGonSideCount(splitCount) {
 /**
  * Calculate the π value using Liu Hui's π algorithm
  *
- * @param {number} splitCount - number of times we're going to split 6-gon.
+ * @param splitCount number of times we're going to split 6-gon.
  *  On each split we will receive 12-gon, 24-gon and so on.
- * @return {number}
  */
-export default function liuHui(splitCount = 1) {
+export function liuHui(splitCount = 1)
+{
   const nGonSideLength = getNGonSideLength(circleRadius, splitCount - 1);
   const nGonSideCount = getNGonSideCount(splitCount - 1);
   const nGonPerimeter = nGonSideLength * nGonSideCount;
