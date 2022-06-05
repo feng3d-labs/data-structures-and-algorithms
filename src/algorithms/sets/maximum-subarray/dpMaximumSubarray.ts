@@ -2,10 +2,10 @@
  * Dynamic Programming solution.
  * Complexity: O(n)
  *
- * @param {Number[]} inputArray
- * @return {Number[]}
+ * @param inputArray
  */
-export default function dpMaximumSubarray(inputArray) {
+export function dpMaximumSubarray(inputArray: number[]): number[]
+{
   // We iterate through the inputArray once, using a greedy approach to keep track of the maximum
   // sum we've seen so far and the current sum.
   //
@@ -24,18 +24,21 @@ export default function dpMaximumSubarray(inputArray) {
   let maxEndIndex = inputArray.length - 1;
   let currentStartIndex = 0;
 
-  inputArray.forEach((currentNumber, currentIndex) => {
+  inputArray.forEach((currentNumber, currentIndex) =>
+  {
     currentSum += currentNumber;
 
     // Update maxSum and the corresponding indices if we have found a new max.
-    if (maxSum < currentSum) {
+    if (maxSum < currentSum)
+    {
       maxSum = currentSum;
       maxStartIndex = currentStartIndex;
       maxEndIndex = currentIndex;
     }
 
     // Reset currentSum and currentStartIndex if currentSum drops below 0.
-    if (currentSum < 0) {
+    if (currentSum < 0)
+    {
       currentSum = 0;
       currentStartIndex = currentIndex + 1;
     }

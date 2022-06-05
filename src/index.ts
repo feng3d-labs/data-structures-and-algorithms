@@ -1,6 +1,3 @@
-import { longestCommonSubsequence } from './algorithms/sets/longest-common-subsequence/longestCommonSubsequence';
-import { dpLongestIncreasingSubsequence } from './algorithms/sets/longest-increasing-subsequence/dpLongestIncreasingSubsequence';
-
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -81,6 +78,11 @@ export * from './algorithms/sets/combinations/combineWithRepetitions';
 export * from './algorithms/sets/fisher-yates/fisherYates';
 export * from './algorithms/sets/knapsack-problem/Knapsack';
 export * from './algorithms/sets/knapsack-problem/KnapsackItem';
+export * from './algorithms/sets/longest-common-subsequence/longestCommonSubsequence';
+export * from './algorithms/sets/longest-increasing-subsequence/dpLongestIncreasingSubsequence';
+export * from './algorithms/sets/maximum-subarray/bfMaximumSubarray';
+export * from './algorithms/sets/maximum-subarray/dcMaximumSubarraySum';
+export * from './algorithms/sets/maximum-subarray/dpMaximumSubarray';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
 export * from './algorithms/sorting/insertion-sort/InsertionSort';
@@ -148,5 +150,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-longestCommonSubsequence
-dpLongestIncreasingSubsequence
