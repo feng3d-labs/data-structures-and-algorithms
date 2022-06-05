@@ -1,14 +1,16 @@
 /**
- * @param {*[]} originalSet - Original set of elements we're forming power-set of.
- * @param {*[][]} allSubsets - All subsets that have been formed so far.
- * @param {*[]} currentSubSet - Current subset that we're forming at the moment.
- * @param {number} startAt - The position of in original set we're starting to form current subset.
- * @return {*[][]} - All subsets of original set.
+ * @param originalSet Original set of elements we're forming power-set of.
+ * @param allSubsets All subsets that have been formed so far.
+ * @param currentSubSet Current subset that we're forming at the moment.
+ * @param startAt The position of in original set we're starting to form current subset.
+ * @return All subsets of original set.
  */
-function btPowerSetRecursive(originalSet, allSubsets = [[]], currentSubSet = [], startAt = 0) {
+function btPowerSetRecursive<T>(originalSet: T[], allSubsets: T[][] = [[]], currentSubSet: T[] = [], startAt = 0): T[][]
+{
   // Let's iterate over originalSet elements that may be added to the subset
   // without having duplicates. The value of startAt prevents adding the duplicates.
-  for (let position = startAt; position < originalSet.length; position += 1) {
+  for (let position = startAt; position < originalSet.length; position += 1)
+  {
     // Let's push current element to the subset
     currentSubSet.push(originalSet[position]);
 
@@ -33,9 +35,9 @@ function btPowerSetRecursive(originalSet, allSubsets = [[]], currentSubSet = [],
 /**
  * Find power-set of a set using BACKTRACKING approach.
  *
- * @param {*[]} originalSet
- * @return {*[][]}
+ * @param originalSet
  */
-export default function btPowerSet(originalSet) {
+export function btPowerSet<T>(originalSet: T[]): T[][]
+{
   return btPowerSetRecursive(originalSet);
 }

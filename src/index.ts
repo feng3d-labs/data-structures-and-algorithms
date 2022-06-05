@@ -1,5 +1,7 @@
 import { permutateWithoutRepetitions } from './algorithms/sets/permutations/permutateWithoutRepetitions';
 import { permutateWithRepetitions } from './algorithms/sets/permutations/permutateWithRepetitions';
+import { btPowerSet } from './algorithms/sets/power-set/btPowerSet';
+import { bwPowerSet } from './algorithms/sets/power-set/bwPowerSet';
 
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
@@ -156,3 +158,5 @@ export * from './utils/comparator/Comparator';
 
 permutateWithoutRepetitions
 permutateWithRepetitions
+btPowerSet
+bwPowerSet
