@@ -76,6 +76,8 @@ export * from './algorithms/sets/combination-sum/combinationSum';
 export * from './algorithms/sets/combinations/combineWithoutRepetitions';
 export * from './algorithms/sets/combinations/combineWithRepetitions';
 export * from './algorithms/sets/fisher-yates/fisherYates';
+export * from './algorithms/sets/knapsack-problem/Knapsack';
+export * from './algorithms/sets/knapsack-problem/KnapsackItem';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
 export * from './algorithms/sorting/insertion-sort/InsertionSort';

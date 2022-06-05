@@ -1,35 +1,38 @@
-import KnapsackItem from '../KnapsackItem';
+import { deepEqual } from 'assert';
+import { KnapsackItem } from '../KnapsackItem';
 
-describe('KnapsackItem', () => {
-  it('should create knapsack item and count its total weight and value', () => {
+describe('KnapsackItem', () =>
+{
+  it('should create knapsack item and count its total weight and value', () =>
+  {
     const knapsackItem = new KnapsackItem({ value: 3, weight: 2 });
 
-    expect(knapsackItem.value).toBe(3);
-    expect(knapsackItem.weight).toBe(2);
-    expect(knapsackItem.quantity).toBe(1);
-    expect(knapsackItem.valuePerWeightRatio).toBe(1.5);
-    expect(knapsackItem.toString()).toBe('v3 w2 x 1');
-    expect(knapsackItem.totalValue).toBe(3);
-    expect(knapsackItem.totalWeight).toBe(2);
+    deepEqual(knapsackItem.value, 3);
+    deepEqual(knapsackItem.weight, 2);
+    deepEqual(knapsackItem.quantity, 1);
+    deepEqual(knapsackItem.valuePerWeightRatio, 1.5);
+    deepEqual(knapsackItem.toString(), 'v3 w2 x 1');
+    deepEqual(knapsackItem.totalValue, 3);
+    deepEqual(knapsackItem.totalWeight, 2);
 
     knapsackItem.quantity = 0;
 
-    expect(knapsackItem.value).toBe(3);
-    expect(knapsackItem.weight).toBe(2);
-    expect(knapsackItem.quantity).toBe(0);
-    expect(knapsackItem.valuePerWeightRatio).toBe(1.5);
-    expect(knapsackItem.toString()).toBe('v3 w2 x 0');
-    expect(knapsackItem.totalValue).toBe(0);
-    expect(knapsackItem.totalWeight).toBe(0);
+    deepEqual(knapsackItem.value, 3);
+    deepEqual(knapsackItem.weight, 2);
+    deepEqual(knapsackItem.quantity, 0);
+    deepEqual(knapsackItem.valuePerWeightRatio, 1.5);
+    deepEqual(knapsackItem.toString(), 'v3 w2 x 0');
+    deepEqual(knapsackItem.totalValue, 0);
+    deepEqual(knapsackItem.totalWeight, 0);
 
     knapsackItem.quantity = 2;
 
-    expect(knapsackItem.value).toBe(3);
-    expect(knapsackItem.weight).toBe(2);
-    expect(knapsackItem.quantity).toBe(2);
-    expect(knapsackItem.valuePerWeightRatio).toBe(1.5);
-    expect(knapsackItem.toString()).toBe('v3 w2 x 2');
-    expect(knapsackItem.totalValue).toBe(6);
-    expect(knapsackItem.totalWeight).toBe(4);
+    deepEqual(knapsackItem.value, 3);
+    deepEqual(knapsackItem.weight, 2);
+    deepEqual(knapsackItem.quantity, 2);
+    deepEqual(knapsackItem.valuePerWeightRatio, 1.5);
+    deepEqual(knapsackItem.toString(), 'v3 w2 x 2');
+    deepEqual(knapsackItem.totalValue, 6);
+    deepEqual(knapsackItem.totalWeight, 4);
   });
 });
