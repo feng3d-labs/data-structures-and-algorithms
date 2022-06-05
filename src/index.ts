@@ -1,3 +1,5 @@
+import { binarySearch } from './algorithms/search/binary-search/binarySearch';
+
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -136,3 +138,4 @@ export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
 
 
+binarySearch

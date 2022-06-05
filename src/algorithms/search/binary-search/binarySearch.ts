@@ -1,15 +1,14 @@
-import Comparator from '../../../utils/comparator/Comparator';
+import { Comparator } from '../../../utils/comparator/Comparator';
 
 /**
  * Binary search implementation.
  *
- * @param {*[]} sortedArray
- * @param {*} seekElement
- * @param {function(a, b)} [comparatorCallback]
- * @return {number}
+ * @param sortedArray
+ * @param seekElement
+ * @param comparatorCallback
  */
-
-export default function binarySearch(sortedArray, seekElement, comparatorCallback) {
+export function binarySearch<T>(sortedArray: T[], seekElement: T, comparatorCallback?: (a: T, b: T) => number): number
+{
   // Let's create comparator from the comparatorCallback function.
   // Comparator object will give us common comparison methods like equal() and lessThen().
   const comparator = new Comparator(comparatorCallback);
@@ -20,20 +19,25 @@ export default function binarySearch(sortedArray, seekElement, comparatorCallbac
 
   // Let's continue to split array until boundaries are collapsed
   // and there is nothing to split anymore.
-  while (startIndex <= endIndex) {
+  while (startIndex <= endIndex)
+  {
     // Let's calculate the index of the middle element.
     const middleIndex = startIndex + Math.floor((endIndex - startIndex) / 2);
 
     // If we've found the element just return its position.
-    if (comparator.equal(sortedArray[middleIndex], seekElement)) {
+    if (comparator.equal(sortedArray[middleIndex], seekElement))
+    {
       return middleIndex;
     }
 
     // Decide which half to choose for seeking next: left or right one.
-    if (comparator.lessThan(sortedArray[middleIndex], seekElement)) {
+    if (comparator.lessThan(sortedArray[middleIndex], seekElement))
+    {
       // Go to the right half of the array.
       startIndex = middleIndex + 1;
-    } else {
+    }
+    else
+    {
       // Go to the left half of the array.
       endIndex = middleIndex - 1;
     }
