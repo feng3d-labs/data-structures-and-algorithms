@@ -1,9 +1,3 @@
-import { permutateWithoutRepetitions } from './algorithms/sets/permutations/permutateWithoutRepetitions';
-import { permutateWithRepetitions } from './algorithms/sets/permutations/permutateWithRepetitions';
-import { btPowerSet } from './algorithms/sets/power-set/btPowerSet';
-import { bwPowerSet } from './algorithms/sets/power-set/bwPowerSet';
-import { shortestCommonSupersequence } from './algorithms/sets/shortest-common-supersequence/shortestCommonSupersequence';
-
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -89,6 +83,11 @@ export * from './algorithms/sets/longest-increasing-subsequence/dpLongestIncreas
 export * from './algorithms/sets/maximum-subarray/bfMaximumSubarray';
 export * from './algorithms/sets/maximum-subarray/dcMaximumSubarraySum';
 export * from './algorithms/sets/maximum-subarray/dpMaximumSubarray';
+export * from './algorithms/sets/permutations/permutateWithoutRepetitions';
+export * from './algorithms/sets/permutations/permutateWithRepetitions';
+export * from './algorithms/sets/power-set/btPowerSet';
+export * from './algorithms/sets/power-set/bwPowerSet';
+export * from './algorithms/sets/shortest-common-supersequence/shortestCommonSupersequence';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
 export * from './algorithms/sorting/insertion-sort/InsertionSort';
@@ -156,9 +155,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
-permutateWithoutRepetitions
-permutateWithRepetitions
-btPowerSet
-bwPowerSet
-shortestCommonSupersequence
