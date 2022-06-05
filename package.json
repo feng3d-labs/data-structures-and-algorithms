@@ -1,6 +1,6 @@
 {
   "name": "@feng3d/data-structures-and-algorithms",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Data-structures and algorithms implemented on TypeScript",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
