@@ -1,18 +1,19 @@
-import Comparator from '../../../utils/comparator/Comparator';
+import { Comparator } from '../../../utils/comparator/Comparator';
 
 /**
  * Jump (block) search implementation.
  *
- * @param {*[]} sortedArray
- * @param {*} seekElement
- * @param {function(a, b)} [comparatorCallback]
- * @return {number}
+ * @param sortedArray
+ * @param seekElement
+ * @param comparatorCallback
  */
-export default function jumpSearch(sortedArray, seekElement, comparatorCallback) {
+export function jumpSearch<T>(sortedArray: T[], seekElement: T, comparatorCallback?: (a: T, b: T) => number): number
+{
   const comparator = new Comparator(comparatorCallback);
   const arraySize = sortedArray.length;
 
-  if (!arraySize) {
+  if (!arraySize)
+  {
     // We can't find anything in empty array.
     return -1;
   }
@@ -26,21 +27,25 @@ export default function jumpSearch(sortedArray, seekElement, comparatorCallback)
   // Find the block where the seekElement belong to.
   let blockStart = 0;
   let blockEnd = jumpSize;
-  while (comparator.greaterThan(seekElement, sortedArray[Math.min(blockEnd, arraySize) - 1])) {
+  while (comparator.greaterThan(seekElement, sortedArray[Math.min(blockEnd, arraySize) - 1]))
+  {
     // Jump to the next block.
     blockStart = blockEnd;
     blockEnd += jumpSize;
 
     // If our next block is out of array then we couldn't found the element.
-    if (blockStart > arraySize) {
+    if (blockStart > arraySize)
+    {
       return -1;
     }
   }
 
   // Do linear search for seekElement in subarray starting from blockStart.
   let currentIndex = blockStart;
-  while (currentIndex < Math.min(blockEnd, arraySize)) {
-    if (comparator.equal(sortedArray[currentIndex], seekElement)) {
+  while (currentIndex < Math.min(blockEnd, arraySize))
+  {
+    if (comparator.equal(sortedArray[currentIndex], seekElement))
+    {
       return currentIndex;
     }
 

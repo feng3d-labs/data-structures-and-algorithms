@@ -1,5 +1,6 @@
 import { binarySearch } from './algorithms/search/binary-search/binarySearch';
 import { interpolationSearch } from './algorithms/search/interpolation-search/interpolationSearch';
+import { jumpSearch } from './algorithms/search/jump-search/jumpSearch';
 
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
@@ -141,3 +142,4 @@ export * from './utils/comparator/Comparator';
 
 binarySearch
 interpolationSearch
+jumpSearch
