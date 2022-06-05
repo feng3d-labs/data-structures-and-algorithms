@@ -1,7 +1,3 @@
-import { binarySearch } from './algorithms/search/binary-search/binarySearch';
-import { interpolationSearch } from './algorithms/search/interpolation-search/interpolationSearch';
-import { jumpSearch } from './algorithms/search/jump-search/jumpSearch';
-
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -71,6 +67,10 @@ export * from './algorithms/math/sieve-of-eratosthenes/sieveOfEratosthenes';
 export * from './algorithms/math/square-root/squareRoot';
 export * from './algorithms/ml/k-means/kMeans';
 export * from './algorithms/ml/knn/kNN';
+export * from './algorithms/search/binary-search/binarySearch';
+export * from './algorithms/search/interpolation-search/interpolationSearch';
+export * from './algorithms/search/jump-search/jumpSearch';
+export * from './algorithms/search/linear-search/linearSearch';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
 export * from './algorithms/sorting/insertion-sort/InsertionSort';
@@ -138,8 +138,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-
-
-binarySearch
-interpolationSearch
-jumpSearch
