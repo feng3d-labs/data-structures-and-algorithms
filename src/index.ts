@@ -59,6 +59,7 @@ export * from './algorithms/math/liu-hui/liuHui';
 export * as matrix from './algorithms/math/matrix/Matrix';
 export * from './algorithms/math/pascal-triangle/pascalTriangle';
 export * from './algorithms/math/pascal-triangle/pascalTriangleRecursive';
+export * from './algorithms/math/primality-test/trialDivision';
 export * from './algorithms/math/radian/radianToDegree';
 export * from './algorithms/sorting/bubble-sort/BubbleSort';
 export * from './algorithms/sorting/counting-sort/CountingSort';
