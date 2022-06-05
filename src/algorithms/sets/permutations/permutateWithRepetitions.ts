@@ -1,18 +1,19 @@
 /**
- * @param {*[]} permutationOptions
- * @param {number} permutationLength
- * @return {*[]}
+ * @param permutationOptions
+ * @param permutationLength
  */
-export default function permutateWithRepetitions(
-  permutationOptions,
+export function permutateWithRepetitions<T>(
+  permutationOptions: T[],
   permutationLength = permutationOptions.length,
-) {
-  if (permutationLength === 1) {
+): T[][]
+{
+  if (permutationLength === 1)
+  {
     return permutationOptions.map((permutationOption) => [permutationOption]);
   }
 
   // Init permutations array.
-  const permutations = [];
+  const permutations: T[][] = [];
 
   // Get smaller permutations.
   const smallerPermutations = permutateWithRepetitions(
@@ -21,8 +22,10 @@ export default function permutateWithRepetitions(
   );
 
   // Go through all options and join it to the smaller permutations.
-  permutationOptions.forEach((currentOption) => {
-    smallerPermutations.forEach((smallerPermutation) => {
+  permutationOptions.forEach((currentOption) =>
+  {
+    smallerPermutations.forEach((smallerPermutation) =>
+    {
       permutations.push([currentOption].concat(smallerPermutation));
     });
   });

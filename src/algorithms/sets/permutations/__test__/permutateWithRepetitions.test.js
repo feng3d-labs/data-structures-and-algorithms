@@ -1,14 +1,17 @@
-import permutateWithRepetitions from '../permutateWithRepetitions';
+import { deepEqual } from 'assert';
+import { permutateWithRepetitions } from '../permutateWithRepetitions';
 
-describe('permutateWithRepetitions', () => {
-  it('should permutate string with repetition', () => {
+describe('permutateWithRepetitions', () =>
+{
+  it('should permutate string with repetition', () =>
+  {
     const permutations1 = permutateWithRepetitions(['A']);
-    expect(permutations1).toEqual([
+    deepEqual(permutations1, [
       ['A'],
     ]);
 
     const permutations2 = permutateWithRepetitions(['A', 'B']);
-    expect(permutations2).toEqual([
+    deepEqual(permutations2, [
       ['A', 'A'],
       ['A', 'B'],
       ['B', 'A'],
@@ -16,7 +19,7 @@ describe('permutateWithRepetitions', () => {
     ]);
 
     const permutations3 = permutateWithRepetitions(['A', 'B', 'C']);
-    expect(permutations3).toEqual([
+    deepEqual(permutations3, [
       ['A', 'A', 'A'],
       ['A', 'A', 'B'],
       ['A', 'A', 'C'],
@@ -47,6 +50,6 @@ describe('permutateWithRepetitions', () => {
     ]);
 
     const permutations4 = permutateWithRepetitions(['A', 'B', 'C', 'D']);
-    expect(permutations4.length).toBe(4 * 4 * 4 * 4);
+    deepEqual(permutations4.length, 4 * 4 * 4 * 4);
   });
 });

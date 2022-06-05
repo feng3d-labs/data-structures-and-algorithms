@@ -1,30 +1,33 @@
-import permutateWithoutRepetitions from '../permutateWithoutRepetitions';
-import factorial from '../../../math/factorial/factorial';
+import { deepEqual } from 'assert';
+import { permutateWithoutRepetitions } from '../permutateWithoutRepetitions';
+import { factorial } from '../../../math/factorial/factorial';
 
-describe('permutateWithoutRepetitions', () => {
-  it('should permutate string', () => {
+describe('permutateWithoutRepetitions', () =>
+{
+  it('should permutate string', () =>
+  {
     const permutations1 = permutateWithoutRepetitions(['A']);
-    expect(permutations1).toEqual([
+    deepEqual(permutations1, [
       ['A'],
     ]);
 
     const permutations2 = permutateWithoutRepetitions(['A', 'B']);
-    expect(permutations2.length).toBe(2);
-    expect(permutations2).toEqual([
+    deepEqual(permutations2.length, 2);
+    deepEqual(permutations2, [
       ['A', 'B'],
       ['B', 'A'],
     ]);
 
     const permutations6 = permutateWithoutRepetitions(['A', 'A']);
-    expect(permutations6.length).toBe(2);
-    expect(permutations6).toEqual([
+    deepEqual(permutations6.length, 2);
+    deepEqual(permutations6, [
       ['A', 'A'],
       ['A', 'A'],
     ]);
 
     const permutations3 = permutateWithoutRepetitions(['A', 'B', 'C']);
-    expect(permutations3.length).toBe(factorial(3));
-    expect(permutations3).toEqual([
+    deepEqual(permutations3.length, factorial(3));
+    deepEqual(permutations3, [
       ['A', 'B', 'C'],
       ['B', 'A', 'C'],
       ['B', 'C', 'A'],
@@ -34,8 +37,8 @@ describe('permutateWithoutRepetitions', () => {
     ]);
 
     const permutations4 = permutateWithoutRepetitions(['A', 'B', 'C', 'D']);
-    expect(permutations4.length).toBe(factorial(4));
-    expect(permutations4).toEqual([
+    deepEqual(permutations4.length, factorial(4));
+    deepEqual(permutations4, [
       ['A', 'B', 'C', 'D'],
       ['B', 'A', 'C', 'D'],
       ['B', 'C', 'A', 'D'],
@@ -63,6 +66,6 @@ describe('permutateWithoutRepetitions', () => {
     ]);
 
     const permutations5 = permutateWithoutRepetitions(['A', 'B', 'C', 'D', 'E', 'F']);
-    expect(permutations5.length).toBe(factorial(6));
+    deepEqual(permutations5.length, factorial(6));
   });
 });
