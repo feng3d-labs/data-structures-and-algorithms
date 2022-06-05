@@ -1,25 +1,27 @@
 /**
- * @param {number[]} candidates - candidate numbers we're picking from.
- * @param {number} remainingSum - remaining sum after adding candidates to currentCombination.
- * @param {number[][]} finalCombinations - resulting list of combinations.
- * @param {number[]} currentCombination - currently explored candidates.
- * @param {number} startFrom - index of the candidate to start further exploration from.
- * @return {number[][]}
+ * @param candidates candidate numbers we're picking from.
+ * @param remainingSum remaining sum after adding candidates to currentCombination.
+ * @param finalCombinations resulting list of combinations.
+ * @param currentCombination currently explored candidates.
+ * @param startFrom index of the candidate to start further exploration from.
  */
 function combinationSumRecursive(
-  candidates,
-  remainingSum,
-  finalCombinations = [],
-  currentCombination = [],
+  candidates: number[],
+  remainingSum: number,
+  finalCombinations: number[][] = [],
+  currentCombination: number[] = [],
   startFrom = 0,
-) {
-  if (remainingSum < 0) {
+): number[][]
+{
+  if (remainingSum < 0)
+  {
     // By adding another candidate we've gone below zero.
     // This would mean that the last candidate was not acceptable.
     return finalCombinations;
   }
 
-  if (remainingSum === 0) {
+  if (remainingSum === 0)
+  {
     // If after adding the previous candidate our remaining sum
     // became zero - we need to save the current combination since it is one
     // of the answers we're looking for.
@@ -30,7 +32,8 @@ function combinationSumRecursive(
 
   // If we haven't reached zero yet let's continue to add all
   // possible candidates that are left.
-  for (let candidateIndex = startFrom; candidateIndex < candidates.length; candidateIndex += 1) {
+  for (let candidateIndex = startFrom; candidateIndex < candidates.length; candidateIndex += 1)
+  {
     const currentCandidate = candidates[candidateIndex];
 
     // Let's try to add another candidate.
@@ -56,10 +59,10 @@ function combinationSumRecursive(
 /**
  * Backtracking algorithm of finding all possible combination for specific sum.
  *
- * @param {number[]} candidates
- * @param {number} target
- * @return {number[][]}
+ * @param candidates
+ * @param target
  */
-export default function combinationSum(candidates, target) {
+export function combinationSum(candidates: number[], target: number): number[][]
+{
   return combinationSumRecursive(candidates, target);
 }
