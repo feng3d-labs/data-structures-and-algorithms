@@ -8,12 +8,12 @@ const testImageAfterPath = './src/algorithms/image-processing/seam-carving/__tes
 /**
  * Compares two images and finds the number of different pixels.
  *
- * @param {ImageData} imgA - ImageData for the first image.
- * @param {ImageData} imgB - ImageData for the second image.
- * @param {number} threshold - Color difference threshold [0..255]. Smaller - stricter.
- * @returns {number} - Number of different pixels.
+ * @param imgA ImageData for the first image.
+ * @param imgB ImageData for the second image.
+ * @param threshold Color difference threshold [0..255]. Smaller - stricter.
+ * @returns Number of different pixels.
  */
-function pixelsDiff(imgA, imgB, threshold = 0)
+function pixelsDiff(imgA: ImageData, imgB: ImageData, threshold = 0)
 {
   if (imgA.width !== imgB.width || imgA.height !== imgB.height)
   {
