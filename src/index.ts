@@ -54,6 +54,7 @@ export * from './algorithms/math/horner-method/hornerMethod';
 export * from './algorithms/math/integer-partition/integerPartition';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
+export * from './algorithms/math/least-common-multiple/leastCommonMultiple';
 export * as matrix from './algorithms/math/matrix/Matrix';
 export * from './algorithms/math/pascal-triangle/pascalTriangle';
 export * from './algorithms/math/pascal-triangle/pascalTriangleRecursive';
