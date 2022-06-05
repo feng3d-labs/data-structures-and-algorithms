@@ -1,42 +1,45 @@
-import combineWithoutRepetitions from '../combineWithoutRepetitions';
-import factorial from '../../../math/factorial/factorial';
-import pascalTriangle from '../../../math/pascal-triangle/pascalTriangle';
+import { deepEqual } from 'assert';
+import { combineWithoutRepetitions } from '../combineWithoutRepetitions';
+import { factorial } from '../../../math/factorial/factorial';
+import { pascalTriangle } from '../../../math/pascal-triangle/pascalTriangle';
 
-describe('combineWithoutRepetitions', () => {
-  it('should combine string without repetitions', () => {
-    expect(combineWithoutRepetitions(['A', 'B'], 3)).toEqual([]);
+describe('combineWithoutRepetitions', () =>
+{
+  it('should combine string without repetitions', () =>
+  {
+    deepEqual(combineWithoutRepetitions(['A', 'B'], 3), []);
 
-    expect(combineWithoutRepetitions(['A', 'B'], 1)).toEqual([
+    deepEqual(combineWithoutRepetitions(['A', 'B'], 1), [
       ['A'],
       ['B'],
     ]);
 
-    expect(combineWithoutRepetitions(['A'], 1)).toEqual([
+    deepEqual(combineWithoutRepetitions(['A'], 1), [
       ['A'],
     ]);
 
-    expect(combineWithoutRepetitions(['A', 'B'], 2)).toEqual([
+    deepEqual(combineWithoutRepetitions(['A', 'B'], 2), [
       ['A', 'B'],
     ]);
 
-    expect(combineWithoutRepetitions(['A', 'B', 'C'], 2)).toEqual([
+    deepEqual(combineWithoutRepetitions(['A', 'B', 'C'], 2), [
       ['A', 'B'],
       ['A', 'C'],
       ['B', 'C'],
     ]);
 
-    expect(combineWithoutRepetitions(['A', 'B', 'C'], 3)).toEqual([
+    deepEqual(combineWithoutRepetitions(['A', 'B', 'C'], 3), [
       ['A', 'B', 'C'],
     ]);
 
-    expect(combineWithoutRepetitions(['A', 'B', 'C', 'D'], 3)).toEqual([
+    deepEqual(combineWithoutRepetitions(['A', 'B', 'C', 'D'], 3), [
       ['A', 'B', 'C'],
       ['A', 'B', 'D'],
       ['A', 'C', 'D'],
       ['B', 'C', 'D'],
     ]);
 
-    expect(combineWithoutRepetitions(['A', 'B', 'C', 'D', 'E'], 3)).toEqual([
+    deepEqual(combineWithoutRepetitions(['A', 'B', 'C', 'D', 'E'], 3), [
       ['A', 'B', 'C'],
       ['A', 'B', 'D'],
       ['A', 'B', 'E'],
@@ -56,9 +59,9 @@ describe('combineWithoutRepetitions', () => {
     const r = combinationSlotsNumber;
     const expectedNumberOfCombinations = factorial(n) / (factorial(r) * factorial(n - r));
 
-    expect(combinations.length).toBe(expectedNumberOfCombinations);
+    deepEqual(combinations.length, expectedNumberOfCombinations);
 
     // This one is just to see one of the way of Pascal's triangle application.
-    expect(combinations.length).toBe(pascalTriangle(n)[r]);
+    deepEqual(combinations.length, pascalTriangle(n)[r]);
   });
 });

@@ -1,5 +1,7 @@
 import { cartesianProduct } from './algorithms/sets/cartesian-product/cartesianProduct';
 import { combinationSum } from './algorithms/sets/combination-sum/combinationSum';
+import { combineWithoutRepetitions } from './algorithms/sets/combinations/combineWithoutRepetitions';
+import { combineWithRepetitions } from './algorithms/sets/combinations/combineWithRepetitions';
 
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
@@ -143,3 +145,5 @@ export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
 cartesianProduct
 combinationSum
+combineWithoutRepetitions
+combineWithRepetitions

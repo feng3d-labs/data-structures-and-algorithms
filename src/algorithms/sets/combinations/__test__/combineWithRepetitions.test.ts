@@ -1,31 +1,34 @@
-import combineWithRepetitions from '../combineWithRepetitions';
-import factorial from '../../../math/factorial/factorial';
+import { deepEqual } from 'assert';
+import { combineWithRepetitions } from '../combineWithRepetitions';
+import { factorial } from '../../../math/factorial/factorial';
 
-describe('combineWithRepetitions', () => {
-  it('should combine string with repetitions', () => {
-    expect(combineWithRepetitions(['A'], 1)).toEqual([
+describe('combineWithRepetitions', () =>
+{
+  it('should combine string with repetitions', () =>
+  {
+    deepEqual(combineWithRepetitions(['A'], 1), [
       ['A'],
     ]);
 
-    expect(combineWithRepetitions(['A', 'B'], 1)).toEqual([
+    deepEqual(combineWithRepetitions(['A', 'B'], 1), [
       ['A'],
       ['B'],
     ]);
 
-    expect(combineWithRepetitions(['A', 'B'], 2)).toEqual([
+    deepEqual(combineWithRepetitions(['A', 'B'], 2), [
       ['A', 'A'],
       ['A', 'B'],
       ['B', 'B'],
     ]);
 
-    expect(combineWithRepetitions(['A', 'B'], 3)).toEqual([
+    deepEqual(combineWithRepetitions(['A', 'B'], 3), [
       ['A', 'A', 'A'],
       ['A', 'A', 'B'],
       ['A', 'B', 'B'],
       ['B', 'B', 'B'],
     ]);
 
-    expect(combineWithRepetitions(['A', 'B', 'C'], 2)).toEqual([
+    deepEqual(combineWithRepetitions(['A', 'B', 'C'], 2), [
       ['A', 'A'],
       ['A', 'B'],
       ['A', 'C'],
@@ -34,7 +37,7 @@ describe('combineWithRepetitions', () => {
       ['C', 'C'],
     ]);
 
-    expect(combineWithRepetitions(['A', 'B', 'C'], 3)).toEqual([
+    deepEqual(combineWithRepetitions(['A', 'B', 'C'], 3), [
       ['A', 'A', 'A'],
       ['A', 'A', 'B'],
       ['A', 'A', 'C'],
@@ -54,6 +57,6 @@ describe('combineWithRepetitions', () => {
     const r = combinationSlotsNumber;
     const expectedNumberOfCombinations = factorial((r + n) - 1) / (factorial(r) * factorial(n - 1));
 
-    expect(combinations.length).toBe(expectedNumberOfCombinations);
+    deepEqual(combinations.length, expectedNumberOfCombinations);
   });
 });
