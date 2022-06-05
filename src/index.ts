@@ -1,4 +1,5 @@
 import { degreeToRadian } from './algorithms/math/radian/degreeToRadian';
+import { sieveOfEratosthenes } from './algorithms/math/sieve-of-eratosthenes/sieveOfEratosthenes';
 
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
@@ -135,3 +136,4 @@ export * from './utils/comparator/Comparator';
 
 
 degreeToRadian
+sieveOfEratosthenes

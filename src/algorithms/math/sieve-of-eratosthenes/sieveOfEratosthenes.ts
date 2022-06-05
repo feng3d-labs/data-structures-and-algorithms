@@ -1,16 +1,18 @@
 /**
- * @param {number} maxNumber
- * @return {number[]}
+ * @param maxNumber
  */
-export default function sieveOfEratosthenes(maxNumber) {
-  const isPrime = new Array(maxNumber + 1).fill(true);
+export function sieveOfEratosthenes(maxNumber: number): number[]
+{
+  const isPrime: boolean[] = new Array(maxNumber + 1).fill(true);
   isPrime[0] = false;
   isPrime[1] = false;
 
   const primes = [];
 
-  for (let number = 2; number <= maxNumber; number += 1) {
-    if (isPrime[number] === true) {
+  for (let number = 2; number <= maxNumber; number += 1)
+  {
+    if (isPrime[number] === true)
+    {
       primes.push(number);
 
       /*
@@ -25,7 +27,8 @@ export default function sieveOfEratosthenes(maxNumber) {
        */
       let nextNumber = number * number;
 
-      while (nextNumber <= maxNumber) {
+      while (nextNumber <= maxNumber)
+      {
         isPrime[nextNumber] = false;
         nextNumber += number;
       }
