@@ -49,6 +49,8 @@ export * from './algorithms/math/fibonacci/fibonacciNthClosedForm';
 export * from './algorithms/math/fourier-transform/discreteFourierTransform';
 export * from './algorithms/math/fourier-transform/fastFourierTransform';
 export * from './algorithms/math/fourier-transform/inverseDiscreteFourierTransform';
+export * from './algorithms/math/horner-method/classicPolynome';
+export * from './algorithms/math/horner-method/hornerMethod';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwo';
 export * from './algorithms/math/is-power-of-two/isPowerOfTwoBitwise';
 export * as matrix from './algorithms/math/matrix/Matrix';
