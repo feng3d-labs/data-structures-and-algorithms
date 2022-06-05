@@ -1,6 +1,3 @@
-import { traversal } from './algorithms/linked-list/traversal/traversal';
-import { QuickSortInPlace } from './algorithms/sorting/quick-sort/QuickSortInPlace';
-
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
 export * from './algorithms/cryptography/polynomial-hash/PolynomialHash';
@@ -22,6 +19,9 @@ export * from './algorithms/graph/prim/prim';
 export * from './algorithms/graph/strongly-connected-components/stronglyConnectedComponents';
 export * from './algorithms/graph/topological-sorting/topologicalSort';
 export * from './algorithms/graph/travelling-salesman/bfTravellingSalesman';
+export * from './algorithms/image-processing/seam-carving/resizeImageWidth';
+export * from './algorithms/image-processing/utils/imageData';
+export * from './algorithms/linked-list/traversal/traversal';
 export * from './algorithms/math/binary-floating-point/bitsToFloat';
 export * from './algorithms/math/binary-floating-point/floatAsBinaryString';
 export * from './algorithms/math/bits/bitLength';
@@ -96,6 +96,7 @@ export * from './algorithms/sorting/counting-sort/CountingSort';
 export * from './algorithms/sorting/insertion-sort/InsertionSort';
 export * from './algorithms/sorting/merge-sort/MergeSort';
 export * from './algorithms/sorting/quick-sort/QuickSort';
+export * from './algorithms/sorting/quick-sort/QuickSortInPlace';
 export * from './algorithms/sorting/radix-sort/RadixSort';
 export * from './algorithms/sorting/selection-sort/SelectionSort';
 export * from './algorithms/sorting/shell-sort/ShellSort';
@@ -158,5 +159,3 @@ export * from './data-structures/tree/segment-tree/SegmentTree';
 export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
-traversal
-QuickSortInPlace

@@ -1,5 +1,6 @@
+import { deepEqual } from 'assert';
 import { createCanvas, loadImage } from 'canvas';
-import resizeImageWidth from '../resizeImageWidth';
+import { resizeImageWidth } from '../resizeImageWidth';
 
 const testImageBeforePath = './src/algorithms/image-processing/seam-carving/__tests__/test-image-before.jpg';
 const testImageAfterPath = './src/algorithms/image-processing/seam-carving/__tests__/test-image-after.jpg';
@@ -12,15 +13,18 @@ const testImageAfterPath = './src/algorithms/image-processing/seam-carving/__tes
  * @param {number} threshold - Color difference threshold [0..255]. Smaller - stricter.
  * @returns {number} - Number of different pixels.
  */
-function pixelsDiff(imgA, imgB, threshold = 0) {
-  if (imgA.width !== imgB.width || imgA.height !== imgB.height) {
+function pixelsDiff(imgA, imgB, threshold = 0)
+{
+  if (imgA.width !== imgB.width || imgA.height !== imgB.height)
+  {
     throw new Error('Images must have the same size');
   }
 
   let differentPixels = 0;
   const numColorParams = 4; // RGBA
 
-  for (let pixelIndex = 0; pixelIndex < imgA.data.length; pixelIndex += numColorParams) {
+  for (let pixelIndex = 0; pixelIndex < imgA.data.length; pixelIndex += numColorParams)
+  {
     // Get pixel's color for each image.
     const [aR, aG, aB] = imgA.data.subarray(pixelIndex, pixelIndex + numColorParams);
     const [bR, bG, bB] = imgB.data.subarray(pixelIndex, pixelIndex + numColorParams);
@@ -30,7 +34,8 @@ function pixelsDiff(imgA, imgB, threshold = 0) {
     const bAvgColor = Math.floor((bR + bG + bB) / 3);
 
     // Compare pixel colors.
-    if (Math.abs(aAvgColor - bAvgColor) > threshold) {
+    if (Math.abs(aAvgColor - bAvgColor) > threshold)
+    {
       differentPixels += 1;
     }
   }
@@ -38,13 +43,16 @@ function pixelsDiff(imgA, imgB, threshold = 0) {
   return differentPixels;
 }
 
-describe('resizeImageWidth', () => {
-  it('should perform content-aware image width reduction', () => {
+describe('resizeImageWidth', () =>
+{
+  it('should perform content-aware image width reduction', () =>
+
     // @see: https://jestjs.io/docs/asynchronous
-    return Promise.all([
+    Promise.all([
       loadImage(testImageBeforePath),
       loadImage(testImageAfterPath),
-    ]).then(([imgBefore, imgAfter]) => {
+    ]).then(([imgBefore, imgAfter]) =>
+    {
       // Original image.
       const canvasBefore = createCanvas(imgBefore.width, imgBefore.height);
       const ctxBefore = canvasBefore.getContext('2d');
@@ -64,8 +72,8 @@ describe('resizeImageWidth', () => {
         size: resizedSize,
       } = resizeImageWidth({ img: imgDataBefore, toWidth });
 
-      expect(resizedImg).toBeDefined();
-      expect(resizedSize).toBeDefined();
+      deepEqual(!!resizedImg, true);
+      deepEqual(!!resizedSize, true);
 
       // Resized image generated.
       const canvasTest = createCanvas(resizedSize.w, resizedSize.h);
@@ -73,11 +81,11 @@ describe('resizeImageWidth', () => {
       ctxTest.putImageData(resizedImg, 0, 0, 0, 0, resizedSize.w, resizedSize.h);
       const imgDataTest = ctxTest.getImageData(0, 0, resizedSize.w, resizedSize.h);
 
-      expect(resizedSize).toEqual({ w: toWidth, h: imgBefore.height });
-      expect(imgDataTest.width).toBe(toWidth);
-      expect(imgDataTest.height).toBe(imgBefore.height);
-      expect(imgDataTest.width).toBe(imgAfter.width);
-      expect(imgDataTest.height).toBe(imgAfter.height);
+      deepEqual(resizedSize, { w: toWidth, h: imgBefore.height });
+      deepEqual(imgDataTest.width, toWidth);
+      deepEqual(imgDataTest.height, imgBefore.height);
+      deepEqual(imgDataTest.width, imgAfter.width);
+      deepEqual(imgDataTest.height, imgAfter.height);
 
       const colorThreshold = 50;
       const differentPixels = pixelsDiff(imgDataTest, imgDataAfter, colorThreshold);
@@ -85,7 +93,7 @@ describe('resizeImageWidth', () => {
       // Allow 10% of pixels to be different
       const pixelsThreshold = Math.floor((imgAfter.width * imgAfter.height) / 10);
 
-      expect(differentPixels).toBeLessThanOrEqual(pixelsThreshold);
-    });
-  });
+      deepEqual(differentPixels <= pixelsThreshold, true);
+    })
+  );
 });

@@ -30,18 +30,17 @@ export class QuickSortInPlace<T> extends Sort<T>
      * and elements that are greater than or equal to the pivot.
      * Each time partitionArray() is executed, the pivot element is in its final sorted position.
      *
-     * @param {number} lowIndex
-     * @param {number} highIndex
-     * @return {number}
+     * @param lowIndex
+     * @param highIndex
      */
-    const partitionArray = (lowIndex, highIndex) =>
+    const partitionArray = (lowIndex: number, highIndex: number) =>
     {
       /**
        * Swaps two elements in array.
-       * @param {number} leftIndex
-       * @param {number} rightIndex
+       * @param leftIndex
+       * @param rightIndex
        */
-      const swap = (leftIndex, rightIndex) =>
+      const swap = (leftIndex: number, rightIndex: number) =>
       {
         const temp = array[leftIndex];
         array[leftIndex] = array[rightIndex];
