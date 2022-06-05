@@ -1,4 +1,5 @@
 import { longestCommonSubsequence } from './algorithms/sets/longest-common-subsequence/longestCommonSubsequence';
+import { dpLongestIncreasingSubsequence } from './algorithms/sets/longest-increasing-subsequence/dpLongestIncreasingSubsequence';
 
 export * from './algorithms/cryptography/caesar-cipher/caesarCipher';
 export * from './algorithms/cryptography/hill-cipher/hillCipher';
@@ -148,4 +149,4 @@ export * from './data-structures/trie/Trie';
 export * from './data-structures/trie/TrieNode';
 export * from './utils/comparator/Comparator';
 longestCommonSubsequence
-longestCommonSubsequence
+dpLongestIncreasingSubsequence
