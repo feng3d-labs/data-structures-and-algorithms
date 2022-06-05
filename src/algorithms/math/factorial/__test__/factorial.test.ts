@@ -1,5 +1,4 @@
 import { deepEqual } from 'assert';
-
 import { factorial } from '../factorial';
 
 describe('factorial', () =>
